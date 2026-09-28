@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Siluetra AI – Kamera Pemandu Pose Foto</title>
+<meta name="description" content="Bingung gaya saat difoto? Siluetra AI menampilkan siluet pose di kamera, memberi petunjuk tangan & kaki, lalu memotret otomatis saat pose sudah pas. Coba langsung di browser.">
+<meta property="og:title" content="Siluetra AI – Kamera Pemandu Pose Foto">
+<meta property="og:description" content="Siluet pose emas di kamera, petunjuk spesifik, potret otomatis, foto grup 2–4 orang. Mulai Rp10.000/bulan via QRIS.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="og-siluetra.png">
+<meta name="theme-color" content="#0F0C20">
+<style>
+  :root{--bg:#0F0C20;--bg2:#07060f;--kartu:#17152a;--garis:#2c2946;--teks:#f4f2ff;--redup:#aaa6c6;
+        --ungu:#7F00FF;--magenta:#E100FF;--emas:#FFD700;--hijau:#00E676;--biru:#00E5FF}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;background:var(--bg2)}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--teks);
+       background:radial-gradient(1200px 600px at 80% -10%,#2a1350 0,transparent 60%),linear-gradient(180deg,var(--bg),var(--bg2));line-height:1.55}
+  a{color:inherit}
+  .wadah{max-width:1080px;margin:0 auto;padding:0 20px}
+  nav{position:sticky;top:0;z-index:10;background:rgba(10,8,22,.8);backdrop-filter:blur(10px);border-bottom:1px solid var(--garis)}
+  nav .wadah{display:flex;align-items:center;gap:18px;height:60px}
+  .merek{display:flex;align-items:center;gap:10px;font-weight:800;text-decoration:none}
+  .logo{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--ungu),var(--magenta));border:2px solid var(--emas)}
+  .logo svg{width:17px;height:17px;fill:#fff}
+  nav .tautan{margin-left:auto;display:flex;gap:18px;font-size:14px;color:var(--redup)}
+  nav .tautan a{text-decoration:none}
+  .tombol{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:12px;font-weight:700;text-decoration:none;border:0;cursor:pointer;font-size:15px}
+  .utama{background:linear-gradient(135deg,var(--ungu),var(--magenta));color:#fff}
+  .emas{background:var(--emas);color:#1a1400}
+  .garis{border:1px solid var(--garis);color:var(--teks);background:transparent}
+  .kecil{padding:8px 14px;font-size:13px}
+  section{padding:64px 0}
+  h1{font-size:clamp(32px,5vw,54px);line-height:1.1;margin:0 0 16px;letter-spacing:-.5px}
+  h1 span{background:linear-gradient(90deg,var(--emas),#ffae00);-webkit-background-clip:text;background-clip:text;color:transparent}
+  h2{font-size:clamp(24px,3.4vw,34px);margin:0 0 10px}
+  .sub{color:var(--redup);font-size:17px;max-width:560px}
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-top:48px}
+  .aksi{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+  .catatan{font-size:13px;color:var(--redup);margin-top:12px}
+  .hp{justify-self:center;width:280px;aspect-ratio:9/18.5;border-radius:36px;border:8px solid #1c1a2e;background:linear-gradient(180deg,#8fd3ff 0,#cdeeff 45%,#2a8fd0 46%,#1f6fa6 60%,#e8d4a8 61%);position:relative;overflow:hidden;box-shadow:0 30px 80px rgba(127,0,255,.35)}
+  .hp .hud{position:absolute;top:10px;left:10px;right:10px;background:rgba(10,10,15,.75);border:1px solid var(--emas);border-radius:10px;padding:7px 10px;font-size:10.5px}
+  .hp .hud b{color:#ffe14d}
+  .hp svg.sil{position:absolute;inset:0;width:100%;height:100%}
+  .hp .shutter{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);width:50px;height:50px;border-radius:50%;background:#fff;border:3px solid var(--emas)}
+  @keyframes naik{0%,15%{transform:rotate(0)}45%,80%{transform:rotate(-118deg)}100%{transform:rotate(0)}}
+  @keyframes naik2{0%,15%{transform:rotate(0)}45%,80%{transform:rotate(118deg)}100%{transform:rotate(0)}}
+  .lengan-k{transform-origin:112px 205px;animation:naik 5s ease-in-out infinite}
+  .lengan-n{transform-origin:168px 205px;animation:naik2 5s ease-in-out infinite}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px}
+  .kartu{background:var(--kartu);border:1px solid var(--garis);border-radius:16px;padding:20px}
+  .kartu h3{margin:6px 0;font-size:17px}
+  .kartu p{margin:0;color:var(--redup);font-size:14px}
+  .nomor{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(255,215,0,.12);color:var(--emas);font-weight:800}
+  .ikon{font-size:24px}
+  .pro{display:inline-block;font-size:11px;font-weight:800;color:#1a1400;background:var(--emas);border-radius:6px;padding:1px 6px;margin-left:6px;vertical-align:middle}
+  /* Demo */
+  .demo{display:grid;grid-template-columns:1fr 300px;gap:20px;margin-top:24px}
+  .layar{position:relative;background:#000;border-radius:18px;overflow:hidden;aspect-ratio:4/3;border:1px solid var(--garis)}
+  .layar video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
+  .layar canvas{position:absolute;inset:0;width:100%;height:100%}
+  .layar .kosong{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;color:var(--redup)}
+  .panel .pilihan{display:flex;flex-direction:column;gap:8px;margin:12px 0}
+  .panel button.pose{text-align:left;padding:12px;border-radius:12px;border:1px solid var(--garis);background:var(--kartu);color:var(--teks);cursor:pointer;font-size:14px}
+  .panel button.pose[aria-pressed=true]{border-color:var(--emas);box-shadow:0 0 0 1px var(--emas) inset}
+  .skor{font-size:44px;font-weight:800;color:var(--emas)}
+  .skor.ok{color:var(--hijau)}
+  .tip{min-height:44px;font-weight:700;color:#ffe14d}
+  .bar{height:6px;border-radius:6px;background:#2c2946;overflow:hidden}.bar i{display:block;height:100%;width:0;background:var(--emas);transition:width .2s}
+  /* Harga */
+  .harga{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px;max-width:760px}
+  .harga .kartu{padding:26px}
+  .harga .angka{font-size:36px;font-weight:800;margin:8px 0}
+  .harga .angka small{font-size:14px;color:var(--redup);font-weight:600}
+  .harga ul{padding-left:18px;color:var(--redup);font-size:14px;margin:12px 0 20px}
+  .harga .unggul{border-color:var(--emas);background:linear-gradient(180deg,#221c08,var(--kartu))}
+  details{background:var(--kartu);border:1px solid var(--garis);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+  summary{cursor:pointer;font-weight:700}
+  details p{color:var(--redup);margin:10px 0 0;font-size:14px}
+  ol.langkah{color:var(--redup);padding-left:20px}
+  ol.langkah li{margin-bottom:8px}
+  code{background:#0b0a16;border:1px solid var(--garis);border-radius:6px;padding:2px 6px;font-size:12px;word-break:break-all}
+  footer{border-top:1px solid var(--garis);padding:28px 0;color:var(--redup);font-size:13px}
+  footer .wadah{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  footer .kanan{margin-left:auto;display:flex;gap:14px}
+  .wa{position:fixed;right:18px;bottom:18px;background:#25D366;color:#fff;border-radius:999px;padding:12px 16px;font-weight:800;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.4);z-index:20}
+  @media (max-width:860px){
+    .hero,.demo{grid-template-columns:1fr}.grid3{grid-template-columns:1fr}.grid4{grid-template-columns:1fr 1fr}
+    .harga{grid-template-columns:1fr} nav .tautan{display:none} section{padding:44px 0}
+  }
+</style>
+</head>
+<body>
+<nav>
+  <div class="wadah">
+    <a class="merek" href="#"><span class="logo"><svg viewBox="0 0 24 24"><path d="M9 3 7.2 5H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.2L15 3H9zm3 15a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"/></svg></span>Siluetra AI</a>
+    <div class="tautan"><a href="#cara">Cara kerja</a><a href="#coba">Coba</a><a href="#fitur">Fitur</a><a href="#harga">Harga</a><a href="#faq">FAQ</a></div>
+    <a class="tombol emas kecil" id="navUnduh" href="#pasang">Unduh APK</a>
+  </div>
+</nav>
+
+<header class="wadah hero">
+  <div>
+    <h1>Tak perlu bingung gaya.<br><span>Masuk ke siluetnya, jepret!</span></h1>
+    <p class="sub">Siluetra AI menampilkan siluet pose emas langsung di kamera, memberi tahu tangan atau kaki mana yang perlu digeser, lalu memotret otomatis saat pose sudah pas.</p>
+    <div class="aksi">
+      <a class="tombol utama" href="#coba">▶ Coba di browser</a>
+      <a class="tombol garis" href="#harga">Lihat harga</a>
+    </div>
+    <p class="catatan">Mulai Rp10.000 per 30 hari • Bayar QRIS • Ada uji coba gratis</p>
+  </div>
+  <div class="hp" aria-label="Ilustrasi aplikasi">
+    <div class="hud">🏖️ Pantai &amp; Laut • Jarak pas<br><b>💡 Naikkan tangan (kanan layar) ⬆️</b></div>
+    <svg class="sil" viewBox="0 0 280 560" aria-hidden="true">
+      <g fill="rgba(255,215,0,.38)" stroke="#FFD700" stroke-width="3" stroke-linejoin="round">
+        <circle cx="140" cy="160" r="24"/>
+        <path d="M112 200 L168 200 L162 300 L118 300 Z"/>
+        <path d="M118 300 L112 400 L110 470" stroke-width="22" stroke-linecap="round" fill="none" stroke="rgba(255,215,0,.6)"/>
+        <path d="M162 300 L168 400 L170 470" stroke-width="22" stroke-linecap="round" fill="none" stroke="rgba(255,215,0,.6)"/>
+        <path class="lengan-k" d="M112 205 L112 262 L112 312" stroke-width="18" stroke-linecap="round" fill="none" stroke="rgba(0,230,118,.7)"/>
+        <path class="lengan-n" d="M168 205 L168 262 L168 312" stroke-width="18" stroke-linecap="round" fill="none" stroke="rgba(255,215,0,.65)"/>
+      </g>
+    </svg>
+    <div class="shutter"></div>
+  </div>
+</header>
+
+<section id="cara">
+  <div class="wadah">
+    <h2>Cara kerjanya</h2>
+    <p class="sub">Tiga langkah, tanpa perlu jago bergaya.</p>
+    <div class="grid3">
+      <div class="kartu"><div class="nomor">1</div><h3>Pilih pose</h3><p>Pilih dari katalog (gunung, pantai, candi, kota, kafe) atau tekan <b>AI Pose</b>. Aplikasi mengenali latar dan menyarankan gaya yang cocok.</p></div>
+      <div class="kartu"><div class="nomor">2</div><h3>Masuk ke siluet</h3><p>Siluet emas muncul di kamera. Bagian yang sudah pas berubah <span style="color:var(--hijau)">hijau</span>, dan petunjuk seperti "Naikkan tangan (kanan layar)" memandu sisanya.</p></div>
+      <div class="kartu"><div class="nomor">3</div><h3>Jepret otomatis</h3><p>Aktifkan <b>AUTO</b>: saat skor ≥ 85%, hitung mundur 3-2-1 lalu foto tersimpan ke galeri. Cocok untuk foto sendiri dengan tripod.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="coba">
+  <div class="wadah">
+    <h2>Coba langsung di browser</h2>
+    <p class="sub">Izinkan kamera laptop atau HP, berdiri sekitar 2 meter hingga seluruh badan terlihat, lalu cocokkan badan dengan siluet emas. Semua diproses di perangkat Anda, tidak ada gambar yang dikirim ke server.</p>
+    <div class="demo">
+      <div class="layar">
+        <video id="video" playsinline muted></video>
+        <canvas id="kanvas"></canvas>
+        <div class="kosong" id="kosong"><div><div style="font-size:42px">📷</div><p>Tekan <b>Mulai kamera</b> untuk mencoba.</p></div></div>
+      </div>
+      <div class="panel kartu">
+        <button class="tombol utama" id="mulai" style="width:100%;justify-content:center">Mulai kamera</button>
+        <div class="pilihan" id="pilihan"></div>
+        <div class="skor" id="skor">–</div>
+        <div class="bar"><i id="bar"></i></div>
+        <p class="tip" id="tip">Pilih pose, lalu mulai kamera.</p>
+        <p class="catatan" id="status"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="fitur">
+  <div class="wadah">
+    <h2>Fitur</h2>
+    <div class="grid4">
+      <div class="kartu"><div class="ikon">✨</div><h3>Siluet emas</h3><p>Selalu tampil paling jelas; deteksi tubuh biru bisa dibuat transparan atau disembunyikan.</p></div>
+      <div class="kartu"><div class="ikon">💡</div><h3>Petunjuk spesifik</h3><p>Tahu persis tangan atau kaki mana yang perlu dinaikkan, dibuka, atau dirapatkan.</p></div>
+      <div class="kartu"><div class="ikon">⏱️</div><h3>Potret otomatis</h3><p>Hitung mundur saat pose pas, batal sendiri kalau pose berubah.</p></div>
+      <div class="kartu"><div class="ikon">🏞️</div><h3>Kenali latar</h3><p>AI mengenali pantai, gunung, candi, kota, kafe, atau taman untuk saran pose.</p></div>
+      <div class="kartu"><div class="ikon">👆</div><h3>Pilih target</h3><p>Di tempat ramai, ketuk orang yang ingin difoto; orang lain diabaikan.</p></div>
+      <div class="kartu"><div class="ikon">🤏</div><h3>Zoom cubit</h3><p>Cubit untuk zoom, ketuk untuk fokus, ketuk dua kali kembali 1x.</p></div>
+      <div class="kartu"><div class="ikon">👥</div><h3>Foto grup <span class="pro">PRO</span></h3><p>Formasi 2–4 orang dengan warna per orang: "Orang Biru geser ke kanan".</p></div>
+      <div class="kartu"><div class="ikon">🧠</div><h3>Saran Gemini <span class="pro">PRO</span></h3><p>AI melihat suasana foto dan memilihkan pose beserta tips cahaya &amp; sudut.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="harga">
+  <div class="wadah">
+    <h2>Harga</h2>
+    <p class="sub">Bayar dengan QRIS dari e-wallet atau m-banking apa pun. Coba gratis dulu di aplikasi (sekali per HP).</p>
+    <div class="harga">
+      <div class="kartu">
+        <h3>Basic</h3>
+        <div class="angka">Rp10.000 <small>/ 30 hari</small></div>
+        <ul><li>50 kredit foto</li><li>Siluet pose solo &amp; AI Pose</li><li>Potret otomatis, zoom cubit</li><li>Pilih target di tempat ramai</li></ul>
+        <a class="tombol garis" href="beli.html?paket=BASIC">Beli Basic</a>
+      </div>
+      <div class="kartu unggul">
+        <h3>⭐ Pro</h3>
+        <div class="angka">Rp25.000 <small>/ 30 hari</small></div>
+        <ul><li>100 kredit foto</li><li>Semua fitur Basic</li><li>Foto grup 2–4 orang</li><li>Saran pose Gemini &amp; zoom otomatis</li></ul>
+        <a class="tombol emas" href="beli.html?paket=PRO">Beli Pro</a>
+      </div>
+    </div>
+    <p class="catatan">Punya kode referral teman? Masukkan saat membeli; Anda dan teman sama-sama mendapat bonus kredit.</p>
+  </div>
+</section>
+
+<section id="pasang">
+  <div class="wadah">
+    <h2>Pasang aplikasi</h2>
+    <div class="grid3" style="grid-template-columns:1.3fr 1fr">
+      <div class="kartu">
+        <ol class="langkah">
+          <li>Tekan tombol unduh di bawah, simpan file <b>Siluetra.apk</b>.</li>
+          <li>Buka file tersebut. Bila diminta, izinkan pemasangan dari browser/pengelola file ini.</li>
+          <li>Buka aplikasi, izinkan kamera, lalu tekan ikon kunci untuk mencoba gratis atau membeli paket.</li>
+        </ol>
+        <a class="tombol emas" id="unduh" href="#">⬇ Unduh APK</a>
+        <p class="catatan">Versi <span id="versi">1.0</span> • Sidik jari SHA-256 file resmi:<br><code id="sha">–</code></p>
+      </div>
+      <div class="kartu">
+        <h3>Aman &amp; privat</h3>
+        <p>Pose diproses langsung di HP. Foto tersimpan di galeri Anda sendiri dan tidak diunggah. Yang kami simpan hanya status langganan dan jumlah pemakaian.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wadah">
+    <h2>Pertanyaan umum</h2>
+    <details><summary>Apa itu kredit foto?</summary><p>Setiap foto yang berhasil tersimpan memakai 1 kredit. Foto yang gagal tidak memotong kredit. Bila Anda memperpanjang sebelum masa aktif habis, sisa kredit dan hari ditambahkan.</p></details>
+    <details><summary>Berapa lama pembayaran diverifikasi?</summary><p>Biasanya beberapa menit pada jam operasional. Pastikan membayar tepat sesuai nominal unik (misalnya Rp9.863) agar mudah dicocokkan.</p></details>
+    <details><summary>Bisa dipakai di HP lain?</summary><p>Satu paket untuk satu HP. Bila berganti HP, hubungi admin melalui WhatsApp untuk pemindahan lisensi.</p></details>
+    <details><summary>Kenapa foto grup hanya di Pro?</summary><p>Mendeteksi dan memandu 2–4 orang sekaligus membutuhkan pemrosesan lebih berat dan formasi khusus. Paket Pro juga mendapat kredit lebih banyak.</p></details>
+    <details><summary>HP saya muncul peringatan saat memasang</summary><p>Itu wajar untuk aplikasi yang dipasang di luar Play Store. Pastikan file diunduh dari situs ini dan sidik jari SHA-256 sama dengan yang tertera di atas.</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="wadah">
+    <span>© <span id="tahun"></span> Siluetra AI</span>
+    <a href="kebijakan-privasi.html">Kebijakan Privasi</a>
+    <a href="syarat.html">Syarat Layanan</a>
+    <div class="kanan"><a id="ig" href="#">Instagram</a><a id="tt" href="#">TikTok</a></div>
+  </div>
+</footer>
+<a class="wa" id="wa" href="#">💬 Tanya Admin</a>
+
+<script>
+/* ======================== KONFIGURASI ======================== */
+const KONFIG = {
+  APK_URL: 'Siluetra.apk',
+  APK_VERSI: '1.0',
+  APK_SHA256: 'ISI-DENGAN-SHA256-APK-RILIS',
+  WA_ADMIN: '62818381531',          // format internasional tanpa +
+  INSTAGRAM: 'https://instagram.com/siluetra.ai',
+  TIKTOK: 'https://tiktok.com/@siluetra.ai'
+};
+/* ============================================================= */
+document.getElementById('unduh').href = KONFIG.APK_URL;
+document.getElementById('navUnduh').href = '#pasang';
+document.getElementById('versi').textContent = KONFIG.APK_VERSI;
+document.getElementById('sha').textContent = KONFIG.APK_SHA256;
+document.getElementById('wa').href = 'https://wa.me/' + KONFIG.WA_ADMIN + '?text=' + encodeURIComponent('Halo admin Siluetra AI, saya mau tanya.');
+document.getElementById('ig').href = KONFIG.INSTAGRAM;
+document.getElementById('tt').href = KONFIG.TIKTOK;
+document.getElementById('tahun').textContent = new Date().getFullYear();
+// Teruskan kode referral (?ref=) ke tombol beli
+const ref = new URLSearchParams(location.search).get('ref');
+if (ref) document.querySelectorAll('a[href^="beli.html"]').forEach(a => a.href += '&ref=' + encodeURIComponent(ref));
+</script>
+
+<script type="module">
+/* ============ DEMO POSE (port logika PoseGeometry aplikasi) ============ */
+const MP_VER = '0.10.14';
+const MODEL_URL = 'https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/latest/pose_landmarker_lite.task';
+const N=0, LS=11, RS=12, LE=13, RE=14, LW=15, RW=16, LH=23, RH=24, LK=25, RK=26, LA=27, RA=28;
+const KEYS=[N,LS,RS,LE,RE,LW,RW,LH,RH,LK,RK,LA,RA];
+const SEG=[[LS,LE],[LE,LW],[RS,RE],[RE,RW],[LH,LK],[LK,LA],[RH,RK],[RK,RA]];
+const SKOR=[[LS,LE,1],[LE,LW,1],[RS,RE,1],[RE,RW,1],[LH,LK,.8],[LK,LA,.8],[RH,RK,.8],[RK,RA,.8],[LS,RS,.5]];
+const kaki = {[LH]:[.42,.56],[RH]:[.58,.56],[LK]:[.40,.74],[RK]:[.60,.74],[LA]:[.38,.92],[RA]:[.62,.92]};
+const P = (o) => Object.fromEntries(Object.entries({...kaki,[N]:[.5,.22],[LS]:[.38,.34],[RS]:[.62,.34],...o}).map(([k,v])=>[k,{x:v[0],y:v[1]}]));
+const POSES = [
+  {id:'v', nama:'⛰️ V-Pose Puncak', lm:P({[LE]:[.24,.22],[RE]:[.76,.22],[LW]:[.18,.12],[RW]:[.82,.12]})},
+  {id:'sayap', nama:'🌿 Bentang Sayap', lm:P({[LE]:[.22,.30],[RE]:[.78,.30],[LW]:[.12,.25],[RW]:[.88,.25]})},
+  {id:'pinggang', nama:'😎 Tangan di Pinggang', lm:P({[LE]:[.28,.45],[RE]:[.72,.45],[LW]:[.40,.55],[RW]:[.60,.55]})}
+];
+let pilih = POSES[0];
+
+const $ = id => document.getElementById(id);
+const wadahPilihan = $('pilihan');
+POSES.forEach(p => {
+  const b = document.createElement('button'); b.className='pose'; b.textContent=p.nama; b.setAttribute('aria-pressed', p===pilih);
+  b.onclick = () => { pilih=p; wadahPilihan.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed', x===b)); };
+  wadahPilihan.appendChild(b);
+});
+
+const mid=(a,b)=>a&&b?{x:(a.x+b.x)/2,y:(a.y+b.y)/2}:null;
+const dist=(a,b)=>Math.hypot(b.x-a.x,b.y-a.y);
+const torso=p=>{const s=mid(p[LS],p[RS]),h=mid(p[LH],p[RH]);return s&&h?dist(s,h):null;};
+function angleDiff(ax,ay,bx,by){let d=(Math.atan2(ay,ax)-Math.atan2(by,bx))*180/Math.PI;while(d>180)d-=360;while(d<-180)d+=360;return Math.abs(d);}
+function tempatkan(preset,user){
+  const pH=mid(preset[LH],preset[RH]), pT=torso(preset), uT=torso(user), uH=mid(user[LH],user[RH]);
+  const s=uT/pT; const o={};
+  for(const k in preset) o[k]={x:uH.x+(preset[k].x-pH.x)*s, y:uH.y+(preset[k].y-pH.y)*s};
+  return o;
+}
+function cocokkan(t,u){
+  const T=torso(u); const limbs=[];
+  for(const [a,b,w] of SKOR){ if(!u[a]||!u[b]||!t[a]||!t[b]) continue;
+    const sA=Math.max(0,Math.min(1,1-angleDiff(u[b].x-u[a].x,u[b].y-u[a].y,t[b].x-t[a].x,t[b].y-t[a].y)/50));
+    const sP=Math.max(0,Math.min(1,1-dist(u[b],t[b])/T/.6)); limbs.push({a,b,w,s:.65*sA+.35*sP}); }
+  if(limbs.length<3) return {skor:0,limbs,tip:'Mundur sedikit agar seluruh badan terlihat'};
+  const skor=limbs.reduce((x,l)=>x+l.s*l.w,0)/limbs.reduce((x,l)=>x+l.w,0)*100;
+  let tip='Ikuti siluet emas 📐';
+  if(skor>=85) tip='SANGAT PAS! Tahan pose 🌟';
+  else { const buruk=limbs.filter(l=>l.w>=.8&&l.s<.75).sort((x,y)=>x.s-y.s)[0];
+    if(buruk){ const kiri=[LS,LE,LW,LH,LK,LA].includes(buruk.a), sisi=kiri?'kiri layar':'kanan layar', bag=[LS,LE,RS,RE].includes(buruk.a)?'tangan':'kaki';
+      const dx=(t[buruk.b].x-u[buruk.b].x)/T, dy=(t[buruk.b].y-u[buruk.b].y)/T, luar=kiri?dx<0:dx>0;
+      tip=Math.abs(dy)>=Math.abs(dx)?(dy<0?`Naikkan ${bag} (${sisi}) ⬆️`:`Turunkan ${bag} (${sisi}) ⬇️`):(luar?`Buka ${bag} (${sisi}) lebih lebar`:`Rapatkan ${bag} (${sisi}) ke badan`);} }
+  return {skor,limbs,tip};
+}
+
+const video=$('video'), kanvas=$('kanvas'), ctx=kanvas.getContext('2d');
+let landmarker=null, jalan=false;
+
+function gambarSiluet(p, isi, garis, tebalLengan, tebalKaki){
+  ctx.save(); ctx.lineCap='round'; ctx.lineJoin='round';
+  // lapisan isi: gambar bentuk ke kanvas sementara agar transparansi rata
+  const off=gambarSiluet.off||(gambarSiluet.off=document.createElement('canvas')); off.width=kanvas.width; off.height=kanvas.height;
+  const o=off.getContext('2d'); o.fillStyle='#fff'; o.strokeStyle='#fff'; o.lineCap='round';
+  o.beginPath(); o.moveTo(p[LS].x,p[LS].y); o.lineTo(p[RS].x,p[RS].y); o.lineTo(p[RH].x,p[RH].y); o.lineTo(p[LH].x,p[LH].y); o.fill();
+  SEG.forEach(([a,b],i)=>{ if(!p[a]||!p[b])return; o.lineWidth=i<4?tebalLengan:tebalKaki; o.beginPath(); o.moveTo(p[a].x,p[a].y); o.lineTo(p[b].x,p[b].y); o.stroke(); });
+  const r=Math.max(dist(p[LS],p[RS])*.36,tebalLengan*.9); o.beginPath(); o.arc(p[N].x,p[N].y-r*.15,r,0,7); o.fill();
+  o.lineWidth=tebalLengan*.85; o.beginPath(); o.moveTo(p[N].x,p[N].y+r*.6); const l=mid(p[LS],p[RS]); o.lineTo(l.x,l.y); o.stroke();
+  // garis tepi: bayangan gelap + warna
+  o.globalCompositeOperation='source-in'; o.fillStyle=isi; o.fillRect(0,0,off.width,off.height);
+  ctx.shadowColor='rgba(0,0,0,.6)'; ctx.shadowBlur=8; ctx.drawImage(off,0,0); ctx.restore();
+}
+
+function loop(){
+  if(!jalan) return;
+  if(video.readyState>=2){
+    const W=kanvas.width=kanvas.clientWidth*devicePixelRatio, H=kanvas.height=kanvas.clientHeight*devicePixelRatio;
+    ctx.clearRect(0,0,W,H);
+    const hasil=landmarker.detectForVideo(video, performance.now());
+    // object-fit:cover + cermin
+    const vw=video.videoWidth, vh=video.videoHeight, s=Math.max(W/vw,H/vh), ox=(W-vw*s)/2, oy=(H-vh*s)/2;
+    const lm=hasil.landmarks&&hasil.landmarks[0];
+    let u=null;
+    if(lm){ u={}; for(const k of KEYS){ const q=lm[k]; if(q && (q.visibility??1)>=.5) u[k]={x:W-(ox+q.x*vw*s), y:oy+q.y*vh*s}; } }
+    if(u && torso(u) && u[LH]&&u[RH]){
+      const t=tempatkan(pilih.lm,u), r=cocokkan(t,u), T=torso(t), pas=r.skor>=70;
+      // deteksi biru tipis (bawah)
+      ctx.strokeStyle='rgba(0,229,255,.45)'; ctx.lineWidth=3*devicePixelRatio;
+      SEG.forEach(([a,b])=>{ if(u[a]&&u[b]){ctx.beginPath();ctx.moveTo(u[a].x,u[a].y);ctx.lineTo(u[b].x,u[b].y);ctx.stroke();}});
+      // siluet emas (atas)
+      gambarSiluet(t, pas?'rgba(0,230,118,.42)':'rgba(255,215,0,.42)', '', T*.26, T*.34);
+      r.limbs.forEach(l=>{ if(l.s>=.75 && SEG.some(([a,b])=>a===l.a&&b===l.b)){ ctx.strokeStyle='#00E676'; ctx.lineWidth=5*devicePixelRatio; ctx.beginPath(); ctx.moveTo(t[l.a].x,t[l.a].y); ctx.lineTo(t[l.b].x,t[l.b].y); ctx.stroke(); }});
+      $('skor').textContent=Math.round(r.skor)+'%'; $('skor').className='skor'+(pas?' ok':''); $('bar').style.width=r.skor+'%';
+      $('bar').style.background=pas?'var(--hijau)':'var(--emas)'; $('tip').textContent='💡 '+r.tip;
+    } else { $('tip').textContent='Mundur sedikit hingga bahu dan pinggul terlihat'; $('skor').textContent='–'; $('bar').style.width='0'; }
+  }
+  requestAnimationFrame(loop);
+}
+
+$('mulai').onclick = async () => {
+  const st=$('status'); $('mulai').disabled=true; st.textContent='Memuat model AI (±6 MB)…';
+  try{
+    const { PoseLandmarker, FilesetResolver } = await import(`https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@${MP_VER}/vision_bundle.mjs`);
+    const vision = await FilesetResolver.forVisionTasks(`https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@${MP_VER}/wasm`);
+    landmarker = await PoseLandmarker.createFromOptions(vision,{baseOptions:{modelAssetPath:MODEL_URL,delegate:'GPU'},runningMode:'VIDEO',numPoses:1});
+    st.textContent='Meminta izin kamera…';
+    video.srcObject = await navigator.mediaDevices.getUserMedia({video:{facingMode:'user',width:{ideal:1280},height:{ideal:720}},audio:false});
+    await video.play(); $('kosong').style.display='none'; st.textContent='Demo berjalan di perangkat Anda.'; $('mulai').textContent='Kamera aktif';
+    jalan=true; loop();
+  }catch(e){ console.error(e); st.textContent='Tidak dapat memulai demo: '+(e.message||e)+'. Coba browser Chrome terbaru dan izinkan kamera.'; $('mulai').disabled=false; }
+};
+</script>
+</body>
+</html>

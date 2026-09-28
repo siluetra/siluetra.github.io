@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beli Paket Siluetra AI</title>
+<meta name="description" content="Perpanjang langganan Siluetra AI: 30 hari dan 50 kredit foto, bayar dengan QRIS.">
+<style>
+  :root{
+    --bg:#0F0C20; --bg2:#000; --kartu:#1C1A2E; --garis:#2E2B45;
+    --teks:#F4F2FF; --redup:#A9A5C4; --ungu:#7F00FF; --magenta:#E100FF;
+    --emas:#FFD700; --hijau:#4CAF50; --merah:#FF5252;
+  }
+  *{box-sizing:border-box}
+  html{background:var(--bg2)}
+  body{margin:0;min-height:100vh;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+       color:var(--teks);background:linear-gradient(180deg,var(--bg),var(--bg2)) fixed}
+  .wadah{max-width:460px;margin:0 auto;padding:24px 16px 48px}
+  header{text-align:center;margin-bottom:20px}
+  .logo{width:72px;height:72px;border-radius:50%;margin:0 auto 10px;display:grid;place-items:center;
+        background:linear-gradient(135deg,var(--ungu),var(--magenta));border:3px solid var(--emas)}
+  .logo svg{width:34px;height:34px;fill:#fff}
+  h1{font-size:24px;margin:0}
+  .slogan{color:var(--emas);font-size:13px;margin-top:4px}
+  .kartu{background:var(--kartu);border:1px solid var(--garis);border-radius:16px;padding:18px;margin-bottom:14px}
+  .paket{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .opsi{cursor:pointer;margin:0 0 10px;color:var(--teks);font-size:15px}
+  .opsi input{width:auto;accent-color:var(--emas);margin:0}
+  .opsi:has(input:checked){border-color:var(--emas);box-shadow:0 0 0 1px var(--emas) inset}
+  .opsi > div:first-of-type{flex:1}
+  .paket b{font-size:15px}.paket small{color:var(--redup);display:block;margin-top:2px}
+  .harga{font-size:22px;font-weight:800;color:var(--emas)}
+  label{display:block;font-size:13px;color:var(--redup);margin:12px 0 6px}
+  input{width:100%;padding:12px;border-radius:10px;border:1px solid var(--garis);background:#12101F;
+        color:var(--teks);font-size:15px}
+  input:focus{outline:2px solid var(--ungu);border-color:transparent}
+  .bantuan{font-size:12px;color:var(--redup);margin-top:6px;line-height:1.45}
+  button{width:100%;padding:13px;border:0;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;margin-top:14px}
+  .utama{background:linear-gradient(135deg,var(--ungu),var(--magenta));color:#fff}
+  .kedua{background:transparent;color:var(--teks);border:1px solid var(--garis)}
+  .hijau{background:var(--hijau);color:#fff}
+  button:disabled{opacity:.55;cursor:wait}
+  .qr-box{background:#fff;border-radius:14px;padding:14px;width:fit-content;margin:6px auto 10px}
+  .qr-box img,.qr-box canvas{display:block;width:240px;height:240px}
+  .nominal{text-align:center}
+  .nominal .angka{font-size:32px;font-weight:800;letter-spacing:.5px}
+  .nominal .angka span{color:var(--emas);text-decoration:underline}
+  .nominal p{margin:4px 0;color:var(--redup);font-size:13px}
+  .hitung{text-align:center;font-size:13px;color:var(--redup);margin-top:6px}
+  .hitung b{color:var(--teks)}
+  .langkah{font-size:13px;color:var(--redup);padding-left:18px;line-height:1.6;margin:8px 0 0}
+  .status{display:inline-block;padding:4px 10px;border-radius:99px;font-size:12px;font-weight:700;background:#2B2840}
+  .status.tunggu{color:var(--emas)} .status.ok{color:var(--hijau)} .status.gagal{color:var(--merah)}
+  .kode{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:20px;font-weight:800;text-align:center;
+        padding:14px;border:2px dashed var(--emas);border-radius:12px;margin:12px 0;letter-spacing:1px;word-break:break-all}
+  .pesan{padding:10px 12px;border-radius:10px;font-size:13px;margin-top:12px;display:none}
+  .pesan.err{display:block;background:#3A1620;color:#FFB3BE}
+  .pesan.ok{display:block;background:#15301A;color:#B8F0BE}
+  .tengah{text-align:center}
+  .spin{width:34px;height:34px;border:3px solid var(--garis);border-top-color:var(--emas);border-radius:50%;
+        margin:10px auto;animation:putar 1s linear infinite}
+  @keyframes putar{to{transform:rotate(360deg)}}
+  .tersembunyi{display:none}
+  footer{text-align:center;color:var(--redup);font-size:12px;margin-top:22px}
+  .file-label{display:block;border:1px dashed var(--garis);border-radius:10px;padding:12px;text-align:center;
+              font-size:13px;color:var(--redup);cursor:pointer;margin-top:12px}
+  .file-label input{display:none}
+  #pratinjau{max-width:100%;max-height:180px;border-radius:8px;display:none;margin:8px auto 0}
+</style>
+</head>
+<body>
+<div class="wadah">
+  <header>
+    <div class="logo" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M9 3 7.2 5H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.2L15 3H9zm3 15a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+    </div>
+    <h1>Siluetra AI</h1>
+    <div class="slogan">Panduan Siluet &amp; Pose Fotografi AI Cerdas</div>
+  </header>
+
+  <!-- LANGKAH 1: FORM -->
+  <section id="tahapForm">
+    <div class="pilih-paket" role="radiogroup" aria-label="Pilih paket">
+      <label class="kartu paket opsi"><input type="radio" name="paket" value="BASIC" checked>
+        <div><b>Basic</b><small>30 hari • 50 kredit foto • pose solo</small></div>
+        <div class="harga">Rp 10.000</div></label>
+      <label class="kartu paket opsi"><input type="radio" name="paket" value="PRO">
+        <div><b>⭐ Pro</b><small>30 hari • 100 kredit • foto grup 2–4 orang, saran Gemini, zoom otomatis</small></div>
+        <div class="harga">Rp 25.000</div></label>
+    </div>
+    <div class="kartu">
+      <label for="nama">Nama</label>
+      <input id="nama" autocomplete="name" maxlength="60" placeholder="Nama Anda">
+      <label for="wa">Nomor WhatsApp</label>
+      <input id="wa" inputmode="tel" autocomplete="tel" maxlength="16" placeholder="08xxxxxxxxxx">
+      <label for="device">ID Perangkat (disarankan)</label>
+      <input id="device" maxlength="64" placeholder="Salin dari aplikasi: ikon kunci > ID Perangkat">
+      <div class="bantuan">Jika ID Perangkat diisi, langganan otomatis aktif di HP tersebut setelah pembayaran diverifikasi.
+        Jika dikosongkan, Anda akan menerima <b>Kode Aktivasi</b> untuk dimasukkan di aplikasi.</div>
+      <label for="ref">Kode referral teman (opsional)</label>
+      <input id="ref" maxlength="12" placeholder="Contoh: SLAB12C" style="text-transform:uppercase">
+      <div class="bantuan">Pembelian pertama dengan kode referral: Anda dan teman sama-sama mendapat bonus kredit.</div>
+      <button class="utama" id="btnBuat">Lanjut ke Pembayaran QRIS</button>
+      <div class="pesan" id="pesanForm"></div>
+    </div>
+  </section>
+
+  <!-- LANGKAH 2: BAYAR -->
+  <section id="tahapBayar" class="tersembunyi">
+    <div class="kartu">
+      <div class="tengah"><span class="status tunggu" id="labelStatus">Menunggu pembayaran</span></div>
+      <div class="qr-box" id="qr"></div>
+      <div class="nominal">
+        <p>Total yang harus dibayar</p>
+        <div class="angka" id="nominal">Rp 0</div>
+        <p>Bayar <b>tepat sesuai nominal</b> agar pembayaran mudah dicocokkan.</p>
+      </div>
+      <div class="hitung" id="hitung"></div>
+      <ol class="langkah">
+        <li>Buka e-wallet atau m-banking apa pun yang mendukung QRIS.</li>
+        <li>Pindai QR di atas. Jika membuka halaman ini di HP yang sama, tekan <b>Simpan QR</b> lalu pilih "pindai dari galeri".</li>
+        <li>Setelah berhasil, tekan <b>Saya Sudah Bayar</b> dan lampirkan tangkapan layar bukti bayar.</li>
+      </ol>
+      <button class="kedua" id="btnSimpanQr">Simpan QR</button>
+      <label class="file-label">Lampirkan bukti bayar (opsional, dianjurkan)
+        <input type="file" id="bukti" accept="image/*">
+        <img id="pratinjau" alt="Pratinjau bukti bayar">
+      </label>
+      <p class="bantuan tengah" id="infoOtomatis"></p>
+      <button class="hijau" id="btnSudahBayar">Saya Sudah Bayar</button>
+      <div class="pesan" id="pesanBayar"></div>
+      <button class="kedua" id="btnBatal">Batalkan / buat order baru</button>
+      <div class="bantuan tengah" style="margin-top:10px">No. Order: <b id="labelOrder">-</b></div>
+    </div>
+  </section>
+
+  <!-- LANGKAH 3: VERIFIKASI -->
+  <section id="tahapVerifikasi" class="tersembunyi">
+    <div class="kartu tengah">
+      <span class="status tunggu">Menunggu verifikasi admin</span>
+      <div class="spin"></div>
+      <p class="bantuan">Pembayaran Anda sedang dicocokkan dengan mutasi QRIS. Biasanya selesai dalam beberapa menit
+        pada jam operasional. Halaman ini diperbarui otomatis, Anda boleh menutupnya dan membukanya lagi nanti.</p>
+      <p class="bantuan" id="infoVerif"></p>
+      <p class="bantuan">No. Order: <b id="labelOrder2">-</b></p>
+      <button class="kedua" id="btnBayarLagi">Belum bayar? Tampilkan QR lagi</button>
+      <button class="kedua" id="btnBatal2">Batalkan / buat order baru</button>
+    </div>
+  </section>
+
+  <!-- LANGKAH 4: SELESAI -->
+  <section id="tahapSelesai" class="tersembunyi">
+    <div class="kartu tengah">
+      <span class="status ok">Pembayaran terverifikasi</span>
+      <h2 style="margin:12px 0 4px">Terima kasih!</h2>
+      <div id="infoSelesai" class="bantuan"></div>
+      <div class="kode tersembunyi" id="kodeAktivasi"></div>
+      <button class="kedua tersembunyi" id="btnSalinKode">Salin Kode Aktivasi</button>
+      <button class="utama" id="btnBaru">Beli Paket Lagi</button>
+    </div>
+  </section>
+
+  <!-- GAGAL -->
+  <section id="tahapGagal" class="tersembunyi">
+    <div class="kartu tengah">
+      <span class="status gagal" id="labelGagal">Order berakhir</span>
+      <p class="bantuan" id="infoGagal"></p>
+      <button class="utama" id="btnUlang">Buat Order Baru</button>
+    </div>
+  </section>
+
+  <footer>Pembayaran diproses manual oleh admin Siluetra AI.<br>Butuh bantuan? Hubungi admin melalui WhatsApp.</footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+/* ======================== KONFIGURASI ======================== */
+const API_URL = 'https://script.google.com/macros/s/AKfycbza5qiuxecRf7sswg575EcmvYQpvO0qF_lIsWbehOfw4wNTLGamPXs-GXCJWruV4EJd/exec';
+const APP_KEY = '5d6225eeb7e0483d83dc81f9'; // <-- WAJIB diisi
+const INTERVAL_POLLING_MS = 10000;
+/* ============================================================= */
+
+const $ = id => document.getElementById(id);
+const rupiah = n => 'Rp ' + Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+let orderAktif = null, timerPolling = null, timerHitung = null, buktiBase64 = null, buktiMime = null;
+let lihatQr = false; // tampilkan QR lagi walau status sudah menunggu verifikasi
+
+function simpan(k, v){ try{ v === null ? localStorage.removeItem(k) : localStorage.setItem(k, v); }catch(e){} }
+function baca(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+
+async function api(action, data = {}) {
+  const res = await fetch(API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // text/plain agar tidak memicu CORS preflight
+    body: JSON.stringify(Object.assign({ action, appKey: APP_KEY }, data))
+  });
+  const json = await res.json();
+  if (!json.ok) throw new Error(json.error || 'Gagal menghubungi server');
+  return json;
+}
+
+function tampil(id) {
+  ['tahapForm','tahapBayar','tahapVerifikasi','tahapSelesai','tahapGagal']
+    .forEach(s => $(s).classList.toggle('tersembunyi', s !== id));
+}
+
+function pesan(el, teks, jenis) { el.textContent = teks; el.className = 'pesan ' + (teks ? jenis : ''); }
+
+function renderOrder(o) {
+  orderAktif = o;
+  simpan('siluetra_order', o.orderId);
+  $('labelOrder').textContent = $('labelOrder2').textContent = o.orderId;
+
+  if (o.status === 'MENUNGGU_BAYAR' || (o.status === 'MENUNGGU_VERIFIKASI' && lihatQr)) {
+    tampil('tahapBayar');
+    $('labelStatus').textContent = o.status === 'MENUNGGU_BAYAR' ? 'Menunggu pembayaran' : 'Konfirmasi terkirim, menunggu dana';
+    $('infoOtomatis').textContent = o.otomatis
+      ? 'Halaman ini berubah otomatis beberapa detik setelah dana masuk. Tombol di bawah hanya bila sudah bayar tetapi belum aktif.'
+      : 'Tekan "Saya Sudah Bayar" hanya SETELAH membayar. Klaim tanpa pembayaran otomatis kedaluwarsa.';
+    $('btnSudahBayar').classList.toggle('tersembunyi', o.status !== 'MENUNGGU_BAYAR');
+    const s = rupiah(o.nominal), ekor = s.slice(-3);
+    $('nominal').innerHTML = s.slice(0, -3) + '<span>' + ekor + '</span>';
+    $('qr').innerHTML = '';
+    new QRCode($('qr'), { text: o.qris, width: 480, height: 480, correctLevel: QRCode.CorrectLevel.M });
+    mulaiHitungMundur(o.batasBayar);
+  } else if (o.status === 'MENUNGGU_VERIFIKASI') {
+    tampil('tahapVerifikasi');
+    $('infoVerif').textContent = o.otomatis
+      ? 'Dana ' + rupiah(o.nominal) + ' BELUM terdeteksi masuk. Jika belum membayar, tekan "Tampilkan QR lagi" lalu bayar; paket aktif otomatis.'
+      : 'Admin mencocokkan dana ' + rupiah(o.nominal) + ' dengan mutasi QRIS.';
+  } else if (o.status === 'LUNAS') {
+    tampil('tahapSelesai');
+    berhentiPolling();
+    simpan('siluetra_order', null);
+    if (o.punyaDevice) {
+      $('infoSelesai').innerHTML = 'Paket <b>' + (o.paket === 'PRO' ? 'Pro' : 'Basic') + '</b> sudah aktif di perangkat Anda. ' +
+        'Buka aplikasi Siluetra AI lalu tekan ikon kunci &gt; <b>Sinkronkan</b>.';
+      $('kodeAktivasi').classList.add('tersembunyi'); $('btnSalinKode').classList.add('tersembunyi');
+    } else {
+      $('infoSelesai').innerHTML = 'Masukkan kode berikut di aplikasi (ikon kunci &gt; Kode Aktivasi). Kode hanya bisa dipakai satu kali.';
+      $('kodeAktivasi').textContent = o.kodeAktivasi;
+      $('kodeAktivasi').classList.remove('tersembunyi'); $('btnSalinKode').classList.remove('tersembunyi');
+    }
+  } else {
+    tampil('tahapGagal');
+    berhentiPolling();
+    simpan('siluetra_order', null);
+    $('labelGagal').textContent = o.status === 'DITOLAK' ? 'Pembayaran ditolak' : (o.status === 'DIBATALKAN' ? 'Order dibatalkan' : 'Order kedaluwarsa');
+    $('infoGagal').textContent = o.status === 'DITOLAK'
+      ? 'Pembayaran tidak dapat dicocokkan. Jika Anda sudah membayar, hubungi admin dengan menyebutkan No. Order ' + o.orderId + '.'
+      : (o.status === 'DIBATALKAN' ? 'Silakan buat order baru bila masih ingin membeli.'
+        : 'Batas waktu lewat atau pembayaran tidak ditemukan. Silakan buat order baru.');
+  }
+}
+
+function mulaiHitungMundur(batas) {
+  clearInterval(timerHitung);
+  const jalan = () => {
+    const sisa = Math.max(0, batas - Date.now());
+    const m = Math.floor(sisa / 60000), d = Math.floor((sisa % 60000) / 1000);
+    $('hitung').innerHTML = sisa > 0 ? 'Selesaikan pembayaran dalam <b>' + m + ':' + String(d).padStart(2,'0') + '</b>' : 'Waktu pembayaran habis';
+  };
+  jalan(); timerHitung = setInterval(jalan, 1000);
+}
+
+function mulaiPolling() {
+  berhentiPolling();
+  timerPolling = setInterval(async () => {
+    if (!orderAktif) return;
+    try { const r = await api('getOrder', { orderId: orderAktif.orderId });
+          if (r.order.status !== orderAktif.status || r.order.otomatis !== orderAktif.otomatis) renderOrder(r.order); } catch (e) {}
+  }, INTERVAL_POLLING_MS);
+}
+function berhentiPolling(){ clearInterval(timerPolling); clearInterval(timerHitung); }
+
+$('btnBuat').onclick = async () => {
+  const btn = $('btnBuat'); pesan($('pesanForm'), '', '');
+  const nama = $('nama').value.trim(), wa = $('wa').value.trim(), deviceId = $('device').value.trim();
+  if (!nama) return pesan($('pesanForm'), 'Nama wajib diisi.', 'err');
+  if (!/^(\+?62|0)?8\d{7,12}$/.test(wa.replace(/[\s-]/g,''))) return pesan($('pesanForm'), 'Nomor WhatsApp tidak valid.', 'err');
+  btn.disabled = true; btn.textContent = 'Membuat order...';
+  try {
+    const paket = document.querySelector('input[name=paket]:checked').value;
+    const kodeReferral = $('ref').value.trim().toUpperCase();
+    simpan('siluetra_wa', wa); simpan('siluetra_device', deviceId || null);
+    const r = await api('createOrder', { nama, wa, deviceId, sumber: 'WEB', paket, kodeReferral });
+    renderOrder(r.order); mulaiPolling();
+  } catch (e) { pesan($('pesanForm'), e.message, 'err'); }
+  btn.disabled = false; btn.textContent = 'Lanjut ke Pembayaran QRIS';
+};
+
+$('bukti').onchange = e => {
+  const f = e.target.files[0]; if (!f) return;
+  const img = new Image(), url = URL.createObjectURL(f);
+  img.onload = () => { // perkecil agar unggahan ringan
+    const skala = Math.min(1, 1280 / Math.max(img.width, img.height));
+    const c = document.createElement('canvas');
+    c.width = Math.round(img.width * skala); c.height = Math.round(img.height * skala);
+    c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+    const dataUrl = c.toDataURL('image/jpeg', 0.8);
+    buktiBase64 = dataUrl.split(',')[1]; buktiMime = 'image/jpeg';
+    $('pratinjau').src = dataUrl; $('pratinjau').style.display = 'block';
+    URL.revokeObjectURL(url);
+  };
+  img.src = url;
+};
+
+$('btnSudahBayar').onclick = async () => {
+  const btn = $('btnSudahBayar'); pesan($('pesanBayar'), '', '');
+  btn.disabled = true; btn.textContent = 'Mengirim konfirmasi...';
+  try {
+    const r = await api('confirmPayment', { orderId: orderAktif.orderId, buktiBase64, mime: buktiMime });
+    renderOrder(r.order);
+  } catch (e) { pesan($('pesanBayar'), e.message, 'err'); }
+  btn.disabled = false; btn.textContent = 'Saya Sudah Bayar';
+};
+
+$('btnSimpanQr').onclick = () => {
+  const canvas = $('qr').querySelector('canvas');
+  const src = canvas ? canvas.toDataURL('image/png') : ($('qr').querySelector('img') || {}).src;
+  if (!src || !orderAktif) return;
+  const a = document.createElement('a'); a.href = src; a.download = 'QRIS-' + orderAktif.orderId + '.png'; a.click();
+};
+
+$('btnSalinKode').onclick = async () => {
+  try { await navigator.clipboard.writeText($('kodeAktivasi').textContent); $('btnSalinKode').textContent = 'Kode tersalin'; } catch (e) {}
+};
+$('btnBaru').onclick = $('btnUlang').onclick = () => { orderAktif = null; lihatQr = false; tampil('tahapForm'); };
+
+// Batalkan order yang belum dibayar agar tidak "macet" di menunggu verifikasi
+async function batalkanOrder() {
+  if (!orderAktif) return;
+  if (!confirm('Batalkan order ' + orderAktif.orderId + '? Jika sudah membayar, paket tetap aktif otomatis saat dana terbaca.')) return;
+  try {
+    const r = await api('cancelOrder', { orderId: orderAktif.orderId, deviceId: baca('siluetra_device') || $('device').value.trim(), wa: baca('siluetra_wa') || '' });
+    renderOrder(r.order);
+  } catch (e) {
+    simpan('siluetra_order', null); berhentiPolling(); orderAktif = null; tampil('tahapForm');
+  }
+  lihatQr = false;
+}
+$('btnBatal').onclick = $('btnBatal2').onclick = batalkanOrder;
+$('btnBayarLagi').onclick = () => { lihatQr = true; if (orderAktif) renderOrder(orderAktif); };
+
+// Isi otomatis dari URL, mis. beli.html?device=abc123 (dibuka dari aplikasi)
+(async function init() {
+  const q = new URLSearchParams(location.search);
+  if (q.get('device')) $('device').value = q.get('device');
+  if (q.get('ref')) $('ref').value = q.get('ref').toUpperCase();
+  if ((q.get('paket') || '').toUpperCase() === 'PRO') document.querySelector('input[value=PRO]').checked = true;
+  const lanjut = q.get('order') || baca('siluetra_order');
+  if (lanjut) {
+    try { const r = await api('getOrder', { orderId: lanjut }); renderOrder(r.order); mulaiPolling(); }
+    catch (e) { simpan('siluetra_order', null); }
+  }
+})();
+</script>
+</body>
+</html>
