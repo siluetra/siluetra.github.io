@@ -396,7 +396,7 @@
 const KONFIG = {
   APK_URL: 'Siluetra.apk',
   APK_VERSI: '1.0',
-  APK_SHA256: 'F81427C55A6044B6BD3A87D80D820CB698D429BE535EFEEFF4ACEE02D05FEC2A',
+  APK_SHA256: '',
   WA_ADMIN: '628817014279',          // format internasional tanpa +
   INSTAGRAM: 'https://instagram.com/siluetra.ai',
   TIKTOK: 'https://tiktok.com/@siluetra.ai',
@@ -421,7 +421,7 @@ const rp = n => 'Rp' + Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,
 /* ---------- Tautan & teks umum ---------- */
 $('unduh').href = KONFIG.APK_URL;
 $('versi').textContent = KONFIG.APK_VERSI;
-$('sha').textContent = KONFIG.APK_SHA256;
+if (KONFIG.APK_SHA256) $('sha').textContent = KONFIG.APK_SHA256; else $('sha').parentNode.textContent = 'Versi ' + KONFIG.APK_VERSI;
 $('wa').href = 'https://wa.me/' + KONFIG.WA_ADMIN + '?text=' + encodeURIComponent('Halo admin Siluetra AI, saya mau tanya.');
 $('ig').href = KONFIG.INSTAGRAM; $('tt').href = KONFIG.TIKTOK;
 $('tahun').textContent = new Date().getFullYear();
