@@ -4,10 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Beli Paket Siluetra AI</title>
-     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-   <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
-   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="description" content="Perpanjang langganan Siluetra AI: 30 hari dan 50 kredit foto, bayar dengan QRIS.">
+<meta name="description" content="Beli paket Siluetra AI mulai Rp3.000: Sehari, Weekend, Liburan, Bulanan, Pro. Bayar dengan QRIS dari e-wallet atau m-banking apa pun.">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <style>
   :root{
     --bg:#0F0C20; --bg2:#000; --kartu:#1C1A2E; --garis:#2E2B45;
@@ -20,9 +19,7 @@
        color:var(--teks);background:linear-gradient(180deg,var(--bg),var(--bg2)) fixed}
   .wadah{max-width:460px;margin:0 auto;padding:24px 16px 48px}
   header{text-align:center;margin-bottom:20px}
-  .logo{width:72px;height:72px;border-radius:50%;margin:0 auto 10px;display:grid;place-items:center;
-        background:linear-gradient(135deg,var(--ungu),var(--magenta));border:3px solid var(--emas)}
-  .logo svg{width:34px;height:34px;fill:#fff}
+  .logo{width:72px;height:72px;border-radius:18px;margin:0 auto 10px;display:block}
   h1{font-size:24px;margin:0}
   .slogan{color:var(--emas);font-size:13px;margin-top:4px}
   .kartu{background:var(--kartu);border:1px solid var(--garis);border-radius:16px;padding:18px;margin-bottom:14px}
@@ -31,6 +28,12 @@
   .opsi input{width:auto;accent-color:var(--emas);margin:0}
   .opsi:has(input:checked){border-color:var(--emas);box-shadow:0 0 0 1px var(--emas) inset}
   .opsi > div:first-of-type{flex:1}
+  .opsi{padding:14px 16px}
+  .opsi .ikon{font-size:22px;width:28px;text-align:center}
+  .jenis{display:inline-block;font-size:10px;font-weight:800;border-radius:5px;padding:1px 5px;margin-left:4px;vertical-align:middle;background:#2B2840;color:var(--redup)}
+  .jenis.pro{background:var(--emas);color:#1a1400}
+  .lainnya{display:block;width:100%;background:transparent;border:1px dashed var(--garis);color:var(--emas);font-size:13px;font-weight:700;padding:10px;border-radius:12px;margin:0 0 12px;cursor:pointer}
+  .ringkas{font-size:13px;color:var(--redup);text-align:center;margin:0 0 14px}
   .paket b{font-size:15px}.paket small{color:var(--redup);display:block;margin-top:2px}
   .harga{font-size:22px;font-weight:800;color:var(--emas)}
   label{display:block;font-size:13px;color:var(--redup);margin:12px 0 6px}
@@ -74,30 +77,24 @@
 <body>
 <div class="wadah">
   <header>
-    <div class="logo" aria-hidden="true">
-      <svg viewBox="0 0 24 24"><path d="M9 3 7.2 5H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.2L15 3H9zm3 15a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
-    </div>
+    <img class="logo" src="favicon-192.png" alt="Logo Siluetra AI">
     <h1>Siluetra AI</h1>
     <div class="slogan">Panduan Siluet &amp; Pose Fotografi AI Cerdas</div>
   </header>
 
   <!-- LANGKAH 1: FORM -->
   <section id="tahapForm">
-    <div class="pilih-paket" role="radiogroup" aria-label="Pilih paket">
-      <label class="kartu paket opsi"><input type="radio" name="paket" value="BASIC" checked>
-        <div><b>Basic</b><small>30 hari • 50 kredit foto • pose solo</small></div>
-        <div class="harga">Rp 10.000</div></label>
-      <label class="kartu paket opsi"><input type="radio" name="paket" value="PRO">
-        <div><b>⭐ Pro</b><small>30 hari • 100 kredit • foto grup 2–4 orang, saran Gemini, zoom otomatis</small></div>
-        <div class="harga">Rp 25.000</div></label>
-    </div>
+    <p class="ringkas">1 kredit = 1 foto tersimpan. Beli lagi sebelum habis: sisa hari &amp; kredit ditambahkan.</p>
+    <div class="pilih-paket" role="radiogroup" aria-label="Pilih paket" id="daftarPaket"></div>
+    <button type="button" class="lainnya" id="btnLainnya"></button>
+    <div class="pilih-paket tersembunyi" role="radiogroup" aria-label="Paket lain" id="daftarLain"></div>
     <div class="kartu">
       <label for="nama">Nama</label>
       <input id="nama" autocomplete="name" maxlength="60" placeholder="Nama Anda">
       <label for="wa">Nomor WhatsApp</label>
       <input id="wa" inputmode="tel" autocomplete="tel" maxlength="16" placeholder="08xxxxxxxxxx">
       <label for="device">ID Perangkat (disarankan)</label>
-      <input id="device" maxlength="64" placeholder="Salin dari aplikasi: ikon kunci > ID Perangkat">
+      <input id="device" maxlength="64" placeholder="Aplikasi: 👤 Profil > Beli / Perpanjang > ID Perangkat">
       <div class="bantuan">Jika ID Perangkat diisi, langganan otomatis aktif di HP tersebut setelah pembayaran diverifikasi.
         Jika dikosongkan, Anda akan menerima <b>Kode Aktivasi</b> untuk dimasukkan di aplikasi.</div>
       <label for="ref">Kode referral teman (opsional)</label>
@@ -181,10 +178,59 @@
 const API_URL = 'https://script.google.com/macros/s/AKfycbza5qiuxecRf7sswg575EcmvYQpvO0qF_lIsWbehOfw4wNTLGamPXs-GXCJWruV4EJd/exec';
 const APP_KEY = '5d6225eeb7e0483d83dc81f9'; // <-- WAJIB diisi
 const INTERVAL_POLLING_MS = 10000;
+/* Daftar paket diambil dari server (sheet KONFIGURASI, kunci PAKET_*).
+   Daftar di bawah hanya cadangan bila server belum bisa dihubungi. */
+const PAKET_CADANGAN = [
+  { kode:'SEHARI',      nama:'Sehari',      harga:3000,  hari:1,  kredit:15,  pro:false },
+  { kode:'WEEKEND',     nama:'Weekend',     harga:5000,  hari:3,  kredit:30,  pro:false },
+  { kode:'LIBURAN',     nama:'Liburan',     harga:7000,  hari:7,  kredit:50,  pro:false },
+  { kode:'BULANAN',     nama:'Bulanan',     harga:10000, hari:30, kredit:100, pro:false },
+  { kode:'PRO',         nama:'Pro',         harga:20000, hari:30, kredit:250, pro:true  },
+  { kode:'PRO_LIBURAN', nama:'Pro Liburan', harga:8000,  hari:3,  kredit:40,  pro:true  }
+];
+const PAKET_UTAMA = ['SEHARI', 'BULANAN', 'PRO'];
+const IKON_PAKET = { SEHARI:'☀️', WEEKEND:'🏖️', LIBURAN:'🧳', BULANAN:'📅', BASIC:'📅', PRO:'⭐', PRO_LIBURAN:'🌟' };
 /* ============================================================= */
 
 const $ = id => document.getElementById(id);
 const rupiah = n => 'Rp ' + Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+const esc = t => String(t == null ? '' : t).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* ---------- Daftar paket ---------- */
+let daftarPaket = PAKET_CADANGAN;
+function barisPaket(p, pilih) {
+  const kode = esc(p.kode);
+  return '<label class="kartu paket opsi"><input type="radio" name="paket" value="' + kode + '"' + (pilih ? ' checked' : '') + '>' +
+    '<span class="ikon" aria-hidden="true">' + (IKON_PAKET[p.kode] || '📦') + '</span>' +
+    '<div><b>' + esc(p.nama) + '</b><span class="jenis' + (p.pro ? ' pro' : '') + '">' + (p.pro ? 'PRO' : 'BASIC') + '</span>' +
+    '<small>' + p.hari + ' hari • ' + p.kredit + ' kredit foto' + (p.pro ? ' • semua gaya & foto grup' : '') + '</small></div>' +
+    '<div class="harga">' + rupiah(p.harga) + '</div></label>';
+}
+function tampilPaket(pilihKode) {
+  const sebelumnya = (document.querySelector('input[name=paket]:checked') || {}).value;
+  let kode = String(pilihKode || sebelumnya || 'BULANAN').toUpperCase();
+  if (kode === 'BASIC') kode = 'BULANAN';
+  if (!daftarPaket.some(p => p.kode === kode)) kode = (daftarPaket.find(p => p.kode === 'BULANAN') || daftarPaket[0] || {}).kode;
+  const utama = daftarPaket.filter(p => PAKET_UTAMA.indexOf(p.kode) >= 0);
+  const lain = daftarPaket.filter(p => PAKET_UTAMA.indexOf(p.kode) < 0);
+  $('daftarPaket').innerHTML = utama.map(p => barisPaket(p, p.kode === kode)).join('');
+  $('daftarLain').innerHTML = lain.map(p => barisPaket(p, p.kode === kode)).join('');
+  const buka = lain.some(p => p.kode === kode);
+  $('daftarLain').classList.toggle('tersembunyi', !buka);
+  $('btnLainnya').classList.toggle('tersembunyi', lain.length === 0);
+  $('btnLainnya').textContent = (buka ? 'Sembunyikan paket lain ▴' : 'Paket lain (' + lain.map(p => p.nama).join(', ') + ') ▾');
+}
+$('btnLainnya').onclick = () => {
+  const tutup = !$('daftarLain').classList.contains('tersembunyi');
+  $('daftarLain').classList.toggle('tersembunyi', tutup);
+  const lain = daftarPaket.filter(p => PAKET_UTAMA.indexOf(p.kode) < 0);
+  $('btnLainnya').textContent = tutup ? 'Paket lain (' + lain.map(p => p.nama).join(', ') + ') ▾' : 'Sembunyikan paket lain ▴';
+};
+function namaPaketOrder(o) {
+  if (o.namaPaket) return o.namaPaket;
+  const p = daftarPaket.find(x => x.kode === o.paket);
+  return p ? p.nama : (o.paket === 'PRO' ? 'Pro' : 'Bulanan');
+}
 let orderAktif = null, timerPolling = null, timerHitung = null, buktiBase64 = null, buktiMime = null;
 let lihatQr = false; // tampilkan QR lagi walau status sudah menunggu verifikasi
 
@@ -236,11 +282,11 @@ function renderOrder(o) {
     berhentiPolling();
     simpan('siluetra_order', null);
     if (o.punyaDevice) {
-      $('infoSelesai').innerHTML = 'Paket <b>' + (o.paket === 'PRO' ? 'Pro' : 'Basic') + '</b> sudah aktif di perangkat Anda. ' +
-        'Buka aplikasi Siluetra AI lalu tekan ikon kunci &gt; <b>Sinkronkan</b>.';
+      $('infoSelesai').innerHTML = 'Paket <b>' + esc(namaPaketOrder(o)) + '</b> sudah aktif di perangkat Anda. ' +
+        'Buka aplikasi Siluetra AI lalu tekan ikon <b>👤 Profil</b>; sisa hari dan kredit diperbarui otomatis.';
       $('kodeAktivasi').classList.add('tersembunyi'); $('btnSalinKode').classList.add('tersembunyi');
     } else {
-      $('infoSelesai').innerHTML = 'Masukkan kode berikut di aplikasi (ikon kunci &gt; Kode Aktivasi). Kode hanya bisa dipakai satu kali.';
+      $('infoSelesai').innerHTML = 'Paket <b>' + esc(namaPaketOrder(o)) + '</b>. Masukkan kode berikut di aplikasi (👤 Profil &gt; Beli / Perpanjang Paket &gt; Kode Aktivasi). Kode hanya bisa dipakai satu kali.';
       $('kodeAktivasi').textContent = o.kodeAktivasi;
       $('kodeAktivasi').classList.remove('tersembunyi'); $('btnSalinKode').classList.remove('tersembunyi');
     }
@@ -350,7 +396,12 @@ $('btnBayarLagi').onclick = () => { lihatQr = true; if (orderAktif) renderOrder(
   const q = new URLSearchParams(location.search);
   if (q.get('device')) $('device').value = q.get('device');
   if (q.get('ref')) $('ref').value = q.get('ref').toUpperCase();
-  if ((q.get('paket') || '').toUpperCase() === 'PRO') document.querySelector('input[value=PRO]').checked = true;
+  const paketUrl = (q.get('paket') || '').toUpperCase();
+  tampilPaket(paketUrl);
+  // Harga & paket terbaru dari server (bila gagal, daftar cadangan tetap dipakai)
+  api('paket').then(r => {
+    if (r.paket && r.paket.length) { daftarPaket = r.paket; tampilPaket(); }
+  }).catch(() => {});
   const lanjut = q.get('order') || baca('siluetra_order');
   if (lanjut) {
     try { const r = await api('getOrder', { orderId: lanjut }); renderOrder(r.order); mulaiPolling(); }
