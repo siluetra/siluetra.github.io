@@ -37,18 +37,24 @@
   .tabel{overflow-x:auto}
   footer{border-top:1px solid var(--garis);margin-top:44px;padding:22px 0 40px;color:var(--redup);font-size:13px}
   footer a{margin-right:14px}
+  .bhs{display:flex;border:1px solid var(--garis);border-radius:99px;overflow:hidden;margin-left:12px}
+  .bhs button{background:transparent;border:0;color:var(--redup);font-weight:800;font-size:12px;padding:5px 9px;cursor:pointer}
+  .bhs button[aria-pressed=true]{background:var(--emas);color:#1a1400}
+  .versi{display:none}.versi.aktif{display:block}
 </style>
 </head>
 <body>
 <nav><div class="wadah">
-  <a class="merek" href="index.html"><img src="favicon-192.png" alt="">Siluetra AI</a>
-  <a class="kanan" href="syarat.html">Syarat Layanan</a>
+  <a class="merek" href="index.html" data-tautan><img src="favicon-192.png" alt="">Siluetra AI</a>
+  <a class="kanan" href="syarat.html" data-tautan data-id="Syarat Layanan" data-en="Terms of Service">Syarat Layanan</a>
+  <div class="bhs" role="group" aria-label="Bahasa / Language"><button type="button" data-l="id">ID</button><button type="button" data-l="en">EN</button></div>
 </div></nav>
 
 <main class="wadah">
+<div class="versi" lang="id" data-v="id">
 <header>
   <h1>Kebijakan Privasi</h1>
-  <div class="tgl">Berlaku sejak 29 September 2026</div>
+  <div class="tgl">Berlaku sejak 30 September 2026</div>
 </header>
 
 <div class="ringkas">
@@ -56,8 +62,9 @@
   <ul>
     <li>Kamera dan pengenalan pose diproses langsung di HP Anda. Foto tidak dikirim ke server kami.</li>
     <li>Kami menyimpan data seperlunya untuk mengelola paket: ID perangkat, nama, nomor WhatsApp, riwayat pembelian, dan jumlah pemakaian kredit.</li>
-    <li>Aplikasi tidak memakai GPS dan tidak membaca kontak, pesan, atau berkas lain di HP Anda.</li>
-    <li>Data tidak dijual kepada siapa pun.</li>
+    <li>Website mencatat jumlah kunjungan dan perkiraan kota pengunjung. Alamat IP tidak kami simpan.</li>
+    <li>Ulasan hanya ditampilkan di website bila Anda mengizinkannya.</li>
+    <li>Aplikasi tidak memakai GPS dan tidak membaca kontak, pesan, atau berkas lain di HP Anda. Data tidak dijual kepada siapa pun.</li>
   </ul>
 </div>
 
@@ -69,23 +76,25 @@
   <li><b>Nama dan nomor WhatsApp</b>, saat membeli paket melalui aplikasi atau website.</li>
   <li><b>Tangkapan layar bukti pembayaran</b>, bila Anda melampirkannya saat konfirmasi.</li>
   <li><b>Kode referral</b> yang Anda masukkan atau bagikan.</li>
+  <li><b>Ulasan</b>: nama panggilan, kota (opsional), jumlah bintang, isi ulasan, dan pilihan apakah ulasan boleh ditampilkan di website.</li>
   <li>Isi pesan yang Anda kirim kepada admin melalui WhatsApp.</li>
 </ul>
 <h3>b. Data yang tercatat otomatis</h3>
 <ul>
-  <li><b>ID perangkat</b> berupa kode yang dibentuk dari Android ID (contoh: SLT-A1B2C3...). Kode ini dipakai agar paket berlaku di HP yang benar. ID ini bukan IMEI dan bukan nomor telepon.</li>
-  <li><b>Status paket</b>: masa aktif, sisa kredit, jenis paket, dan riwayat pembelian.</li>
+  <li><b>ID perangkat</b> berupa kode yang dibentuk dari Android ID (contoh: SLT-A1B2C3...). Kode ini dipakai agar paket berlaku di HP yang benar dan untuk mencocokkan ulasan dengan pengguna asli. ID ini bukan IMEI dan bukan nomor telepon.</li>
+  <li><b>Status paket</b>: masa aktif, sisa kredit, jenis paket, riwayat pembelian, dan bonus (uji coba, referral, ulasan).</li>
   <li><b>Ringkasan pemakaian harian</b>: jumlah foto yang tersimpan, foto grup, pemakaian AI Pose dan potret otomatis, jenis latar yang paling sering dikenali (misalnya "Pantai"), serta versi aplikasi. Isi foto tidak ikut tercatat.</li>
+  <li><b>Statistik kunjungan website</b>: tanggal kunjungan serta perkiraan kota, wilayah, dan negara pengunjung. Perkiraan lokasi dihitung oleh layanan GeoJS dari alamat IP, langsung di browser Anda; yang dikirim ke server kami hanya nama kota, wilayah, dan kode negara. Alamat IP tidak kami simpan. Satu browser dihitung satu kali per hari. Bila browser Anda mengaktifkan "Do Not Track", perkiraan kota tidak dilakukan.</li>
   <li><b>Data teknis</b> seperti jenis HP, versi Android, dan laporan galat (crash) untuk memperbaiki aplikasi, melalui Google Firebase bila fitur tersebut aktif.</li>
 </ul>
-<h3>c. Data yang hanya disimpan di HP Anda</h3>
+<h3>c. Data yang hanya disimpan di HP atau browser Anda</h3>
 <ul>
   <li><b>Catatan pemakaian kredit per foto</b> (waktu, jenis latar, solo/grup, timer/AUTO) untuk ditampilkan di menu Profil. Catatan ini disimpan di penyimpanan internal aplikasi selama 90 hari dan tidak dikirim ke server.</li>
   <li>Pengaturan tampilan, bahasa, dan salinan daftar paket.</li>
-  <li>Di website, halaman beli menyimpan nomor pesanan, nomor WhatsApp, dan ID perangkat di penyimpanan browser Anda agar pesanan bisa dilanjutkan bila halaman ditutup.</li>
+  <li>Di website: nomor pesanan, nomor WhatsApp, dan ID perangkat (halaman beli, agar pesanan bisa dilanjutkan bila halaman ditutup), pilihan bahasa, dan tanggal kunjungan terakhir (agar kunjungan tidak dihitung dua kali).</li>
 </ul>
 <h3>d. Data yang tidak kami kumpulkan</h3>
-<p>Kami tidak mengumpulkan foto atau video Anda, gambar dari kamera, lokasi GPS, daftar kontak, SMS, isi galeri, maupun data rekening atau kartu pembayaran. Pembayaran QRIS diproses oleh aplikasi e-wallet atau m-banking Anda sendiri.</p>
+<p>Kami tidak mengumpulkan foto atau video Anda, gambar dari kamera, lokasi GPS, alamat IP, daftar kontak, SMS, isi galeri, maupun data rekening atau kartu pembayaran. Pembayaran QRIS diproses oleh aplikasi e-wallet atau m-banking Anda sendiri.</p>
 
 <h2>2. Izin aplikasi</h2>
 <div class="tabel"><table>
@@ -100,10 +109,12 @@
   <li>Membuat pesanan, mencocokkan pembayaran, dan mengaktifkan paket di HP Anda.</li>
   <li>Menghitung sisa kredit dan masa aktif, serta menampilkan riwayat di menu Profil.</li>
   <li>Menghubungi Anda terkait pesanan, kendala pembayaran, atau pemindahan paket ke HP lain.</li>
-  <li>Menjalankan program referral dan mencegah penyalahgunaan uji coba gratis.</li>
+  <li>Menjalankan program referral dan bonus ulasan, serta mencegah penyalahgunaan uji coba gratis dan bonus.</li>
+  <li>Menampilkan ulasan yang Anda izinkan (nama panggilan, kota, bintang, isi ulasan; tanpa ID perangkat) dan rata-rata penilaian di website.</li>
+  <li>Menampilkan angka gabungan di website, misalnya jumlah kunjungan, jumlah kota, jumlah HP yang mencoba, dan jumlah foto. Angka ini tidak memuat identitas siapa pun.</li>
   <li>Memperbaiki galat dan mengembangkan fitur berdasarkan data pemakaian gabungan.</li>
 </ul>
-<p>Dasar pemrosesannya adalah pelaksanaan perjanjian dengan Anda (penyediaan paket yang Anda beli) dan persetujuan Anda saat memakai Layanan.</p>
+<p>Dasar pemrosesannya adalah pelaksanaan perjanjian dengan Anda (penyediaan paket yang Anda beli), persetujuan Anda saat memakai Layanan atau mengirim ulasan, dan kepentingan yang sah untuk mengukur kunjungan website secara gabungan.</p>
 
 <h2>4. Pencocokan pembayaran</h2>
 <p>Setiap pesanan memiliki nominal unik (harga ditambah atau dikurangi kode angka kecil). Untuk mencocokkan pembayaran, kami membaca notifikasi dana masuk pada akun QRIS milik kami. Notifikasi tersebut berisi nominal dan waktu, dan pada sebagian bank juga nama pengirim. Data itu hanya dipakai untuk mencocokkan pesanan.</p>
@@ -111,9 +122,10 @@
 <h2>5. Tempat penyimpanan dan pihak yang terlibat</h2>
 <p>Data disimpan di layanan pihak ketiga yang kami pakai sebagai alat kerja:</p>
 <ul>
-  <li><b>Google</b> (Google Sheets, Google Drive, dan Google Apps Script) untuk data pesanan, paket, dan bukti pembayaran. Server Google dapat berada di luar Indonesia.</li>
+  <li><b>Google</b> (Google Sheets, Google Drive, dan Google Apps Script) untuk data pesanan, paket, ulasan, statistik kunjungan, dan bukti pembayaran. Server Google dapat berada di luar Indonesia.</li>
   <li><b>Google Firebase</b> untuk statistik pemakaian dan laporan galat aplikasi, bila fitur tersebut aktif.</li>
-  <li><b>Telegram</b> dan email untuk mengirim pemberitahuan pesanan kepada admin. Isinya nomor pesanan, nama, nomor WhatsApp, paket, dan nominal.</li>
+  <li><b>GeoJS</b> (get.geojs.io) untuk memperkirakan kota pengunjung website dari alamat IP. Permintaan dikirim langsung dari browser Anda ke GeoJS sesuai kebijakan GeoJS; kami hanya menerima nama kota, wilayah, dan kode negara.</li>
+  <li><b>Telegram</b> dan email untuk mengirim pemberitahuan pesanan dan ulasan baru kepada admin. Isinya nomor pesanan, nama, nomor WhatsApp, paket, dan nominal, atau isi ulasan beserta 8 karakter terakhir ID perangkat.</li>
   <li><b>GitHub Pages</b> sebagai tempat website, serta toko aplikasi (misalnya APKPure) tempat Anda mengunduh aplikasi. Kedua layanan ini dapat mencatat data kunjungan sesuai kebijakan masing-masing.</li>
 </ul>
 <p>Pengenalan pose dan latar memakai pustaka Google ML Kit dan MediaPipe yang berjalan di HP. Pustaka tersebut dapat mengirim data diagnostik teknis kepada Google sesuai kebijakan Google, tetapi gambar kamera tetap diproses di HP.</p>
@@ -123,12 +135,14 @@
 <ul>
   <li>Data paket dan riwayat pembelian disimpan selama ID perangkat Anda masih memakai Layanan, dan paling lama 5 tahun sejak transaksi terakhir untuk keperluan pencatatan transaksi.</li>
   <li>Bukti pembayaran disimpan selama diperlukan untuk menyelesaikan pesanan dan kemungkinan keluhan, lalu dihapus secara berkala.</li>
+  <li>Ulasan disimpan sampai Anda meminta penghapusan atau Layanan berhenti. Anda dapat meminta ulasan disembunyikan atau dihapus kapan saja.</li>
+  <li>Statistik kunjungan disimpan dalam bentuk gabungan per hari dan per kota, tanpa identitas pengunjung.</li>
   <li>Ringkasan pemakaian harian disimpan paling lama 2 tahun, lalu dihapus atau dijadikan data statistik tanpa identitas.</li>
   <li>Catatan pemakaian kredit di HP terhapus otomatis setelah 90 hari, atau saat aplikasi dicopot.</li>
 </ul>
 
 <h2>7. Keamanan</h2>
-<p>Akses ke data dibatasi hanya untuk admin melalui akun Google yang dilindungi, kunci akses aplikasi, dan kunci admin yang terpisah. Nomor WhatsApp di dalam aplikasi ditampilkan sebagian tersamar. Meski demikian, tidak ada sistem yang sepenuhnya bebas risiko. Bila terjadi kebocoran yang memengaruhi data Anda, kami akan memberi tahu Anda paling lambat 3 x 24 jam sejak mengetahuinya, sesuai ketentuan yang berlaku.</p>
+<p>Akses ke data dibatasi hanya untuk admin melalui akun Google yang dilindungi, kunci akses aplikasi, dan kunci admin yang terpisah. Nomor WhatsApp di dalam aplikasi ditampilkan sebagian tersamar, dan ID perangkat tidak pernah ditampilkan di website. Meski demikian, tidak ada sistem yang sepenuhnya bebas risiko. Bila terjadi kebocoran yang memengaruhi data Anda, kami akan memberi tahu Anda paling lambat 3 x 24 jam sejak mengetahuinya, sesuai ketentuan yang berlaku.</p>
 
 <h2>8. Hak Anda</h2>
 <p>Anda berhak untuk:</p>
@@ -136,26 +150,147 @@
   <li>mendapat informasi tentang data pribadi Anda yang kami simpan;</li>
   <li>meminta salinan data tersebut;</li>
   <li>meminta perbaikan data yang keliru, misalnya nama atau nomor WhatsApp;</li>
+  <li>meminta ulasan Anda disembunyikan atau dihapus;</li>
   <li>meminta penghapusan data. Paket yang masih aktif akan ikut berakhir karena kami tidak lagi dapat mengenali HP Anda;</li>
   <li>menarik persetujuan dengan berhenti memakai Layanan dan mencopot aplikasi.</li>
 </ul>
 <p>Ajukan permintaan melalui kontak di bagian 10 dengan menyebutkan ID perangkat (menu 👤 Profil). Kami akan menanggapi paling lambat 3 x 24 jam untuk konfirmasi, dan menyelesaikannya dalam waktu yang wajar.</p>
 
 <h2>9. Anak-anak</h2>
-<p>Layanan tidak ditujukan khusus untuk anak. Pengguna yang belum berusia 18 tahun sebaiknya meminta izin orang tua atau wali sebelum membeli paket atau memberikan data pribadi.</p>
+<p>Layanan tidak ditujukan khusus untuk anak. Pengguna yang belum berusia 18 tahun sebaiknya meminta izin orang tua atau wali sebelum membeli paket, mengirim ulasan, atau memberikan data pribadi.</p>
 
 <h2>10. Kontak</h2>
 <p>Pertanyaan dan permintaan terkait data pribadi dapat disampaikan kepada pengelola <b class="pengelola">Siluetra AI</b> melalui:</p>
-<ul id="daftarKontak">
+<ul class="daftarKontak">
   <li>tombol <b>Hubungi Admin (WhatsApp)</b> di menu 👤 Profil aplikasi, atau tombol <b>Tanya Admin</b> di website.</li>
 </ul>
 
 <h2>11. Perubahan kebijakan</h2>
 <p>Kebijakan ini dapat diperbarui mengikuti perkembangan Layanan atau peraturan. Tanggal berlaku di bagian atas halaman akan diubah, dan perubahan penting diberitahukan melalui aplikasi atau website.</p>
+</div>
+
+<div class="versi" lang="en" data-v="en">
+<header>
+  <h1>Privacy Policy</h1>
+  <div class="tgl">Effective from 30 September 2026</div>
+</header>
+
+<div class="ringkas">
+  <b>In short:</b>
+  <ul>
+    <li>The camera and pose recognition run on your phone. Photos are never sent to our server.</li>
+    <li>We keep only what we need to manage your plan: device ID, name, WhatsApp number, purchase history and credit usage.</li>
+    <li>The website counts visits and estimates each visitor's city. We do not store IP addresses.</li>
+    <li>Your review appears on the website only if you allow it.</li>
+    <li>The app does not use GPS and does not read contacts, messages or other files on your phone. We never sell data.</li>
+  </ul>
+</div>
+
+<p>This policy explains how <b class="pengelola">Siluetra AI</b> ("we") collects, uses, stores and protects the personal data of users of the Siluetra AI Android app and the siluetra.github.io website (the "Service"). It follows Indonesian Law No. 27 of 2022 on Personal Data Protection. By using the Service you confirm that you have read and understood this policy. If the Indonesian and English versions differ, the Indonesian version prevails.</p>
+
+<h2>1. Data we collect</h2>
+<h3>a. Data you provide</h3>
+<ul>
+  <li><b>Name and WhatsApp number</b>, when you buy a plan in the app or on the website.</li>
+  <li><b>Payment screenshots</b>, if you attach them when confirming payment.</li>
+  <li><b>Referral codes</b> you enter or share.</li>
+  <li><b>Reviews</b>: nickname, city (optional), star rating, review text, and whether the review may be shown on the website.</li>
+  <li>Messages you send to the admin on WhatsApp.</li>
+</ul>
+<h3>b. Data recorded automatically</h3>
+<ul>
+  <li><b>Device ID</b>, a code derived from the Android ID (e.g. SLT-A1B2C3...). It makes your plan work on the right phone and matches reviews with real users. It is not your IMEI or phone number.</li>
+  <li><b>Plan status</b>: active period, remaining credits, plan type, purchase history and bonuses (trial, referral, review).</li>
+  <li><b>Daily usage summary</b>: number of saved photos, group photos, AI Pose and auto-shutter use, the most frequently recognized scene type (e.g. "Beach") and app version. Photo content is never recorded.</li>
+  <li><b>Website visit statistics</b>: visit date and the visitor's estimated city, region and country. The location is estimated by the GeoJS service from the IP address, directly in your browser; only the city, region and country code are sent to our server. We do not store IP addresses. Each browser is counted once per day. If your browser has "Do Not Track" enabled, no city lookup is made.</li>
+  <li><b>Technical data</b> such as phone model, Android version and crash reports, via Google Firebase when enabled, to fix the app.</li>
+</ul>
+<h3>c. Data kept only on your phone or browser</h3>
+<ul>
+  <li><b>Per-photo credit log</b> (time, scene type, solo/group, timer/AUTO) shown in the Profile menu, kept in the app's internal storage for 90 days and never sent to the server.</li>
+  <li>Display settings, language and a copy of the plan list.</li>
+  <li>On the website: order number, WhatsApp number and device ID (on the purchase page, so an order can be resumed), language choice, and the date of your last visit (so visits are not counted twice).</li>
+</ul>
+<h3>d. Data we do not collect</h3>
+<p>We do not collect your photos or videos, camera images, GPS location, IP address, contacts, SMS, gallery contents, or bank account or card details. QRIS payments are processed by your own e-wallet or banking app.</p>
+
+<h2>2. App permissions</h2>
+<div class="tabel"><table>
+  <tr><th>Permission</th><th>Purpose</th></tr>
+  <tr><td>Camera</td><td>Show the preview, recognize poses and scenes on the phone, and take photos.</td></tr>
+  <tr><td>Storage (Android 9 and below)</td><td>Save photos to your gallery.</td></tr>
+  <tr><td>Internet</td><td>Buy plans, check plan status and send the daily usage summary.</td></tr>
+</table></div>
+
+<h2>3. How we use data</h2>
+<ul>
+  <li>Create orders, match payments and activate plans on your phone.</li>
+  <li>Track remaining credits and active days, and show your history in the Profile menu.</li>
+  <li>Contact you about orders, payment issues or moving a plan to another phone.</li>
+  <li>Run the referral program and review bonus, and prevent abuse of the free trial and bonuses.</li>
+  <li>Show reviews you allowed (nickname, city, stars, text; never the device ID) and the average rating on the website.</li>
+  <li>Show aggregate numbers on the website, such as visits, number of cities, phones that tried the app and photos taken. These numbers identify no one.</li>
+  <li>Fix bugs and improve features based on aggregate usage.</li>
+</ul>
+<p>The legal bases are performance of our agreement with you (providing the plan you bought), your consent when using the Service or sending a review, and our legitimate interest in measuring website visits in aggregate.</p>
+
+<h2>4. Payment matching</h2>
+<p>Each order has a unique amount (the price plus or minus a small number). To match payments we read incoming-payment notifications on our own QRIS account. They contain the amount and time, and for some banks the sender's name. This data is used only to match orders.</p>
+
+<h2>5. Where data is stored and who is involved</h2>
+<p>Data is stored with third-party services we use as tools:</p>
+<ul>
+  <li><b>Google</b> (Google Sheets, Google Drive and Google Apps Script) for orders, plans, reviews, visit statistics and payment proofs. Google servers may be outside Indonesia.</li>
+  <li><b>Google Firebase</b> for usage statistics and crash reports, when enabled.</li>
+  <li><b>GeoJS</b> (get.geojs.io) to estimate website visitors' city from the IP address. The request goes directly from your browser to GeoJS under GeoJS's own policy; we receive only the city, region and country code.</li>
+  <li><b>Telegram</b> and email to notify the admin of orders and new reviews. These contain the order number, name, WhatsApp number, plan and amount, or the review text with the last 8 characters of the device ID.</li>
+  <li><b>GitHub Pages</b>, which hosts the website, and app stores (e.g. APKPure) where you download the app. Both may log visits under their own policies.</li>
+</ul>
+<p>Pose and scene recognition use the Google ML Kit and MediaPipe libraries running on the phone. These libraries may send technical diagnostics to Google under Google's policy, but camera images are processed on the phone.</p>
+<p>We do not sell, rent or share your personal data for advertising. Data is disclosed to authorities only when required by law.</p>
+
+<h2>6. Retention</h2>
+<ul>
+  <li>Plan data and purchase history are kept while your device ID uses the Service, and at most 5 years after your last transaction for record-keeping.</li>
+  <li>Payment proofs are kept as long as needed to complete the order and handle complaints, then deleted periodically.</li>
+  <li>Reviews are kept until you ask for deletion or the Service ends. You may ask for your review to be hidden or deleted at any time.</li>
+  <li>Visit statistics are kept as daily per-city totals with no visitor identity.</li>
+  <li>Daily usage summaries are kept for at most 2 years, then deleted or turned into anonymous statistics.</li>
+  <li>The on-phone credit log is deleted automatically after 90 days, or when the app is uninstalled.</li>
+</ul>
+
+<h2>7. Security</h2>
+<p>Only the admin can access the data, through a protected Google account, an app access key and a separate admin key. WhatsApp numbers are partly masked in the app, and device IDs are never shown on the website. Still, no system is completely risk-free. If a breach affects your data, we will inform you within 3 x 24 hours of becoming aware of it, as required by law.</p>
+
+<h2>8. Your rights</h2>
+<p>You have the right to:</p>
+<ul>
+  <li>be informed about the personal data we hold about you;</li>
+  <li>request a copy of that data;</li>
+  <li>have incorrect data corrected, such as your name or WhatsApp number;</li>
+  <li>have your review hidden or deleted;</li>
+  <li>have your data deleted. An active plan will end as well, because we can no longer recognize your phone;</li>
+  <li>withdraw consent by stopping use of the Service and uninstalling the app.</li>
+</ul>
+<p>Send requests through the contacts in section 10, stating your device ID (👤 Profile menu). We will acknowledge within 3 x 24 hours and complete the request within a reasonable time.</p>
+
+<h2>9. Children</h2>
+<p>The Service is not specifically aimed at children. Users under 18 should ask a parent or guardian before buying a plan, sending a review or giving personal data.</p>
+
+<h2>10. Contact</h2>
+<p>Questions and requests about personal data can be sent to the operator of <b class="pengelola">Siluetra AI</b> via:</p>
+<ul class="daftarKontak">
+  <li>the <b>Contact Admin (WhatsApp)</b> button in the app's 👤 Profile menu, or the <b>Ask Admin</b> button on the website.</li>
+</ul>
+
+<h2>11. Changes to this policy</h2>
+<p>This policy may be updated as the Service or regulations change. The effective date at the top of the page will be updated, and important changes will be announced in the app or on the website.</p>
+</div>
+
 </main>
 
 <footer><div class="wadah">
-  <a href="index.html">Beranda</a><a href="syarat.html">Syarat Layanan</a><a href="beli.html">Beli Paket</a>
+  <a href="index.html" data-tautan data-id="Beranda" data-en="Home">Beranda</a><a href="syarat.html" data-tautan data-id="Syarat Layanan" data-en="Terms of Service">Syarat Layanan</a><a href="beli.html" data-tautan data-id="Beli Paket" data-en="Buy a Plan">Beli Paket</a><a href="ulasan.html" data-tautan data-id="Beri Ulasan" data-en="Write a Review">Beri Ulasan</a>
   <div style="margin-top:8px">© <span id="tahun"></span> Siluetra AI</div>
 </div></footer>
 
@@ -169,9 +304,30 @@ const KONTAK = {
 /* ============================================================= */
 document.getElementById('tahun').textContent = new Date().getFullYear();
 document.querySelectorAll('.pengelola').forEach(e => e.textContent = KONTAK.PENGELOLA);
-const ul = document.getElementById('daftarKontak');
-if (KONTAK.WA_ADMIN) ul.insertAdjacentHTML('beforeend', '<li>WhatsApp: <a href="https://wa.me/' + KONTAK.WA_ADMIN + '">+' + KONTAK.WA_ADMIN + '</a></li>');
-if (KONTAK.EMAIL) ul.insertAdjacentHTML('beforeend', '<li>Email: <a href="mailto:' + KONTAK.EMAIL + '">' + KONTAK.EMAIL + '</a></li>');
+document.querySelectorAll('.daftarKontak').forEach(ul => {
+  if (KONTAK.WA_ADMIN) ul.insertAdjacentHTML('beforeend', '<li>WhatsApp: <a href="https://wa.me/' + KONTAK.WA_ADMIN + '">+' + KONTAK.WA_ADMIN + '</a></li>');
+  if (KONTAK.EMAIL) ul.insertAdjacentHTML('beforeend', '<li>Email: <a href="mailto:' + KONTAK.EMAIL + '">' + KONTAK.EMAIL + '</a></li>');
+});
+/* Bahasa: ?lang=en, pilihan tersimpan, atau bahasa browser */
+function bahasaAwal() {
+  const x = new URLSearchParams(location.search).get('lang'); if (x === 'en' || x === 'id') return x;
+  try { const s = localStorage.getItem('bahasa'); if (s === 'en' || s === 'id') return s; } catch (e) {}
+  const tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || '');
+  if (/^Asia\/(Jakarta|Pontianak|Makassar|Jayapura)$/.test(tz)) return 'id';
+  return /^(id|in|ms)/i.test(navigator.language || '') ? 'id' : 'en';
+}
+function pakai(b) {
+  document.documentElement.lang = b;
+  document.querySelectorAll('.versi').forEach(v => v.classList.toggle('aktif', v.dataset.v === b));
+  document.querySelectorAll('.bhs button').forEach(x => x.setAttribute('aria-pressed', x.dataset.l === b));
+  document.querySelectorAll('[data-tautan]').forEach(a => {
+    const u = a.getAttribute('href').split('?')[0]; a.href = u + (b === 'en' ? '?lang=en' : '');
+    if (a.dataset.en) a.textContent = b === 'en' ? a.dataset.en : a.dataset.id;
+  });
+  document.title = (b === 'en' ? 'Privacy Policy' : 'Kebijakan Privasi') + ' – Siluetra AI';
+}
+document.querySelectorAll('.bhs button').forEach(x => x.onclick = () => { try { localStorage.setItem('bahasa', x.dataset.l); } catch (e) {} pakai(x.dataset.l); });
+pakai(bahasaAwal());
 </script>
 </body>
 </html>

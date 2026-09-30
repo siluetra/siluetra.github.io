@@ -67,6 +67,11 @@
         margin:10px auto;animation:putar 1s linear infinite}
   @keyframes putar{to{transform:rotate(360deg)}}
   .tersembunyi{display:none}
+  .bar-atas{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+  .bar-atas a{color:var(--redup);font-size:13px;text-decoration:none}
+  .bhs{display:flex;border:1px solid var(--garis);border-radius:99px;overflow:hidden}
+  .bhs button{background:transparent;border:0;color:var(--redup);font-weight:800;font-size:12px;padding:6px 10px;cursor:pointer;width:auto;margin:0}
+  .bhs button[aria-pressed=true]{background:var(--emas);color:#1a1400}
   footer{text-align:center;color:var(--redup);font-size:12px;margin-top:22px}
   .file-label{display:block;border:1px dashed var(--garis);border-radius:10px;padding:12px;text-align:center;
               font-size:13px;color:var(--redup);cursor:pointer;margin-top:12px}
@@ -76,31 +81,33 @@
 </head>
 <body>
 <div class="wadah">
+  <div class="bar-atas"><a href="index.html" id="kembali">← Siluetra AI</a>
+    <div class="bhs" role="group" aria-label="Bahasa / Language"><button type="button" data-l="id">ID</button><button type="button" data-l="en">EN</button></div></div>
   <header>
     <img class="logo" src="favicon-192.png" alt="Logo Siluetra AI">
     <h1>Siluetra AI</h1>
-    <div class="slogan">Panduan Siluet &amp; Pose Fotografi AI Cerdas</div>
+    <div class="slogan" data-en="Smart AI Silhouette &amp; Photo Pose Guide">Panduan Siluet &amp; Pose Fotografi AI Cerdas</div>
   </header>
 
   <!-- LANGKAH 1: FORM -->
   <section id="tahapForm">
-    <p class="ringkas">1 kredit = 1 foto tersimpan. Beli lagi sebelum habis: sisa hari &amp; kredit ditambahkan.</p>
+    <p class="ringkas" data-en="1 credit = 1 saved photo. Buy again before it runs out: remaining days &amp; credits carry over.">1 kredit = 1 foto tersimpan. Beli lagi sebelum habis: sisa hari &amp; kredit ditambahkan.</p>
     <div class="pilih-paket" role="radiogroup" aria-label="Pilih paket" id="daftarPaket"></div>
     <button type="button" class="lainnya" id="btnLainnya"></button>
     <div class="pilih-paket tersembunyi" role="radiogroup" aria-label="Paket lain" id="daftarLain"></div>
     <div class="kartu">
-      <label for="nama">Nama</label>
-      <input id="nama" autocomplete="name" maxlength="60" placeholder="Nama Anda">
-      <label for="wa">Nomor WhatsApp</label>
+      <label for="nama" data-en="Name">Nama</label>
+      <input id="nama" autocomplete="name" maxlength="60" placeholder="Nama Anda" data-en-ph="Your name">
+      <label for="wa" data-en="WhatsApp number">Nomor WhatsApp</label>
       <input id="wa" inputmode="tel" autocomplete="tel" maxlength="16" placeholder="08xxxxxxxxxx">
-      <label for="device">ID Perangkat (disarankan)</label>
-      <input id="device" maxlength="64" placeholder="Aplikasi: 👤 Profil > Beli / Perpanjang > ID Perangkat">
-      <div class="bantuan">Jika ID Perangkat diisi, langganan otomatis aktif di HP tersebut setelah pembayaran diverifikasi.
+      <label for="device" data-en="Device ID (recommended)">ID Perangkat (disarankan)</label>
+      <input id="device" maxlength="64" placeholder="Aplikasi: 👤 Profil > Beli / Perpanjang > ID Perangkat" data-en-ph="App: 👤 Profile > Buy / Extend > Device ID">
+      <div class="bantuan" data-en="With a Device ID, the plan activates on that phone automatically once payment is verified. Leave it empty to receive an <b>Activation Code</b> to enter in the app.">Jika ID Perangkat diisi, langganan otomatis aktif di HP tersebut setelah pembayaran diverifikasi.
         Jika dikosongkan, Anda akan menerima <b>Kode Aktivasi</b> untuk dimasukkan di aplikasi.</div>
-      <label for="ref">Kode referral teman (opsional)</label>
-      <input id="ref" maxlength="12" placeholder="Contoh: SLAB12C" style="text-transform:uppercase">
-      <div class="bantuan">Pembelian pertama dengan kode referral: Anda dan teman sama-sama mendapat bonus kredit.</div>
-      <button class="utama" id="btnBuat">Lanjut ke Pembayaran QRIS</button>
+      <label for="ref" data-en="Friend's referral code (optional)">Kode referral teman (opsional)</label>
+      <input id="ref" maxlength="12" placeholder="Contoh: SLAB12C" data-en-ph="e.g. SLAB12C" style="text-transform:uppercase">
+      <div class="bantuan" data-en="First purchase with a referral code: you and your friend both get bonus credits.">Pembelian pertama dengan kode referral: Anda dan teman sama-sama mendapat bonus kredit.</div>
+      <button class="utama" id="btnBuat" data-en="Continue to QRIS Payment">Lanjut ke Pembayaran QRIS</button>
       <div class="pesan" id="pesanForm"></div>
     </div>
   </section>
@@ -111,52 +118,52 @@
       <div class="tengah"><span class="status tunggu" id="labelStatus">Menunggu pembayaran</span></div>
       <div class="qr-box" id="qr"></div>
       <div class="nominal">
-        <p>Total yang harus dibayar</p>
+        <p data-en="Total to pay">Total yang harus dibayar</p>
         <div class="angka" id="nominal">Rp 0</div>
-        <p>Bayar <b>tepat sesuai nominal</b> agar pembayaran mudah dicocokkan.</p>
+        <p data-en="Pay the <b>exact amount</b> so your payment can be matched quickly.">Bayar <b>tepat sesuai nominal</b> agar pembayaran mudah dicocokkan.</p>
       </div>
       <div class="hitung" id="hitung"></div>
       <ol class="langkah">
-        <li>Buka e-wallet atau m-banking apa pun yang mendukung QRIS.</li>
-        <li>Pindai QR di atas. Jika membuka halaman ini di HP yang sama, tekan <b>Simpan QR</b> lalu pilih "pindai dari galeri".</li>
-        <li>Setelah berhasil, tekan <b>Saya Sudah Bayar</b> dan lampirkan tangkapan layar bukti bayar.</li>
+        <li data-en="Open any e-wallet or mobile banking app that supports QRIS.">Buka e-wallet atau m-banking apa pun yang mendukung QRIS.</li>
+        <li data-en="Scan the QR above. On the same phone, tap <b>Save QR</b> and choose scan from gallery.">Pindai QR di atas. Jika membuka halaman ini di HP yang sama, tekan <b>Simpan QR</b> lalu pilih "pindai dari galeri".</li>
+        <li data-en="When done, tap <b>I Have Paid</b> and attach a screenshot of the receipt.">Setelah berhasil, tekan <b>Saya Sudah Bayar</b> dan lampirkan tangkapan layar bukti bayar.</li>
       </ol>
-      <button class="kedua" id="btnSimpanQr">Simpan QR</button>
-      <label class="file-label">Lampirkan bukti bayar (opsional, dianjurkan)
+      <button class="kedua" id="btnSimpanQr" data-en="Save QR">Simpan QR</button>
+      <label class="file-label"><span data-en="Attach payment proof (optional, recommended)">Lampirkan bukti bayar (opsional, dianjurkan)</span>
         <input type="file" id="bukti" accept="image/*">
         <img id="pratinjau" alt="Pratinjau bukti bayar">
       </label>
       <p class="bantuan tengah" id="infoOtomatis"></p>
-      <button class="hijau" id="btnSudahBayar">Saya Sudah Bayar</button>
+      <button class="hijau" id="btnSudahBayar" data-en="I Have Paid">Saya Sudah Bayar</button>
       <div class="pesan" id="pesanBayar"></div>
-      <button class="kedua" id="btnBatal">Batalkan / buat order baru</button>
-      <div class="bantuan tengah" style="margin-top:10px">No. Order: <b id="labelOrder">-</b></div>
+      <button class="kedua" id="btnBatal" data-en="Cancel / new order">Batalkan / buat order baru</button>
+      <div class="bantuan tengah" style="margin-top:10px"><span data-en="Order no.">No. Order</span>: <b id="labelOrder">-</b></div>
     </div>
   </section>
 
   <!-- LANGKAH 3: VERIFIKASI -->
   <section id="tahapVerifikasi" class="tersembunyi">
     <div class="kartu tengah">
-      <span class="status tunggu">Menunggu verifikasi admin</span>
+      <span class="status tunggu" data-en="Waiting for verification">Menunggu verifikasi admin</span>
       <div class="spin"></div>
-      <p class="bantuan">Pembayaran Anda sedang dicocokkan dengan mutasi QRIS. Biasanya selesai dalam beberapa menit
+      <p class="bantuan" data-en="Your payment is being matched with QRIS transfers. This usually takes a few minutes during operating hours. This page updates itself; you can close it and come back later.">Pembayaran Anda sedang dicocokkan dengan mutasi QRIS. Biasanya selesai dalam beberapa menit
         pada jam operasional. Halaman ini diperbarui otomatis, Anda boleh menutupnya dan membukanya lagi nanti.</p>
       <p class="bantuan" id="infoVerif"></p>
-      <p class="bantuan">No. Order: <b id="labelOrder2">-</b></p>
-      <button class="kedua" id="btnBayarLagi">Belum bayar? Tampilkan QR lagi</button>
-      <button class="kedua" id="btnBatal2">Batalkan / buat order baru</button>
+      <p class="bantuan"><span data-en="Order no.">No. Order</span>: <b id="labelOrder2">-</b></p>
+      <button class="kedua" id="btnBayarLagi" data-en="Not paid yet? Show the QR again">Belum bayar? Tampilkan QR lagi</button>
+      <button class="kedua" id="btnBatal2" data-en="Cancel / new order">Batalkan / buat order baru</button>
     </div>
   </section>
 
   <!-- LANGKAH 4: SELESAI -->
   <section id="tahapSelesai" class="tersembunyi">
     <div class="kartu tengah">
-      <span class="status ok">Pembayaran terverifikasi</span>
-      <h2 style="margin:12px 0 4px">Terima kasih!</h2>
+      <span class="status ok" data-en="Payment verified">Pembayaran terverifikasi</span>
+      <h2 style="margin:12px 0 4px" data-en="Thank you!">Terima kasih!</h2>
       <div id="infoSelesai" class="bantuan"></div>
       <div class="kode tersembunyi" id="kodeAktivasi"></div>
-      <button class="kedua tersembunyi" id="btnSalinKode">Salin Kode Aktivasi</button>
-      <button class="utama" id="btnBaru">Beli Paket Lagi</button>
+      <button class="kedua tersembunyi" id="btnSalinKode" data-en="Copy Activation Code">Salin Kode Aktivasi</button>
+      <button class="utama" id="btnBaru" data-en="Buy Another Plan">Beli Paket Lagi</button>
     </div>
   </section>
 
@@ -165,11 +172,11 @@
     <div class="kartu tengah">
       <span class="status gagal" id="labelGagal">Order berakhir</span>
       <p class="bantuan" id="infoGagal"></p>
-      <button class="utama" id="btnUlang">Buat Order Baru</button>
+      <button class="utama" id="btnUlang" data-en="Create New Order">Buat Order Baru</button>
     </div>
   </section>
 
-  <footer>Butuh bantuan? Hubungi admin melalui WhatsApp.<br>Dengan membeli, Anda menyetujui <a href="syarat.html" style="color:var(--emas)">Syarat Layanan</a> dan <a href="kebijakan-privasi.html" style="color:var(--emas)">Kebijakan Privasi</a>.</footer>
+  <footer data-en="Need help? Contact the admin on WhatsApp.<br>By buying, you agree to the <a href='syarat.html?lang=en' style='color:var(--emas)'>Terms of Service</a> and <a href='kebijakan-privasi.html?lang=en' style='color:var(--emas)'>Privacy Policy</a>.">Butuh bantuan? Hubungi admin melalui WhatsApp.<br>Dengan membeli, Anda menyetujui <a href="syarat.html" style="color:var(--emas)">Syarat Layanan</a> dan <a href="kebijakan-privasi.html" style="color:var(--emas)">Kebijakan Privasi</a>.</footer>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -193,6 +200,29 @@ const IKON_PAKET = { SEHARI:'☀️', WEEKEND:'🏖️', LIBURAN:'🧳', BULANAN
 /* ============================================================= */
 
 const $ = id => document.getElementById(id);
+/* ---------- Bahasa (ID / EN) ---------- */
+let BHS = 'id';
+const L = (id, en) => BHS === 'en' ? en : id;
+const NAMA_EN = { SEHARI:'1 Day', WEEKEND:'Weekend', LIBURAN:'Holiday', BULANAN:'Monthly', BASIC:'Monthly', PRO:'Pro', PRO_LIBURAN:'Pro Holiday' };
+const namaP = p => BHS === 'en' ? (NAMA_EN[p.kode] || p.nama) : p.nama;
+function bahasaAwal() {
+  const x = new URLSearchParams(location.search).get('lang'); if (x === 'en' || x === 'id') return x;
+  try { const s = localStorage.getItem('bahasa'); if (s === 'en' || s === 'id') return s; } catch (e) {}
+  const tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || '');
+  if (/^Asia\/(Jakarta|Pontianak|Makassar|Jayapura)$/.test(tz)) return 'id';
+  return /^(id|in|ms)/i.test(navigator.language || '') ? 'id' : 'en';
+}
+function terapkanBahasa() {
+  document.documentElement.lang = BHS;
+  document.querySelectorAll('[data-en]').forEach(el => { if (el.dataset.id === undefined) el.dataset.id = el.innerHTML; el.innerHTML = BHS === 'en' ? el.dataset.en : el.dataset.id; });
+  document.querySelectorAll('[data-en-ph]').forEach(el => { if (el.dataset.idPh === undefined) el.dataset.idPh = el.placeholder; el.placeholder = BHS === 'en' ? el.dataset.enPh : el.dataset.idPh; });
+  document.querySelectorAll('.bhs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.l === BHS));
+  $('kembali').href = 'index.html' + (BHS === 'en' ? '?lang=en' : '');
+  document.title = L('Beli Paket Siluetra AI', 'Buy a Siluetra AI Plan');
+  if (typeof tampilPaket === 'function' && $('daftarPaket').innerHTML) tampilPaket();
+  if (typeof orderAktif !== 'undefined' && orderAktif) renderOrder(orderAktif);
+}
+document.querySelectorAll('.bhs button').forEach(b => b.onclick = () => { BHS = b.dataset.l; try { localStorage.setItem('bahasa', BHS); } catch (e) {} terapkanBahasa(); });
 const rupiah = n => 'Rp ' + Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 const esc = t => String(t == null ? '' : t).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
@@ -202,8 +232,9 @@ function barisPaket(p, pilih) {
   const kode = esc(p.kode);
   return '<label class="kartu paket opsi"><input type="radio" name="paket" value="' + kode + '"' + (pilih ? ' checked' : '') + '>' +
     '<span class="ikon" aria-hidden="true">' + (IKON_PAKET[p.kode] || '📦') + '</span>' +
-    '<div><b>' + esc(p.nama) + '</b><span class="jenis' + (p.pro ? ' pro' : '') + '">' + (p.pro ? 'PRO' : 'BASIC') + '</span>' +
-    '<small>' + p.hari + ' hari • ' + p.kredit + ' kredit foto' + (p.pro ? ' • semua gaya & foto grup' : '') + '</small></div>' +
+    '<div><b>' + esc(namaP(p)) + '</b><span class="jenis' + (p.pro ? ' pro' : '') + '">' + (p.pro ? 'PRO' : 'BASIC') + '</span>' +
+    '<small>' + L(p.hari + ' hari • ' + p.kredit + ' kredit foto' + (p.pro ? ' • semua gaya & foto grup' : ''),
+      p.hari + (p.hari === 1 ? ' day' : ' days') + ' • ' + p.kredit + ' photo credits' + (p.pro ? ' • all poses & group photos' : '')) + '</small></div>' +
     '<div class="harga">' + rupiah(p.harga) + '</div></label>';
 }
 function tampilPaket(pilihKode) {
@@ -218,17 +249,18 @@ function tampilPaket(pilihKode) {
   const buka = lain.some(p => p.kode === kode);
   $('daftarLain').classList.toggle('tersembunyi', !buka);
   $('btnLainnya').classList.toggle('tersembunyi', lain.length === 0);
-  $('btnLainnya').textContent = (buka ? 'Sembunyikan paket lain ▴' : 'Paket lain (' + lain.map(p => p.nama).join(', ') + ') ▾');
+  $('btnLainnya').textContent = (buka ? L('Sembunyikan paket lain ▴', 'Hide other plans ▴') : L('Paket lain', 'Other plans') + ' (' + lain.map(namaP).join(', ') + ') ▾');
 }
 $('btnLainnya').onclick = () => {
   const tutup = !$('daftarLain').classList.contains('tersembunyi');
   $('daftarLain').classList.toggle('tersembunyi', tutup);
   const lain = daftarPaket.filter(p => PAKET_UTAMA.indexOf(p.kode) < 0);
-  $('btnLainnya').textContent = tutup ? 'Paket lain (' + lain.map(p => p.nama).join(', ') + ') ▾' : 'Sembunyikan paket lain ▴';
+  $('btnLainnya').textContent = tutup ? L('Paket lain', 'Other plans') + ' (' + lain.map(namaP).join(', ') + ') ▾' : L('Sembunyikan paket lain ▴', 'Hide other plans ▴');
 };
 function namaPaketOrder(o) {
-  if (o.namaPaket) return o.namaPaket;
   const p = daftarPaket.find(x => x.kode === o.paket);
+  if (BHS === 'en' && NAMA_EN[o.paket]) return NAMA_EN[o.paket];
+  if (o.namaPaket) return o.namaPaket;
   return p ? p.nama : (o.paket === 'PRO' ? 'Pro' : 'Bulanan');
 }
 let orderAktif = null, timerPolling = null, timerHitung = null, buktiBase64 = null, buktiMime = null;
@@ -244,7 +276,7 @@ async function api(action, data = {}) {
     body: JSON.stringify(Object.assign({ action, appKey: APP_KEY }, data))
   });
   const json = await res.json();
-  if (!json.ok) throw new Error(json.error || 'Gagal menghubungi server');
+  if (!json.ok) throw new Error(json.error || L('Gagal menghubungi server', 'Could not reach the server'));
   return json;
 }
 
@@ -262,10 +294,10 @@ function renderOrder(o) {
 
   if (o.status === 'MENUNGGU_BAYAR' || (o.status === 'MENUNGGU_VERIFIKASI' && lihatQr)) {
     tampil('tahapBayar');
-    $('labelStatus').textContent = o.status === 'MENUNGGU_BAYAR' ? 'Menunggu pembayaran' : 'Konfirmasi terkirim, menunggu dana';
+    $('labelStatus').textContent = o.status === 'MENUNGGU_BAYAR' ? L('Menunggu pembayaran', 'Waiting for payment') : L('Konfirmasi terkirim, menunggu dana', 'Confirmation sent, waiting for funds');
     $('infoOtomatis').textContent = o.otomatis
-      ? 'Halaman ini berubah otomatis beberapa detik setelah dana masuk. Tombol di bawah hanya bila sudah bayar tetapi belum aktif.'
-      : 'Tekan "Saya Sudah Bayar" hanya SETELAH membayar. Klaim tanpa pembayaran otomatis kedaluwarsa.';
+      ? L('Halaman ini berubah otomatis beberapa detik setelah dana masuk. Tombol di bawah hanya bila sudah bayar tetapi belum aktif.', 'This page updates a few seconds after the money arrives. Use the button below only if you paid but nothing changed.')
+      : L('Tekan "Saya Sudah Bayar" hanya SETELAH membayar. Klaim tanpa pembayaran otomatis kedaluwarsa.', 'Tap "I Have Paid" only AFTER paying. Claims without payment expire automatically.');
     $('btnSudahBayar').classList.toggle('tersembunyi', o.status !== 'MENUNGGU_BAYAR');
     const s = rupiah(o.nominal), ekor = s.slice(-3);
     $('nominal').innerHTML = s.slice(0, -3) + '<span>' + ekor + '</span>';
@@ -275,18 +307,20 @@ function renderOrder(o) {
   } else if (o.status === 'MENUNGGU_VERIFIKASI') {
     tampil('tahapVerifikasi');
     $('infoVerif').textContent = o.otomatis
-      ? 'Dana ' + rupiah(o.nominal) + ' BELUM terdeteksi masuk. Jika belum membayar, tekan "Tampilkan QR lagi" lalu bayar; paket aktif otomatis.'
-      : 'Admin mencocokkan dana ' + rupiah(o.nominal) + ' dengan mutasi QRIS.';
+      ? L('Dana ' + rupiah(o.nominal) + ' BELUM terdeteksi masuk. Jika belum membayar, tekan "Tampilkan QR lagi" lalu bayar; paket aktif otomatis.', 'The ' + rupiah(o.nominal) + ' payment has NOT arrived yet. If you have not paid, tap "Show the QR again" and pay; the plan activates automatically.')
+      : L('Admin mencocokkan dana ' + rupiah(o.nominal) + ' dengan mutasi QRIS.', 'The admin is matching ' + rupiah(o.nominal) + ' with QRIS transfers.');
   } else if (o.status === 'LUNAS') {
     tampil('tahapSelesai');
     berhentiPolling();
     simpan('siluetra_order', null);
     if (o.punyaDevice) {
-      $('infoSelesai').innerHTML = 'Paket <b>' + esc(namaPaketOrder(o)) + '</b> sudah aktif di perangkat Anda. ' +
-        'Buka aplikasi Siluetra AI lalu tekan ikon <b>👤 Profil</b>; sisa hari dan kredit diperbarui otomatis.';
+      $('infoSelesai').innerHTML = L('Paket <b>' + esc(namaPaketOrder(o)) + '</b> sudah aktif di perangkat Anda. ' +
+        'Buka aplikasi Siluetra AI lalu tekan ikon <b>👤 Profil</b>; sisa hari dan kredit diperbarui otomatis.',
+        'The <b>' + esc(namaPaketOrder(o)) + '</b> plan is active on your phone. Open Siluetra AI and tap <b>👤 Profile</b>; your days and credits update automatically.');
       $('kodeAktivasi').classList.add('tersembunyi'); $('btnSalinKode').classList.add('tersembunyi');
     } else {
-      $('infoSelesai').innerHTML = 'Paket <b>' + esc(namaPaketOrder(o)) + '</b>. Masukkan kode berikut di aplikasi (👤 Profil &gt; Beli / Perpanjang Paket &gt; Kode Aktivasi). Kode hanya bisa dipakai satu kali.';
+      $('infoSelesai').innerHTML = L('Paket <b>' + esc(namaPaketOrder(o)) + '</b>. Masukkan kode berikut di aplikasi (👤 Profil &gt; Beli / Perpanjang Paket &gt; Kode Aktivasi). Kode hanya bisa dipakai satu kali.',
+        '<b>' + esc(namaPaketOrder(o)) + '</b> plan. Enter this code in the app (👤 Profile &gt; Buy / Extend Plan &gt; Activation Code). The code works only once.');
       $('kodeAktivasi').textContent = o.kodeAktivasi;
       $('kodeAktivasi').classList.remove('tersembunyi'); $('btnSalinKode').classList.remove('tersembunyi');
     }
@@ -294,11 +328,11 @@ function renderOrder(o) {
     tampil('tahapGagal');
     berhentiPolling();
     simpan('siluetra_order', null);
-    $('labelGagal').textContent = o.status === 'DITOLAK' ? 'Pembayaran ditolak' : (o.status === 'DIBATALKAN' ? 'Order dibatalkan' : 'Order kedaluwarsa');
+    $('labelGagal').textContent = o.status === 'DITOLAK' ? L('Pembayaran ditolak', 'Payment rejected') : (o.status === 'DIBATALKAN' ? L('Order dibatalkan', 'Order cancelled') : L('Order kedaluwarsa', 'Order expired'));
     $('infoGagal').textContent = o.status === 'DITOLAK'
-      ? 'Pembayaran tidak dapat dicocokkan. Jika Anda sudah membayar, hubungi admin dengan menyebutkan No. Order ' + o.orderId + '.'
-      : (o.status === 'DIBATALKAN' ? 'Silakan buat order baru bila masih ingin membeli.'
-        : 'Batas waktu lewat atau pembayaran tidak ditemukan. Silakan buat order baru.');
+      ? L('Pembayaran tidak dapat dicocokkan. Jika Anda sudah membayar, hubungi admin dengan menyebutkan No. Order ' + o.orderId + '.', 'The payment could not be matched. If you have paid, contact the admin with order no. ' + o.orderId + '.')
+      : (o.status === 'DIBATALKAN' ? L('Silakan buat order baru bila masih ingin membeli.', 'Create a new order if you still want to buy.')
+        : L('Batas waktu lewat atau pembayaran tidak ditemukan. Silakan buat order baru.', 'Time ran out or no payment was found. Please create a new order.'));
   }
 }
 
@@ -307,7 +341,7 @@ function mulaiHitungMundur(batas) {
   const jalan = () => {
     const sisa = Math.max(0, batas - Date.now());
     const m = Math.floor(sisa / 60000), d = Math.floor((sisa % 60000) / 1000);
-    $('hitung').innerHTML = sisa > 0 ? 'Selesaikan pembayaran dalam <b>' + m + ':' + String(d).padStart(2,'0') + '</b>' : 'Waktu pembayaran habis';
+    $('hitung').innerHTML = sisa > 0 ? L('Selesaikan pembayaran dalam ', 'Complete payment within ') + '<b>' + m + ':' + String(d).padStart(2,'0') + '</b>' : L('Waktu pembayaran habis', 'Payment time is up');
   };
   jalan(); timerHitung = setInterval(jalan, 1000);
 }
@@ -325,9 +359,9 @@ function berhentiPolling(){ clearInterval(timerPolling); clearInterval(timerHitu
 $('btnBuat').onclick = async () => {
   const btn = $('btnBuat'); pesan($('pesanForm'), '', '');
   const nama = $('nama').value.trim(), wa = $('wa').value.trim(), deviceId = $('device').value.trim();
-  if (!nama) return pesan($('pesanForm'), 'Nama wajib diisi.', 'err');
-  if (!/^(\+?62|0)?8\d{7,12}$/.test(wa.replace(/[\s-]/g,''))) return pesan($('pesanForm'), 'Nomor WhatsApp tidak valid.', 'err');
-  btn.disabled = true; btn.textContent = 'Membuat order...';
+  if (!nama) return pesan($('pesanForm'), L('Nama wajib diisi.', 'Please enter your name.'), 'err');
+  if (!/^(\+?62|0)?8\d{7,12}$/.test(wa.replace(/[\s-]/g,''))) return pesan($('pesanForm'), L('Nomor WhatsApp tidak valid.', 'Invalid WhatsApp number (Indonesian number, e.g. 0812...).'), 'err');
+  btn.disabled = true; btn.textContent = L('Membuat order...', 'Creating order...');
   try {
     const paket = document.querySelector('input[name=paket]:checked').value;
     const kodeReferral = $('ref').value.trim().toUpperCase();
@@ -335,7 +369,7 @@ $('btnBuat').onclick = async () => {
     const r = await api('createOrder', { nama, wa, deviceId, sumber: 'WEB', paket, kodeReferral });
     renderOrder(r.order); mulaiPolling();
   } catch (e) { pesan($('pesanForm'), e.message, 'err'); }
-  btn.disabled = false; btn.textContent = 'Lanjut ke Pembayaran QRIS';
+  btn.disabled = false; btn.textContent = L('Lanjut ke Pembayaran QRIS', 'Continue to QRIS Payment');
 };
 
 $('bukti').onchange = e => {
@@ -356,12 +390,12 @@ $('bukti').onchange = e => {
 
 $('btnSudahBayar').onclick = async () => {
   const btn = $('btnSudahBayar'); pesan($('pesanBayar'), '', '');
-  btn.disabled = true; btn.textContent = 'Mengirim konfirmasi...';
+  btn.disabled = true; btn.textContent = L('Mengirim konfirmasi...', 'Sending confirmation...');
   try {
     const r = await api('confirmPayment', { orderId: orderAktif.orderId, buktiBase64, mime: buktiMime });
     renderOrder(r.order);
   } catch (e) { pesan($('pesanBayar'), e.message, 'err'); }
-  btn.disabled = false; btn.textContent = 'Saya Sudah Bayar';
+  btn.disabled = false; btn.textContent = L('Saya Sudah Bayar', 'I Have Paid');
 };
 
 $('btnSimpanQr').onclick = () => {
@@ -372,14 +406,14 @@ $('btnSimpanQr').onclick = () => {
 };
 
 $('btnSalinKode').onclick = async () => {
-  try { await navigator.clipboard.writeText($('kodeAktivasi').textContent); $('btnSalinKode').textContent = 'Kode tersalin'; } catch (e) {}
+  try { await navigator.clipboard.writeText($('kodeAktivasi').textContent); $('btnSalinKode').textContent = L('Kode tersalin', 'Code copied'); } catch (e) {}
 };
 $('btnBaru').onclick = $('btnUlang').onclick = () => { orderAktif = null; lihatQr = false; tampil('tahapForm'); };
 
 // Batalkan order yang belum dibayar agar tidak "macet" di menunggu verifikasi
 async function batalkanOrder() {
   if (!orderAktif) return;
-  if (!confirm('Batalkan order ' + orderAktif.orderId + '? Jika sudah membayar, paket tetap aktif otomatis saat dana terbaca.')) return;
+  if (!confirm(L('Batalkan order ' + orderAktif.orderId + '? Jika sudah membayar, paket tetap aktif otomatis saat dana terbaca.', 'Cancel order ' + orderAktif.orderId + '? If you already paid, the plan still activates when the payment is detected.'))) return;
   try {
     const r = await api('cancelOrder', { orderId: orderAktif.orderId, deviceId: baca('siluetra_device') || $('device').value.trim(), wa: baca('siluetra_wa') || '' });
     renderOrder(r.order);
@@ -394,6 +428,7 @@ $('btnBayarLagi').onclick = () => { lihatQr = true; if (orderAktif) renderOrder(
 // Isi otomatis dari URL, mis. beli.html?device=abc123 (dibuka dari aplikasi)
 (async function init() {
   const q = new URLSearchParams(location.search);
+  BHS = bahasaAwal(); terapkanBahasa();
   if (q.get('device')) $('device').value = q.get('device');
   if (q.get('ref')) $('ref').value = q.get('ref').toUpperCase();
   const paketUrl = (q.get('paket') || '').toUpperCase();

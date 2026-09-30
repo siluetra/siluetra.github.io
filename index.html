@@ -7,9 +7,9 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="description" content="Bingung gaya saat difoto? Siluetra AI menampilkan siluet pose di kamera sesuai latar (pantai, gunung, candi, kota, kafe), memberi arahan tangan & kaki, lalu memotret saat pose sudah pas. Mulai Rp3.000, bayar QRIS.">
+<meta name="description" content="Bingung gaya saat difoto? Siluetra AI menampilkan siluet pose di kamera sesuai latar (pantai, gunung, candi, kota, kafe), memberi arahan tangan & kaki, foto grup berlapis & berpencar, lalu memotret saat pose sudah pas. Mulai Rp3.000, bayar QRIS.">
 <meta property="og:title" content="Siluetra AI – Kamera Pemandu Pose Foto">
-<meta property="og:description" content="Siluet pose di kamera, gaya sesuai latar, arahan spesifik, foto grup 2–4 orang. Mulai Rp3.000, bayar QRIS. Coba gratis 1 hari.">
+<meta property="og:description" content="Siluet pose di kamera, gaya sesuai latar, foto grup 2–4 orang (berlapis, berpencar, trik perspektif), AI Pose. Mulai Rp3.000, bayar QRIS. Coba gratis 1 hari.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://siluetra.github.io/foto/pantai.jpg">
 <meta name="theme-color" content="#0F0C20">
@@ -169,122 +169,219 @@
     .hp.besar{width:280px}
   }
   @media (max-width:520px){ .grid4{grid-template-columns:1fr} .galeri-gaya{grid-template-columns:repeat(3,1fr);gap:8px} .gy{padding:6px 6px 8px;border-radius:12px} .gy .nm{font-size:11.5px} .gy .lb{font-size:10px} .gy .bd span{font-size:9px} }
+  /* ================= v16 ================= */
+  .bt1{background:linear-gradient(135deg,#FFE34D,#FFC400)!important;color:#000!important}
+  .bhs{display:flex;border:1px solid var(--garis);border-radius:99px;overflow:hidden;flex:0 0 auto}
+  .bhs button{background:transparent;border:0;color:var(--redup);font-weight:800;font-size:12px;padding:6px 10px;cursor:pointer}
+  .bhs button[aria-pressed=true]{background:var(--emas);color:#1a1400}
+  nav .kanan-nav{margin-left:auto;display:flex;gap:10px;align-items:center}
+  nav .tautan{margin-left:0}
+  .chip-ulasan{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:14px;color:var(--teks);text-decoration:none;background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.3);border-radius:99px;padding:6px 12px}
+  .chip-ulasan b{color:var(--emas)}
+  .angka-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:8px}
+  .angka-strip .kartu{text-align:center;padding:16px 10px}
+  .angka-strip .besar{font-size:30px;font-weight:800;color:var(--emas);line-height:1.1}
+  .angka-strip p{font-size:13px}
+  .dua{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px}
+  .masalah li,.solusi li{margin-bottom:10px}
+  .masalah ul,.solusi ul{padding-left:0;list-style:none;margin:10px 0 0;color:var(--redup);font-size:15px}
+  .masalah li::before{content:"😕 ";}
+  .solusi li::before{content:"✅ ";}
+  .solusi{border-color:rgba(0,230,118,.35)}
+  .grup-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px}
+  .grup-grid .kartu{padding:14px}
+  .grup-grid svg{width:100%;aspect-ratio:4/3;display:block;border-radius:12px;background:radial-gradient(circle at 50% 30%,#2a2350,#141225)}
+  .lbl{display:inline-block;font-size:11px;font-weight:800;border-radius:6px;padding:1px 7px;margin-top:10px}
+  .lbl.S{background:#78c8ff;color:#00243d}.lbl.L{background:#ffb74d;color:#3a2200}.lbl.P{background:var(--hijau);color:#002b16}.lbl.A{background:linear-gradient(90deg,var(--ungu),var(--magenta));color:#fff}
+  .gy .lbl{margin-top:6px}
+  /* Ulasan */
+  .ringkas-ul{display:grid;grid-template-columns:220px 1fr;gap:20px;align-items:center;margin-top:24px}
+  .skor-besar{font-size:54px;font-weight:800;line-height:1}
+  .bintang{color:var(--emas);letter-spacing:2px}
+  .bintang .kosong{opacity:.25}
+  .dist{display:grid;grid-template-columns:40px 1fr 34px;gap:6px 10px;align-items:center;font-size:13px;color:var(--redup)}
+  .dist .jalur{height:9px;border-radius:6px;background:#241f3d;overflow:hidden}.dist .jalur i{display:block;height:100%;background:var(--emas)}
+  .ulasan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+  .ul .atas{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+  .ul .nm{font-weight:800}.ul .kt2{font-size:12.5px;color:var(--redup)}
+  .ul .isi{margin:10px 0 0;color:var(--teks);font-size:14.5px;white-space:pre-wrap}
+  .ul .ver{font-size:11.5px;color:var(--hijau);margin-top:8px}
+  .ul .bls{margin-top:10px;padding:9px 11px;border-left:3px solid var(--emas);background:#100e1f;border-radius:8px;font-size:13px;color:var(--redup)}
+  .jujur{font-size:12.5px;color:var(--redup);margin-top:14px}
+  .janji{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px}
+  .cta-ul{margin-top:22px;display:flex;flex-direction:column;align-items:flex-start}
+  /* Statistik */
+  .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px}
+  .stat-grid .kartu{text-align:center}
+  .stat-grid .besar{font-size:32px;font-weight:800;color:var(--emas)}
+  .kota-list{margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .kota-list div{background:var(--kartu);border:1px solid var(--garis);border-radius:10px;padding:8px 12px;font-size:14px;display:flex;justify-content:space-between;gap:8px}
+  .kota-list b{color:var(--emas)}
+  .tersembunyi{display:none!important}
+  @media (max-width:900px){
+    .angka-strip,.stat-grid,.janji{grid-template-columns:1fr 1fr}.dua,.ringkas-ul{grid-template-columns:1fr}
+    .grup-grid{grid-template-columns:1fr 1fr}.ulasan-grid{grid-template-columns:1fr}.kota-list{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:520px){ .grup-grid{grid-template-columns:1fr 1fr;gap:10px} .grup-grid .kartu{padding:10px} .grup-grid h3{font-size:15px} .grup-grid p{font-size:12.5px} }
 </style>
 </head>
 <body>
 <nav>
   <div class="wadah">
     <a class="merek" href="#"><img class="logo" src="favicon-192.png" alt="">Siluetra AI</a>
-    <div class="tautan"><a href="#tampilan">Tampilan</a><a href="#gaya">Gaya pose</a><a href="#contoh">Contoh foto</a><a href="#harga">Harga</a><a href="#faq">FAQ</a></div>
-    <a class="tombol emas kecil" href="#pasang">Unduh APK</a>
+    <div class="kanan-nav">
+      <div class="tautan">
+        <a href="#tampilan" data-en="Screens">Tampilan</a><a href="#gaya" data-en="Poses">Gaya pose</a><a href="#grup" data-en="Groups">Foto grup</a><a href="#harga" data-en="Pricing">Harga</a><a href="#ulasan" data-en="Reviews">Ulasan</a><a href="#faq">FAQ</a>
+      </div>
+      <div class="bhs" role="group" aria-label="Bahasa / Language"><button type="button" data-l="id">ID</button><button type="button" data-l="en">EN</button></div>
+      <a class="tombol emas kecil" href="#pasang" data-en="Download">Unduh</a>
+    </div>
   </div>
 </nav>
 
 <header class="wadah hero">
   <div>
-    <h1>Tak perlu bingung gaya.<br><span>Masuk ke siluetnya, jepret!</span></h1>
-    <p class="sub">Siluetra AI mengenali latar foto Anda (pantai, gunung, candi, kota, kafe), menampilkan siluet gaya yang cocok langsung di kamera, lalu memberi tahu tangan atau kaki mana yang perlu digeser.</p>
+    <h1 data-en="No more awkward poses.<br><span>Step into the silhouette, snap!</span>">Tak perlu bingung gaya.<br><span>Masuk ke siluetnya, jepret!</span></h1>
+    <p class="sub" data-en="Siluetra AI recognizes where you are (beach, mountain, temple, city, café), shows a matching pose silhouette right on your camera, and tells you which hand or leg to move. Solo or in groups of 2–4.">Siluetra AI mengenali latar foto Anda (pantai, gunung, candi, kota, kafe), menampilkan siluet gaya yang cocok langsung di kamera, lalu memberi tahu tangan atau kaki mana yang perlu digeser. Sendiri maupun rame-rame 2–4 orang.</p>
     <div class="aksi">
-      <a class="tombol emas" href="#pasang">⬇ Unduh aplikasi</a>
-      <a class="tombol garis" href="#harga">Lihat harga</a>
+      <a class="tombol emas" href="#pasang" data-en="⬇ Get the app">⬇ Unduh aplikasi</a>
+      <a class="tombol garis" href="#harga" data-en="See pricing">Lihat harga</a>
     </div>
-    <p class="catatan">Mulai <b id="hargaMulai">Rp3.000</b> • Bayar QRIS dari e-wallet apa pun • Coba gratis <span id="trialTeks">1 hari (5 foto)</span></p>
+    <p class="catatan" id="heroCatatan"></p>
+    <a class="chip-ulasan tersembunyi" id="heroUlasan" href="#ulasan"></a>
   </div>
 
   <!-- Ponsel utama: layar kamera -->
   <div class="hp besar" aria-label="Tampilan layar kamera Siluetra AI">
     <div class="hp-bar">
       <img class="lg" src="favicon-192.png" alt="">
-      <div class="jd">Siluetra AI ⭐ Pro<small>23 Hari | 186 Kredit</small></div>
-      <div class="ik"><i>1x</i><i>⚡</i><i>⟲</i><i>🌐</i><i class="on">👤</i></div>
+      <div class="jd">Siluetra AI ⭐ Pro<small data-en="23 Days | 186 Credits">23 Hari | 186 Kredit</small></div>
+      <div class="ik"><i>1x</i><i>⚡</i><i>⟲</i><i class="on">👤</i></div>
     </div>
     <div class="prev">
       <img src="foto/pantai.jpg" alt="Ilustrasi: perempuan berfoto di pantai saat matahari terbenam" onerror="this.remove()">
       <svg viewBox="0 0 300 400" preserveAspectRatio="none" data-sil="hero"></svg>
-      <div class="hud">🏖️ Pantai &amp; Laut 94% • Jarak pas<br><b>💡 Tahan, tangan kiri sudah pas ✓</b></div>
-      <div class="skorp">92% • SANGAT PAS 🌟</div>
+      <div class="hud" data-en="🏖️ Beach &amp; Sea 94% • Good distance<br><b>💡 Hold it, left arm is spot on ✓</b>">🏖️ Pantai &amp; Laut 94% • Jarak pas<br><b>💡 Tahan, tangan kiri sudah pas ✓</b></div>
+      <div class="skorp" data-en="92% • PERFECT 🌟">92% • SANGAT PAS 🌟</div>
     </div>
     <div class="hp-bawah">
-      <div class="chips"><span class="chip">Tampilan</span><span class="chip">☀️ Terang</span><span class="chip">Olahraga</span><span class="chip">Grup ✓</span><span class="chip bt">AI Pose ✨</span></div>
+      <div class="chips"><span class="chip" data-en="View">Tampilan</span><span class="chip" data-en="☀️ Light">☀️ Terang</span><span class="chip" data-en="Group ✓">Grup ✓</span><span class="chip bt">AI Pose ✨</span></div>
       <div class="posek" data-strip="pantai"></div>
       <div class="jepret"><div class="th"></div><div class="sh"></div><div class="au">AUTO</div></div>
     </div>
   </div>
 </header>
 
+<section id="angka" style="padding-top:18px;padding-bottom:10px">
+  <div class="wadah">
+    <div class="angka-strip">
+      <div class="kartu"><div class="besar">98</div><p data-en="solo &amp; sport poses">gaya pose solo &amp; olahraga</p></div>
+      <div class="kartu"><div class="besar">23</div><p data-en="group formations for 2–4 people">formasi foto grup 2–4 orang</p></div>
+      <div class="kartu"><div class="besar">10</div><p data-en="scene types recognized">jenis latar dikenali otomatis</p></div>
+      <div class="kartu"><div class="besar">✨</div><p data-en="AI Pose for solo &amp; groups">AI Pose untuk solo &amp; grup</p></div>
+    </div>
+  </div>
+</section>
+
 <section id="tampilan">
   <div class="wadah">
-    <h2>Tampilan aplikasi</h2>
-    <p class="sub">Semua yang Anda butuhkan ada di satu layar kamera. Geser untuk melihat menu lainnya.</p>
+    <h2 data-en="Inside the app">Tampilan aplikasi</h2>
+    <p class="sub" data-en="Everything you need sits on one camera screen. Swipe to see the other menus.">Semua yang Anda butuhkan ada di satu layar kamera. Geser untuk melihat menu lainnya.</p>
     <div class="deret">
       <!-- 1. Gaya sesuai latar -->
       <div class="layar">
         <div class="hp">
-          <div class="hp-bar"><img class="lg" src="favicon-192.png" alt=""><div class="jd">Siluetra AI<small>6 Hari | 42 Kredit</small></div><div class="ik"><i>1x</i><i>⚡</i><i>⟲</i><i class="on">👤</i></div></div>
+          <div class="hp-bar"><img class="lg" src="favicon-192.png" alt=""><div class="jd">Siluetra AI<small data-en="6 Days | 42 Credits">6 Hari | 42 Kredit</small></div><div class="ik"><i>1x</i><i>⚡</i><i>⟲</i><i class="on">👤</i></div></div>
           <div class="prev gn">
             <img src="foto/gunung.jpg" alt="Ilustrasi: laki-laki berpose menunjuk di puncak gunung" onerror="this.remove()">
             <svg viewBox="0 0 300 400" preserveAspectRatio="none" data-sil="gunung"></svg>
-            <div class="hud">⛰️ Wisata Gunung 91%<br><b>💡 Luruskan tangan (kanan layar) ➡️</b></div>
-            <div class="skorp">84% • Hampir pas</div>
+            <div class="hud" data-en="⛰️ Mountain 91%<br><b>💡 Straighten your arm (right side) ➡️</b>">⛰️ Wisata Gunung 91%<br><b>💡 Luruskan tangan (kanan layar) ➡️</b></div>
+            <div class="skorp" data-en="84% • Almost there">84% • Hampir pas</div>
           </div>
           <div class="hp-bawah">
-            <div class="chips"><span class="chip on">✨ Cocok</span><span class="chip">⛰️ Gunung</span><span class="chip">🏖️ Pantai</span><span class="chip">🛕 Candi</span><span class="chip">☕ Kafe</span></div>
+            <div class="chips"><span class="chip on" data-en="✨ Best fit">✨ Cocok</span><span class="chip" data-en="⛰️ Mountain">⛰️ Gunung</span><span class="chip" data-en="🏖️ Beach">🏖️ Pantai</span><span class="chip" data-en="🛕 Temple">🛕 Candi</span><span class="chip" data-en="☕ Café">☕ Kafe</span></div>
             <div class="posek" data-strip="gunung"></div>
           </div>
         </div>
-        <p class="cap"><b>Gaya sesuai latar</b>AI mengenali tempat foto, lalu menyodorkan gaya yang cocok.</p>
+        <p class="cap" data-en="<b>Poses that fit the scene</b>AI recognizes where you are and suggests matching poses."><b>Gaya sesuai latar</b>AI mengenali tempat foto, lalu menyodorkan gaya yang cocok.</p>
       </div>
 
       <!-- 2. Kecerahan & lampu layar -->
       <div class="layar">
         <div class="hp">
-          <div class="hp-bar"><img class="lg" src="favicon-192.png" alt=""><div class="jd">Siluetra AI<small>1 Hari | 12 Kredit</small></div><div class="ik"><i>1x</i><i class="on">💡</i><i>⟲</i><i class="on">👤</i></div></div>
+          <div class="hp-bar"><img class="lg" src="favicon-192.png" alt=""><div class="jd">Siluetra AI<small data-en="1 Day | 12 Credits">1 Hari | 12 Kredit</small></div><div class="ik"><i>1x</i><i class="on">💡</i><i>⟲</i><i class="on">👤</i></div></div>
           <div class="prev cf">
             <img src="foto/cafe.jpg" alt="Ilustrasi: perempuan berfoto di kafe sambil memegang minuman" onerror="this.remove()">
             <div class="panel-ev">
-              <div class="r">☀️ <span style="font-weight:700">Kecerahan</span><b>+0.7</b><span style="color:#fff;margin-left:6px">Reset ✕</span></div>
+              <div class="r">☀️ <span style="font-weight:700" data-en="Brightness">Kecerahan</span><b>+0.7</b><span style="color:#fff;margin-left:6px">Reset ✕</span></div>
               <div class="slider"><i></i><u></u></div>
-              <p>Geser ke kanan bila wajah gelap (melawan cahaya/malam), ke kiri bila langit terlalu terang.</p>
+              <p data-en="Slide right if your face is dark (backlight/night), left if the sky is too bright.">Geser ke kanan bila wajah gelap (melawan cahaya/malam), ke kiri bila langit terlalu terang.</p>
             </div>
           </div>
           <div class="hp-bawah">
-            <div class="chips"><span class="chip">Tampilan</span><span class="chip ev">☀️ +0.7</span><span class="chip">Olahraga</span><span class="chip">Grup ⭐</span></div>
+            <div class="chips"><span class="chip" data-en="View">Tampilan</span><span class="chip ev">☀️ +0.7</span><span class="chip" data-en="Sports">Olahraga</span><span class="chip" data-en="Group ⭐">Grup ⭐</span></div>
             <div class="jepret"><div class="th"></div><div class="sh"></div><div class="au" style="visibility:hidden">AUTO</div></div>
           </div>
         </div>
-        <p class="cap"><b>Kecerahan &amp; lampu layar</b>Wajah tetap terang di kafe, malam, atau melawan cahaya. Semua paket.</p>
+        <p class="cap" data-en="<b>Brightness &amp; screen flash</b>Faces stay bright in cafés, at night or against the light. All plans."><b>Kecerahan &amp; lampu layar</b>Wajah tetap terang di kafe, malam, atau melawan cahaya. Semua paket.</p>
       </div>
 
       <!-- 3. Profil -->
       <div class="layar">
         <div class="hp">
-          <div class="hp-bar"><img class="lg" src="favicon-192.png" alt=""><div class="jd" style="font-size:13px">Profil Saya</div><div class="ik"><i>✕</i></div></div>
+          <div class="hp-bar"><img class="lg" src="favicon-192.png" alt=""><div class="jd" style="font-size:13px" data-en="My Profile">Profil Saya</div><div class="ik"><i>✕</i></div></div>
           <div class="isi-hp">
-            <div class="kt"><div class="rw"><div><b>Andi Pratama</b><div class="mt">WA 0812••••7788 · ID HP a1b2c3d4</div></div><span class="ok">Aktif</span></div></div>
+            <div class="kt"><div class="rw"><div><b>Andi Pratama</b><div class="mt">WA 0812••••7788 · ID HP a1b2c3d4</div></div><span class="ok" data-en="Active">Aktif</span></div></div>
             <div class="kt">
-              <div class="rw"><span class="mt">Paket aktif</span><span class="mt">berakhir 31 Okt</span></div>
-              <div class="rw" style="margin-top:3px"><b style="color:var(--emas);font-size:15px">📅 Bulanan</b><b>23 hari lagi</b></div>
-              <div class="rw" style="margin-top:7px"><span class="mt">Kredit foto</span><span><b style="color:var(--emas)">68</b> sisa</span></div>
+              <div class="rw"><span class="mt" data-en="Current plan">Paket aktif</span><span class="mt" data-en="ends 31 Oct">berakhir 31 Okt</span></div>
+              <div class="rw" style="margin-top:3px"><b style="color:var(--emas);font-size:15px" data-en="📅 Monthly">📅 Bulanan</b><b data-en="23 days left">23 hari lagi</b></div>
+              <div class="rw" style="margin-top:7px"><span class="mt" data-en="Photo credits">Kredit foto</span><span data-en="<b style='color:var(--emas)'>68</b> left"><b style="color:var(--emas)">68</b> sisa</span></div>
               <div class="tr"><i></i></div>
-              <div class="rw mt"><span>Terpakai 32 foto</span><span>Hari ini 6 foto</span></div>
+              <div class="rw mt"><span data-en="Used 32 photos">Terpakai 32 foto</span><span data-en="Today 6 photos">Hari ini 6 foto</span></div>
             </div>
-            <div class="kt"><div class="rw"><div><div class="mt">Total pembelian</div><b>4 kali · Rp21.000</b></div><div style="text-align:right"><div class="mt">Foto 90 hari</div><b>117 foto</b></div></div></div>
-            <div class="kt"><div class="rw"><div><div class="mt">Kode referral</div><b style="letter-spacing:1px">ANDI7K2</b></div><span class="mt" style="color:var(--emas)">📤 Bagikan</span></div></div>
-            <div class="bt1">⭐ Beli / Perpanjang Paket</div>
-            <div class="bt2">📜 Riwayat Pembelian &amp; Kredit</div>
-            <div class="bt2" style="border-color:#2c2946;color:#ccc">💬 Hubungi Admin (WhatsApp)</div>
+            <div class="kt"><div class="rw"><div><div class="mt" data-en="Total purchases">Total pembelian</div><b data-en="4 times · Rp21,000">4 kali · Rp21.000</b></div><div style="text-align:right"><div class="mt" data-en="Photos, 90 days">Foto 90 hari</div><b data-en="117 photos">117 foto</b></div></div></div>
+            <div class="kt"><div class="rw"><div><div class="mt" data-en="Referral code">Kode referral</div><b style="letter-spacing:1px">ANDI7K2</b></div><span class="mt" style="color:var(--emas)" data-en="📤 Share">📤 Bagikan</span></div></div>
+            <div class="bt1" data-en="⭐ Buy / Extend Plan">⭐ Beli / Perpanjang Paket</div>
+            <div class="bt2" data-en="⭐ Write a review, get bonus credits">⭐ Beri ulasan, dapat bonus kredit</div>
+            <div class="bt2" data-en="📜 Purchase &amp; Credit History">📜 Riwayat Pembelian &amp; Kredit</div>
+            <div class="bt2" style="border-color:#2c2946;color:#ccc" data-en="💬 Contact Admin (WhatsApp)">💬 Hubungi Admin (WhatsApp)</div>
           </div>
         </div>
-        <p class="cap"><b>Profil &amp; riwayat</b>Sisa hari, sisa kredit, riwayat pembelian, dan pemakaian kredit per hari.</p>
+        <p class="cap" data-en="<b>Profile &amp; history</b>Days left, credits left, purchase history and daily credit usage."><b>Profil &amp; riwayat</b>Sisa hari, sisa kredit, riwayat pembelian, dan pemakaian kredit per hari.</p>
       </div>
 
       <!-- 4. Paket -->
       <div class="layar">
         <div class="hp">
-          <div class="hp-bar"><img class="lg" src="favicon-192.png" alt=""><div class="jd" style="font-size:13px">Langganan</div><div class="ik"><i>✕</i></div></div>
+          <div class="hp-bar"><img class="lg" src="favicon-192.png" alt=""><div class="jd" style="font-size:13px" data-en="Plans">Langganan</div><div class="ik"><i>✕</i></div></div>
           <div class="isi-hp" id="hpPaket"></div>
         </div>
-        <p class="cap"><b>Beli paket dari aplikasi</b>Pilih paket, bayar QRIS, paket aktif otomatis di HP Anda.</p>
+        <p class="cap" data-en="<b>Buy a plan in the app</b>Pick a plan, pay with QRIS, and it activates on your phone automatically."><b>Beli paket dari aplikasi</b>Pilih paket, bayar QRIS, paket aktif otomatis di HP Anda.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="kenapa">
+  <div class="wadah">
+    <h2 data-en="Sound familiar?">Kenal situasi ini?</h2>
+    <div class="dua">
+      <div class="kartu masalah">
+        <h3 data-en="Without a guide">Tanpa panduan</h3>
+        <ul>
+          <li data-en="You finally reach the view, then freeze: what pose now?">Sudah sampai tempat wisata, tapi bingung mau gaya apa.</li>
+          <li data-en="Someone takes your photo and it comes out stiff, feet cut off.">Minta tolong difotokan, hasilnya kaku dan kaki terpotong.</li>
+          <li data-en="Group photos always end up as the same stiff line-up.">Foto rame-rame, ujungnya semua berdiri berjajar dengan gaya yang sama.</li>
+        </ul>
+      </div>
+      <div class="kartu solusi">
+        <h3 data-en="With Siluetra AI">Dengan Siluetra AI</h3>
+        <ul>
+          <li data-en="A pose silhouette appears on the camera, matched to the scene.">Siluet gaya muncul di kamera, sesuai latar tempat Anda berfoto.</li>
+          <li data-en="Body parts in position turn green; clear tips guide the rest.">Bagian tubuh yang sudah pas berubah hijau, arahan jelas memandu sisanya.</li>
+          <li data-en="Groups can overlap, spread out, or play with perspective. AUTO shoots when everyone is ready.">Grup bisa bertumpuk, berpencar, atau bermain perspektif. AUTO memotret saat semua sudah pas.</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -292,20 +389,28 @@
 
 <section id="cara">
   <div class="wadah">
-    <h2>Cara kerjanya</h2>
-    <p class="sub">Tiga langkah, tanpa perlu jago bergaya.</p>
+    <h2 data-en="How it works">Cara kerjanya</h2>
+    <p class="sub" data-en="Three steps, no modelling skills needed.">Tiga langkah, tanpa perlu jago bergaya.</p>
     <div class="grid3">
-      <div class="kartu"><div class="nomor">1</div><h3>Arahkan kamera</h3><p>Aplikasi mengenali latar (pantai, gunung, candi, kota, kafe, taman, lapangan olahraga) dan memilihkan gaya yang cocok. Bisa juga pilih sendiri atau tekan <b>AI Pose</b>.</p></div>
-      <div class="kartu"><div class="nomor">2</div><h3>Masuk ke siluet</h3><p>Siluet emas muncul di kamera. Bagian yang sudah pas berubah <span style="color:var(--hijau)">hijau</span>, dan arahan seperti "Naikkan tangan (kanan layar)" memandu sisanya.</p></div>
-      <div class="kartu"><div class="nomor">3</div><h3>Jepret</h3><p>Tekan tombol potret, atau aktifkan <b>AUTO</b> (Pro): saat pose sudah pas, hitung mundur 3-2-1 lalu foto tersimpan ke galeri.</p></div>
+      <div class="kartu"><div class="nomor">1</div><h3 data-en="Point the camera">Arahkan kamera</h3><p data-en="The app recognizes the scene (beach, mountain, temple, city, café, park, sports field) and picks matching poses. Or choose your own, or tap <b>AI Pose</b>.">Aplikasi mengenali latar (pantai, gunung, candi, kota, kafe, taman, lapangan olahraga) dan memilihkan gaya yang cocok. Bisa juga pilih sendiri atau tekan <b>AI Pose</b>.</p></div>
+      <div class="kartu"><div class="nomor">2</div><h3 data-en="Step into the silhouette">Masuk ke siluet</h3><p data-en="A gold silhouette appears on the camera. Parts in place turn <span style='color:var(--hijau)'>green</span>, and tips like “Raise your arm (right side)” guide the rest.">Siluet emas muncul di kamera. Bagian yang sudah pas berubah <span style="color:var(--hijau)">hijau</span>, dan arahan seperti "Naikkan tangan (kanan layar)" memandu sisanya.</p></div>
+      <div class="kartu"><div class="nomor">3</div><h3 data-en="Snap">Jepret</h3><p data-en="Tap the shutter, or turn on <b>AUTO</b> (Pro): when the pose matches, a 3-2-1 countdown runs and the photo is saved to your gallery.">Tekan tombol potret, atau aktifkan <b>AUTO</b> (Pro): saat pose sudah pas, hitung mundur 3-2-1 lalu foto tersimpan ke galeri.</p></div>
     </div>
+  </div>
+</section>
+
+<section id="grup">
+  <div class="wadah">
+    <h2><span data-en="Group photos that aren't stiff">Foto grup yang tidak kaku</span> <span class="pro">PRO</span></h2>
+    <p class="sub" data-en="Three ways to pose together, 23 formations for 2–4 people, plus AI Group Pose that builds a new arrangement every tap.">Tiga cara berfoto bersama, 23 formasi untuk 2–4 orang, plus AI Pose Grup yang menyusun gaya baru setiap tekan.</p>
+    <div class="grup-grid" id="grupFitur"></div>
   </div>
 </section>
 
 <section id="gaya">
   <div class="wadah">
-    <h2>Gaya pose</h2>
-    <p class="sub">Sebagian contoh gaya di aplikasi. Paket Basic membuka 2 gaya terbaik di setiap latar; paket Pro membuka semua gaya, pose olahraga, dan formasi grup.</p>
+    <h2 data-en="Pose gallery">Gaya pose</h2>
+    <p class="sub" data-en="A sample of the poses in the app. Basic unlocks the 2 best poses for each scene; Pro unlocks every pose, sports poses and all group formations.">Sebagian contoh gaya di aplikasi. Paket Basic membuka 2 gaya terbaik di setiap latar; paket Pro membuka semua gaya, pose olahraga, dan formasi grup.</p>
     <div class="tab-gaya" id="tabGaya"></div>
     <div class="galeri-gaya" id="galeriGaya"></div>
   </div>
@@ -313,56 +418,73 @@
 
 <section id="contoh">
   <div class="wadah">
-    <h2>Contoh hasil foto</h2>
-    <p class="sub">Gambaran foto yang bisa Anda dapat dengan mengikuti siluet di lokasi wisata. Foto di bawah adalah <b>ilustrasi</b>; kirim hasil foto Anda ke admin untuk ditampilkan di sini.</p>
+    <h2 data-en="Example photos">Contoh hasil foto</h2>
+    <p class="sub" data-en="What you can get by following the silhouette at tourist spots. The images below are <b>illustrations</b>; send your own results to the admin to be featured here.">Gambaran foto yang bisa Anda dapat dengan mengikuti siluet di lokasi wisata. Foto di bawah adalah <b>ilustrasi</b>; kirim hasil foto Anda ke admin untuk ditampilkan di sini.</p>
     <div class="galeri-foto" id="galeriFoto"></div>
   </div>
 </section>
 
 <section id="fitur">
   <div class="wadah">
-    <h2>Fitur</h2>
+    <h2 data-en="Features">Fitur</h2>
     <div class="grid4">
-      <div class="kartu"><div class="ikon">✨</div><h3>Siluet emas</h3><p>Selalu tampil jelas di atas kamera. Garis deteksi tubuh bisa dibuat transparan atau disembunyikan.</p></div>
-      <div class="kartu"><div class="ikon">🏞️</div><h3>Gaya sesuai latar</h3><p>Pantai, gunung, candi, kota, kafe, taman, sampai lapangan olahraga. Duduk atau berdiri pun dikenali.</p></div>
-      <div class="kartu"><div class="ikon">💡</div><h3>Arahan spesifik</h3><p>Tahu persis tangan atau kaki mana yang perlu digeser. Pro menampilkan hingga 4 arahan sekaligus.</p></div>
-      <div class="kartu"><div class="ikon">☀️</div><h3>Kecerahan <span class="semua">SEMUA</span></h3><p>Geser untuk menerangkan wajah saat melawan cahaya atau di tempat redup. Jalan di HP mana pun yang mengizinkan.</p></div>
-      <div class="kartu"><div class="ikon">🤳</div><h3>Lampu layar selfie <span class="semua">SEMUA</span></h3><p>Layar menyala terang sesaat ketika memotret dengan kamera depan, pengganti lampu kilat.</p></div>
-      <div class="kartu"><div class="ikon">📐</div><h3>Selfie lebar &amp; 0.5x</h3><p>Kamera depan menampilkan seluruh area foto; lensa 0.5x di kamera belakang bila HP membukanya.</p></div>
-      <div class="kartu"><div class="ikon">⏱️</div><h3>Timer &amp; AUTO <span class="pro">PRO</span></h3><p>Timer 2/5/10 detik, atau jepret otomatis saat pose sudah pas. Cocok untuk foto sendiri dengan tripod.</p></div>
-      <div class="kartu"><div class="ikon">👥</div><h3>Foto grup <span class="pro">PRO</span></h3><p>Formasi 2–4 orang, warna berbeda untuk tiap orang, lengkap dengan arahannya.</p></div>
+      <div class="kartu"><div class="ikon">✨</div><h3 data-en="Gold silhouette">Siluet emas</h3><p data-en="Always clearly visible over the camera. Body detection lines can be made transparent or hidden.">Selalu tampil jelas di atas kamera. Garis deteksi tubuh bisa dibuat transparan atau disembunyikan.</p></div>
+      <div class="kartu"><div class="ikon">🏞️</div><h3 data-en="Poses for the scene">Gaya sesuai latar</h3><p data-en="Beach, mountain, temple, city, café, park, even sports fields. Sitting or standing is recognized too.">Pantai, gunung, candi, kota, kafe, taman, sampai lapangan olahraga. Duduk atau berdiri pun dikenali.</p></div>
+      <div class="kartu"><div class="ikon">💡</div><h3 data-en="Specific tips">Arahan spesifik</h3><p data-en="Know exactly which arm or leg to move. Pro shows up to 4 tips at once.">Tahu persis tangan atau kaki mana yang perlu digeser. Pro menampilkan hingga 4 arahan sekaligus.</p></div>
+      <div class="kartu"><div class="ikon">☀️</div><h3><span data-en="Brightness">Kecerahan</span> <span class="semua" data-en="ALL">SEMUA</span></h3><p data-en="Slide to brighten faces against the light or in dim places. Works on any phone that allows it.">Geser untuk menerangkan wajah saat melawan cahaya atau di tempat redup. Jalan di HP mana pun yang mengizinkan.</p></div>
+      <div class="kartu"><div class="ikon">🤳</div><h3><span data-en="Selfie screen flash">Lampu layar selfie</span> <span class="semua" data-en="ALL">SEMUA</span></h3><p data-en="The screen lights up briefly when shooting with the front camera, instead of a flash.">Layar menyala terang sesaat ketika memotret dengan kamera depan, pengganti lampu kilat.</p></div>
+      <div class="kartu"><div class="ikon">📐</div><h3 data-en="Wide selfie &amp; 0.5x">Selfie lebar &amp; 0.5x</h3><p data-en="The front camera shows the whole frame; 0.5x lens on the back camera when your phone allows it.">Kamera depan menampilkan seluruh area foto; lensa 0.5x di kamera belakang bila HP membukanya.</p></div>
+      <div class="kartu"><div class="ikon">⏱️</div><h3><span data-en="Timer &amp; AUTO">Timer &amp; AUTO</span> <span class="pro">PRO</span></h3><p data-en="2/5/10-second timer, or automatic shot when the pose matches. Great for solo shots on a tripod.">Timer 2/5/10 detik, atau jepret otomatis saat pose sudah pas. Cocok untuk foto sendiri dengan tripod.</p></div>
+      <div class="kartu"><div class="ikon">👥</div><h3><span data-en="Group photos">Foto grup</span> <span class="pro">PRO</span></h3><p data-en="2–4 people: side by side, layered, spread out, forced perspective, and AI Group Pose.">2–4 orang: sejajar, berlapis, berpencar, trik perspektif, dan AI Pose Grup.</p></div>
     </div>
   </div>
 </section>
 
 <section id="harga">
   <div class="wadah">
-    <h2>Harga</h2>
-    <p class="sub">Pilih sesuai kebutuhan: sehari untuk jalan-jalan, bulanan untuk dipakai terus. Bayar QRIS dari e-wallet atau m-banking apa pun.</p>
+    <h2 data-en="Pricing">Harga</h2>
+    <p class="sub" data-en="Pick what fits: a day pass for a trip, monthly for everyday use. Pay with QRIS from any Indonesian e-wallet or mobile banking app.">Pilih sesuai kebutuhan: sehari untuk jalan-jalan, bulanan untuk dipakai terus. Bayar QRIS dari e-wallet atau m-banking apa pun.</p>
     <div class="harga" id="hargaUtama"></div>
-    <div class="judul-lain">Paket lain</div>
+    <div class="judul-lain" data-en="Other plans">Paket lain</div>
     <div class="harga lain" id="hargaLain"></div>
     <noscript><p class="catatan">Aktifkan JavaScript untuk melihat daftar paket, atau buka <a href="beli.html">halaman pembelian</a>.</p></noscript>
-    <p class="catatan">1 kredit = 1 foto yang berhasil tersimpan. Beli lagi sebelum masa aktif habis: sisa hari dan kredit ditambahkan. Punya kode referral teman? Masukkan saat membeli, Anda dan teman sama-sama mendapat bonus kredit.</p>
+    <p class="catatan" data-en="1 credit = 1 successfully saved photo. Buy again before your plan ends and the remaining days and credits carry over. Have a friend's referral code? Enter it when buying and you both get bonus credits.">1 kredit = 1 foto yang berhasil tersimpan. Beli lagi sebelum masa aktif habis: sisa hari dan kredit ditambahkan. Punya kode referral teman? Masukkan saat membeli, Anda dan teman sama-sama mendapat bonus kredit.</p>
+  </div>
+</section>
+
+<section id="ulasan">
+  <div class="wadah">
+    <h2 data-en="What users say">Kata pengguna</h2>
+    <div id="isiUlasan"></div>
+  </div>
+</section>
+
+<section id="hidup" class="tersembunyi">
+  <div class="wadah">
+    <h2 data-en="Siluetra today">Siluetra hari ini</h2>
+    <p class="sub" data-en="Real numbers from our server, refreshed every 10 minutes.">Angka asli dari server kami, diperbarui setiap 10 menit.</p>
+    <div class="stat-grid" id="statGrid"></div>
+    <div class="kota-list" id="kotaList"></div>
+    <p class="catatan" data-en="Visitor locations are estimated at city level; we do not store IP addresses. See the Privacy Policy.">Lokasi pengunjung diperkirakan sampai tingkat kota; alamat IP tidak disimpan. Lihat Kebijakan Privasi.</p>
   </div>
 </section>
 
 <section id="pasang">
   <div class="wadah">
-    <h2>Pasang aplikasi</h2>
+    <h2 data-en="Install the app">Pasang aplikasi</h2>
     <div class="grid3" style="grid-template-columns:1.3fr 1fr">
       <div class="kartu">
         <ol class="langkah">
-          <li>Tekan tombol unduh di bawah, simpan file <b>Siluetra.apk</b>.</li>
-          <li>Buka file tersebut. Bila diminta, izinkan pemasangan dari browser/pengelola file ini.</li>
-          <li>Buka aplikasi, izinkan kamera, lalu tekan ikon <b>👤 Profil</b> untuk mencoba gratis atau membeli paket.</li>
+          <li data-en="Tap <b>Download</b> below. You will go to the official Siluetra AI page on APKPure.">Tekan tombol <b>Unduh</b> di bawah. Anda akan dibawa ke halaman resmi Siluetra AI di APKPure.</li>
+          <li data-en="Tap <b>Download APK</b>, then open the downloaded file. If asked, allow installs from this browser.">Tekan <b>Download APK</b>, lalu buka file yang terunduh. Bila diminta, izinkan pemasangan dari browser ini.</li>
+          <li data-en="Open the app, allow the camera, then tap <b>👤 Profile</b> to try it free or buy a plan.">Buka aplikasi, izinkan kamera, lalu tekan ikon <b>👤 Profil</b> untuk mencoba gratis atau membeli paket.</li>
         </ol>
-        <a class="tombol emas" id="unduh" href="#">⬇ Unduh APK</a>
-        <p class="catatan">Versi <span id="versi">1.0</span> • Sidik jari SHA-256 file resmi:<br><code id="sha">–</code></p>
+        <a class="tombol emas" id="unduh" href="#" target="_blank" rel="noopener" data-en="⬇ Download the app">⬇ Unduh aplikasi</a>
+        <p class="catatan" id="infoVersi"></p>
       </div>
       <div class="kartu">
-        <h3>Aman &amp; privat</h3>
-        <p>Pose diproses langsung di HP. Foto tersimpan di galeri Anda sendiri dan tidak diunggah. Yang kami simpan hanya status paket dan jumlah pemakaian kredit.</p>
+        <h3 data-en="Safe &amp; private">Aman &amp; privat</h3>
+        <p data-en="Poses are processed on your phone. Photos stay in your own gallery and are never uploaded. We only store your plan status and credit usage.">Pose diproses langsung di HP. Foto tersimpan di galeri Anda sendiri dan tidak diunggah. Yang kami simpan hanya status paket dan jumlah pemakaian kredit.</p>
       </div>
     </div>
   </div>
@@ -370,45 +492,52 @@
 
 <section id="faq">
   <div class="wadah">
-    <h2>Pertanyaan umum</h2>
-    <details><summary>Bagaimana cara mencoba gratis?</summary><p>Buka aplikasi, tekan ikon 👤 Profil lalu <b>Beli / Perpanjang Paket</b>, kemudian pilih <b>Coba Gratis</b>. Anda mendapat <span class="trialFaq">1 hari dengan 5 kredit foto</span>, sekali per HP.</p></details>
-    <details><summary>Apa itu kredit foto?</summary><p>Setiap foto yang berhasil tersimpan memakai 1 kredit. Foto yang gagal tidak memotong kredit. Sisa kredit dan riwayat pemakaiannya bisa dilihat di menu 👤 Profil.</p></details>
-    <details><summary>Bedanya Basic dan Pro?</summary><p>Basic: siluet pose solo, 2 gaya terbaik per latar, AI Pose 2 variasi, 1 arahan di layar, kecerahan, dan lampu layar. Pro: semua gaya dan pose olahraga, hingga 4 arahan, AI Pose 4 variasi, timer, jepret otomatis, foto grup 2–4 orang, dan zoom otomatis.</p></details>
-    <details><summary>Berapa lama pembayaran diverifikasi?</summary><p>Biasanya beberapa menit. Bayar tepat sesuai nominal yang tertera (ada angka unik di belakangnya, misalnya Rp9.963) agar pembayaran langsung cocok.</p></details>
-    <details><summary>Bisa melihat riwayat pembelian?</summary><p>Bisa. Di menu 👤 Profil ada <b>Riwayat Pembelian &amp; Kredit</b>: tanggal beli, paket apa, jumlah bayar, bukti pembelian yang bisa dibagikan, dan pemakaian kredit per hari.</p></details>
-    <details><summary>Bisa dipakai di HP lain?</summary><p>Satu paket untuk satu HP. Bila berganti HP, hubungi admin melalui WhatsApp untuk pemindahan paket.</p></details>
-    <details><summary>HP saya muncul peringatan saat memasang</summary><p>Itu wajar untuk aplikasi yang dipasang di luar Play Store. Pastikan file diunduh dari situs ini dan sidik jari SHA-256 sama dengan yang tertera di atas.</p></details>
+    <h2 data-en="Frequently asked questions">Pertanyaan umum</h2>
+    <details><summary data-en="How do I try it for free?">Bagaimana cara mencoba gratis?</summary><p id="faqTrial"></p></details>
+    <details><summary data-en="What is a photo credit?">Apa itu kredit foto?</summary><p data-en="Each successfully saved photo uses 1 credit. Failed shots don't cost credits. Your remaining credits and usage history are in the 👤 Profile menu.">Setiap foto yang berhasil tersimpan memakai 1 kredit. Foto yang gagal tidak memotong kredit. Sisa kredit dan riwayat pemakaiannya bisa dilihat di menu 👤 Profil.</p></details>
+    <details><summary data-en="What's the difference between Basic and Pro?">Bedanya Basic dan Pro?</summary><p data-en="Basic: solo pose silhouettes, 2 best poses per scene, AI Pose 2 variations, 1 on-screen tip, brightness and screen flash. Pro: every pose and sports pose, up to 4 tips, AI Pose 4 variations, timer, auto shutter, group photos for 2–4 (layered, spread out, forced perspective), AI Group Pose, and auto zoom.">Basic: siluet pose solo, 2 gaya terbaik per latar, AI Pose 2 variasi, 1 arahan di layar, kecerahan, dan lampu layar. Pro: semua gaya dan pose olahraga, hingga 4 arahan, AI Pose 4 variasi, timer, jepret otomatis, foto grup 2–4 orang (berlapis, berpencar, trik perspektif), AI Pose Grup, dan zoom otomatis.</p></details>
+    <details><summary data-en="What are layered and spread-out group photos?">Foto grup berlapis &amp; berpencar itu apa?</summary><p data-en="<b>Layered</b>: people may overlap (hug from behind, chin on shoulder, head tower); only each face and shoulders need to be visible. <b>Spread out</b>: everyone gets a colored circle on screen, near or far from the camera; the app tells each person to step closer, back, left or right. <b>Forced perspective</b>: a friend far away looks tiny, standing on your palm.">
+      <b>Berlapis</b>: orang boleh saling menutupi (peluk dari belakang, dagu di bahu, menara kepala); cukup wajah dan bahu tiap orang terlihat. <b>Berpencar</b>: tiap orang mendapat lingkaran warna di layar, dekat atau jauh dari kamera; aplikasi memberi tahu siapa yang perlu maju, mundur, atau geser. <b>Trik perspektif</b>: teman di kejauhan tampak kecil berdiri di telapak tangan.</p></details>
+    <details><summary data-en="How long does payment verification take?">Berapa lama pembayaran diverifikasi?</summary><p data-en="Usually a few minutes. Pay the exact amount shown (it ends with a unique number, e.g. Rp9,963) so the payment matches right away.">Biasanya beberapa menit. Bayar tepat sesuai nominal yang tertera (ada angka unik di belakangnya, misalnya Rp9.963) agar pembayaran langsung cocok.</p></details>
+    <details><summary data-en="How do I get the review bonus?">Bagaimana cara mendapat bonus ulasan?</summary><p id="faqUlasan"></p></details>
+    <details><summary data-en="Can I see my purchase history?">Bisa melihat riwayat pembelian?</summary><p data-en="Yes. The 👤 Profile menu has <b>Purchase &amp; Credit History</b>: date, plan, amount paid, a shareable receipt, and daily credit usage.">Bisa. Di menu 👤 Profil ada <b>Riwayat Pembelian &amp; Kredit</b>: tanggal beli, paket apa, jumlah bayar, bukti pembelian yang bisa dibagikan, dan pemakaian kredit per hari.</p></details>
+    <details><summary data-en="Can I use it on another phone?">Bisa dipakai di HP lain?</summary><p data-en="One plan works on one phone. If you change phones, contact the admin on WhatsApp to move your plan.">Satu paket untuk satu HP. Bila berganti HP, hubungi admin melalui WhatsApp untuk pemindahan paket.</p></details>
+    <details><summary data-en="My phone shows a warning when installing">HP saya muncul peringatan saat memasang</summary><p data-en="That is normal for apps installed outside the Play Store. Only download from the official link on this page. If in doubt, ask the admin on WhatsApp.">Itu wajar untuk aplikasi yang dipasang di luar Play Store. Unduh hanya dari tautan resmi di halaman ini. Bila ragu, tanyakan ke admin lewat WhatsApp.</p></details>
+    <details><summary data-en="What does this website record?">Data apa yang dicatat website ini?</summary><p data-en="Only the number of visits per day and each visitor's estimated city and country, without IP addresses, for statistics. Details are in the <a href='kebijakan-privasi.html'>Privacy Policy</a>.">Hanya jumlah kunjungan per hari serta perkiraan kota dan negara pengunjung, tanpa alamat IP, untuk statistik. Rinciannya ada di <a href="kebijakan-privasi.html">Kebijakan Privasi</a>.</p></details>
   </div>
 </section>
 
 <footer>
   <div class="wadah">
     <span>© <span id="tahun"></span> Siluetra AI</span>
-    <a href="kebijakan-privasi.html">Kebijakan Privasi</a>
-    <a href="syarat.html">Syarat Layanan</a>
+    <a href="kebijakan-privasi.html" data-lang-link data-en="Privacy Policy">Kebijakan Privasi</a>
+    <a href="syarat.html" data-lang-link data-en="Terms of Service">Syarat Layanan</a>
+    <a href="ulasan.html" data-lang-link data-en="Write a review">Beri ulasan</a>
     <div class="kanan"><a id="ig" href="#">Instagram</a><a id="tt" href="#">TikTok</a></div>
   </div>
 </footer>
-<a class="wa" id="wa" href="#">💬 Tanya Admin</a>
+<a class="wa" id="wa" href="#" data-en="💬 Ask Admin">💬 Tanya Admin</a>
 
 <script>
 /* ======================== KONFIGURASI ======================== */
 const KONFIG = {
-  APK_URL: 'Siluetra.apk',
+  // URL Web App Apps Script (sama dengan API_URL di beli.html). Dipakai untuk ulasan & statistik.
+  API_URL: 'https://script.google.com/macros/s/AKfycbza5qiuxecRf7sswg575EcmvYQpvO0qF_lIsWbehOfw4wNTLGamPXs-GXCJWruV4EJd/exec',
+  APK_URL: 'https://apkpure.com/',   // GANTI dengan alamat halaman Siluetra AI di APKPure setelah tayang
   APK_VERSI: '1.0',
-  APK_SHA256: '',
   WA_ADMIN: '628817014279',          // format internasional tanpa +
   INSTAGRAM: 'https://instagram.com/siluetra.ai',
   TIKTOK: 'https://tiktok.com/@siluetra.ai',
   TRIAL: { hari: 1, kredit: 5 },
+  BONUS_ULASAN: { kredit: 5, hari: 3 }, // diperbarui otomatis dari server (KONFIGURASI)
   // Samakan dengan sheet KONFIGURASI (PAKET_*). Nominal tagihan tetap dari server.
   PAKET: [
-    { kode:'SEHARI',      nama:'Sehari',      ikon:'☀️', harga:3000,  hari:1,  kredit:15,  pro:false, utama:true },
-    { kode:'BULANAN',     nama:'Bulanan',     ikon:'📅', harga:10000, hari:30, kredit:100, pro:false, utama:true, pita:'Paling sering dipilih' },
-    { kode:'PRO',         nama:'Pro',         ikon:'⭐', harga:20000, hari:30, kredit:250, pro:true,  utama:true },
-    { kode:'WEEKEND',     nama:'Weekend',     ikon:'🏖️', harga:5000,  hari:3,  kredit:30,  pro:false },
-    { kode:'LIBURAN',     nama:'Liburan',     ikon:'🧳', harga:7000,  hari:7,  kredit:50,  pro:false },
-    { kode:'PRO_LIBURAN', nama:'Pro Liburan', ikon:'🌟', harga:8000,  hari:3,  kredit:40,  pro:true }
+    { kode:'SEHARI',      nama:'Sehari',      en:'1 Day',       ikon:'☀️', harga:3000,  hari:1,  kredit:15,  pro:false, utama:true },
+    { kode:'BULANAN',     nama:'Bulanan',     en:'Monthly',     ikon:'📅', harga:10000, hari:30, kredit:100, pro:false, utama:true, pita:'Paling sering dipilih', pitaEn:'Most popular' },
+    { kode:'PRO',         nama:'Pro',         en:'Pro',         ikon:'⭐', harga:20000, hari:30, kredit:250, pro:true,  utama:true },
+    { kode:'WEEKEND',     nama:'Weekend',     en:'Weekend',     ikon:'🏖️', harga:5000,  hari:3,  kredit:30,  pro:false },
+    { kode:'LIBURAN',     nama:'Liburan',     en:'Holiday',     ikon:'🧳', harga:7000,  hari:7,  kredit:50,  pro:false },
+    { kode:'PRO_LIBURAN', nama:'Pro Liburan', en:'Pro Holiday', ikon:'🌟', harga:8000,  hari:3,  kredit:40,  pro:true }
   ]
 };
 /* ============================================================= */
@@ -416,19 +545,33 @@ const KONFIG = {
 <script>
 (function(){
 const $ = id => document.getElementById(id);
-const rp = n => 'Rp' + Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+const rp = n => 'Rp' + Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, BHS === 'en' ? ',' : '.');
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
 
-/* ---------- Tautan & teks umum ---------- */
-$('unduh').href = KONFIG.APK_URL;
-$('versi').textContent = KONFIG.APK_VERSI;
-if (KONFIG.APK_SHA256) $('sha').textContent = KONFIG.APK_SHA256; else $('sha').parentNode.textContent = 'Versi ' + KONFIG.APK_VERSI;
-$('wa').href = 'https://wa.me/' + KONFIG.WA_ADMIN + '?text=' + encodeURIComponent('Halo admin Siluetra AI, saya mau tanya.');
-$('ig').href = KONFIG.INSTAGRAM; $('tt').href = KONFIG.TIKTOK;
-$('tahun').textContent = new Date().getFullYear();
-const T = KONFIG.TRIAL;
-$('trialTeks').textContent = T.hari + ' hari (' + T.kredit + ' foto)';
-document.querySelectorAll('.trialFaq').forEach(e => e.textContent = T.hari + ' hari dengan ' + T.kredit + ' kredit foto');
-$('hargaMulai').textContent = rp(Math.min.apply(null, KONFIG.PAKET.map(p => p.harga)));
+/* ---------- Bahasa (ID / EN) ---------- */
+let BHS = 'id';
+const L = (id, en) => BHS === 'en' ? en : id;
+function bahasaAwal() {
+  const q = new URLSearchParams(location.search).get('lang');
+  if (q === 'en' || q === 'id') return q;
+  try { const s = localStorage.getItem('bahasa'); if (s === 'en' || s === 'id') return s; } catch (e) {}
+  const tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || '');
+  if (/^Asia\/(Jakarta|Pontianak|Makassar|Jayapura)$/.test(tz)) return 'id';
+  return /^(id|in|ms)/i.test(navigator.language || '') ? 'id' : 'en';
+}
+function terapkanBahasa(simpan) {
+  document.documentElement.lang = BHS;
+  document.querySelectorAll('[data-en]').forEach(el => {
+    if (el.dataset.id === undefined) el.dataset.id = el.innerHTML;
+    el.innerHTML = BHS === 'en' ? el.dataset.en : el.dataset.id;
+  });
+  document.querySelectorAll('.bhs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.l === BHS));
+  document.title = L('Siluetra AI – Kamera Pemandu Pose Foto', 'Siluetra AI – Photo Pose Guide Camera');
+  document.querySelectorAll('a[data-lang-link]').forEach(a => { const u = a.getAttribute('href').split('?')[0]; a.href = u + (BHS === 'en' ? '?lang=en' : ''); });
+  if (simpan) { try { localStorage.setItem('bahasa', BHS); } catch (e) {} }
+  renderSemua();
+}
+document.querySelectorAll('.bhs button').forEach(b => b.onclick = () => { BHS = b.dataset.l; terapkanBahasa(true); });
 
 /* ---------- Siluet (logika gambar sama dengan aplikasi) ---------- */
 const K = ['N','LS','RS','LE','RE','LW','RW','LH','RH','LK','RK','LA','RA'];
@@ -471,54 +614,96 @@ function siluetKamera(p, o) {
     '<g mask="url(#' + id + ')" fill="' + emas + '" stroke="' + emas + '">' + bentuk(p, o.lengan, o.kaki, tepi, null) + '</g>' +
     '<g mask="url(#' + id + ')" stroke="#00E676">' + garisHijau(o.lengan + tepi) + '</g></g>';
 }
-
 /* Data gaya: [latar, nama, terbuka untuk Basic (1/0), 13 titik x,y dalam skala 0-100] */
 const POSE = [["gunung","Tunjuk Cakrawala",1,[50,20,38,32,62,32,36,46,73,22,34,59,82,14,42,55,58,55,38,72,62,72,35,89,65,89]],["gunung","Menatap Lembah",0,[54,20,44,32,59,31,36,44,68,19,45,53,55,15,46,55,56,55,45,72,53,72,45,91,56,90]],["gunung","Satu Kaki di Batu",0,[50,20,38,32,62,32,29,43,61,46,39,51,60,59,42,55,58,55,41,72,66,70,41,90,64,88]],["gunung","Kepal Tangan Juara",0,[50,20,38,32,62,32,29,43,66,18,39,51,66,5,42,55,58,55,38,72,62,72,35,89,65,89]],["gunung","Duduk di Batu",0,[50,26,37,38,63,38,36,53,64,53,36,66,64,66,40,62,60,62,35,68,65,68,36,90,64,90]],["pantai","Rambut Tertiup Angin",1,[50,20,38,32,62,32,33,18,67,18,45,13,55,13,42,55,58,55,41,72,55,72,41,90,58,89]],["pantai","Jalan di Bibir Pantai",0,[54,20,44,32,59,31,38,45,65,44,36,58,69,57,46,55,56,55,42,72,60,72,35,89,61,90]],["pantai","Lompat Ceria",0,[50,20,38,32,62,32,31,20,69,20,26,8,74,8,42,55,58,55,31,68,69,68,40,84,60,84]],["pantai","Sambut Angin Laut",0,[50,19,38,32,62,32,24,36,76,36,12,40,88,40,42,55,58,55,41,72,59,72,41,90,59,90]],["pantai","Duduk Peluk Lutut",0,[50,36,39,47,61,47,28,57,72,57,40,64,60,64,42,71,58,71,37,58,63,58,40,82,60,82]],["pantai","Pegang Topi",0,[50,20,38,32,62,32,29,43,64,18,39,51,53,12,42,55,58,55,45,72,56,72,50,89,56,90]],["candi","Tangan di Belakang",1,[50,20,38,32,62,32,38,46,62,46,48,55,52,55,42,55,58,55,41,72,55,72,41,90,58,89]],["candi","Tunjuk Relief",0,[54,20,44,32,59,31,42,46,73,28,40,60,86,27,46,55,56,55,45,72,53,72,45,91,56,90]],["candi","Duduk di Anak Tangga",0,[50,26,37,38,63,38,30,51,63,53,34,64,60,66,40,62,60,62,36,68,60,66,38,90,44,86]],["candi","Telapak Menyatu",0,[50,20,38,32,62,32,41,46,59,46,50,36,50,36,42,55,58,55,41,72,59,72,41,90,59,90]],["candi","Siluet Samping",0,[57,21,49,32,52,32,48,46,52,46,48,59,54,59,48,55,51,55,46,72,53,72,46,90,51,90]],["kota","Menyeberang Jalan",0,[54,20,44,32,59,31,39,46,58,46,37,59,57,32,46,55,56,55,42,72,60,72,35,89,61,90]],["kota","Tangan di Saku",0,[50,20,38,32,62,32,35,46,65,46,40,57,60,57,42,55,58,55,45,72,56,72,50,89,56,90]],["kota","Pegang Kacamata",0,[50,20,38,32,62,32,36,46,68,19,34,59,55,19,42,55,58,55,41,72,55,72,41,90,58,89]],["kota","Pura-pura Memotret",0,[50,20,38,32,62,32,52,37,48,37,46,25,54,25,42,55,58,55,41,72,55,72,41,90,58,89]],["kota","Bersandar di Tiang",0,[54,20,44,32,59,31,30,34,66,44,38,24,55,50,46,55,56,55,49,72,55,72,55,90,54,91]],["kafe","Cheers Cangkir",0,[50,26,37,38,63,38,33,52,77,33,44,60,64,30,40,62,60,62,35,68,65,68,36,90,64,90]],["kafe","Pegang Cangkir Dua Tangan",0,[50,26,37,38,63,38,45,50,55,50,48,37,52,37,40,62,60,62,35,68,65,68,36,90,64,90]],["kafe","Membaca Buku / Menu",0,[50,28,37,38,63,38,31,52,69,52,44,50,56,50,40,62,60,62,35,68,65,68,36,90,64,90]],["kafe","Topang Dagu Dua Tangan",0,[50,26,37,38,63,38,51,44,49,44,46,31,54,31,40,62,60,62,35,68,65,68,36,90,64,90]],["kafe","Berdiri Pegang Kopi",0,[54,20,44,32,59,31,40,46,64,44,39,59,53,38,46,55,56,55,49,72,55,72,55,90,54,91]],["taman","Cium Aroma Bunga",1,[51,21,38,32,62,32,51,38,49,38,48,25,52,25,42,55,58,55,41,72,55,72,41,90,58,89]],["taman","Telapak Terbuka",0,[50,19,38,32,62,32,26,39,74,39,13,40,87,40,42,55,58,55,41,72,59,72,41,90,59,90]],["taman","Lempar Daun ke Udara",0,[50,20,38,32,62,32,33,19,67,19,31,6,69,6,42,55,58,55,41,72,55,72,41,90,58,89]],["taman","Duduk Kaki Menyamping",0,[48,36,37,47,59,47,31,61,68,59,33,74,61,70,40,71,56,71,62,76,70,73,45,80,53,79]],["taman","Buket di Bahu",0,[54,20,44,32,59,31,40,46,73,28,39,59,60,27,46,55,56,55,45,72,53,72,45,91,56,90]],["olahraga","Backhand Dua Tangan",0,[54,20,44,32,59,31,42,46,47,39,30,40,34,42,46,55,56,55,42,72,60,72,39,90,63,90]],["olahraga","Volley di Net",0,[50,20,38,32,62,32,31,44,75,38,37,56,70,26,42,55,58,55,36,69,64,69,36,87,64,87]],["olahraga","Raket & Kepalan Juara",0,[50,20,38,32,62,32,31,20,67,19,30,7,68,6,42,55,58,55,38,72,62,72,35,89,65,89]],["olahraga","Kuda-kuda Siap",0,[50,20,38,32,62,32,25,27,75,27,22,14,75,14,42,55,58,55,36,71,64,71,35,89,65,89]],["olahraga","Raket di Bahu",0,[50,20,38,32,62,32,29,43,76,33,39,51,64,29,42,55,58,55,41,72,55,72,41,90,58,89]],["olahraga","Putar Bola di Jari",0,[50,20,38,32,62,32,35,46,66,18,48,44,67,5,42,55,58,55,41,72,55,72,41,90,58,89]],["olahraga","Block di Net",0,[50,19,38,32,62,32,36,18,64,18,36,5,64,5,42,55,58,55,41,72,59,72,41,90,59,90]],["olahraga","Servis Atas",0,[54,20,44,32,59,31,39,18,70,22,37,5,60,13,46,55,56,55,42,72,60,72,35,89,61,90]],["olahraga","Juggling Lutut",0,[50,20,38,32,62,32,26,39,74,39,19,50,81,50,42,55,58,55,42,70,65,68,42,87,62,85]],["olahraga","Kaki di Atas Bola",0,[50,20,38,32,62,32,29,43,71,43,39,51,61,51,42,55,58,55,42,70,63,69,42,88,62,87]],["olahraga","Jogging Menghadap Kamera",0,[50,20,38,32,62,32,37,46,64,46,43,35,69,58,42,55,58,55,41,69,62,68,41,86,55,85]],["olahraga","Peregangan Paha",0,[57,21,49,32,52,32,53,46,66,32,46,56,79,30,48,55,51,55,45,72,51,72,47,54,51,90]],["olahraga","Pegang Setang & Jempol",0,[54,20,44,32,59,31,43,46,50,42,30,50,62,38,46,55,56,55,45,72,53,72,45,91,56,90]],["olahraga","Istirahat di Rumput",0,[50,36,39,47,61,47,34,61,74,53,30,74,62,58,42,71,58,71,37,58,63,58,40,82,60,82]],["olahraga","Tenteng Helm",0,[50,20,38,32,62,32,35,46,60,46,40,57,72,52,42,55,58,55,45,72,56,72,50,89,56,90]],["olahraga","Duduk Menyamping di Jok",0,[50,26,37,38,63,38,29,51,64,53,30,64,56,64,40,62,60,62,36,68,60,66,38,90,44,86]],["olahraga","Backswing",0,[54,20,44,32,59,31,58,29,74,32,66,18,68,20,46,55,56,55,42,72,60,72,39,90,63,90]],["olahraga","Bertumpu pada Stik",0,[50,20,38,32,62,32,43,45,57,45,48,57,52,57,42,55,58,55,45,72,56,72,50,89,56,90]],["olahraga","Warrior II",0,[50,20,38,32,62,32,24,32,76,32,11,32,89,32,42,55,58,55,36,71,67,69,30,88,66,87]],["olahraga","Squat",0,[50,26,38,38,62,38,45,50,55,50,48,38,52,38,42,61,58,61,34,72,66,72,37,90,63,90]]];
-const LATAR = { pantai:'🏖️ Pantai', gunung:'⛰️ Gunung', candi:'🛕 Candi', kota:'🏙️ Kota', kafe:'☕ Kafe & Duduk', taman:'🌷 Taman', olahraga:'🏸 Olahraga', grup:'👥 Grup' };
+const POSE_EN = {"Tunjuk Cakrawala":"Point to the Horizon","Menatap Lembah":"Gazing at the Valley","Satu Kaki di Batu":"Foot on a Rock","Kepal Tangan Juara":"Victory Fist","Duduk di Batu":"Sitting on a Rock","Rambut Tertiup Angin":"Hair in the Wind","Jalan di Bibir Pantai":"Shoreline Walk","Lompat Ceria":"Happy Jump","Sambut Angin Laut":"Welcome the Sea Breeze","Duduk Peluk Lutut":"Hugging the Knees","Pegang Topi":"Holding the Hat","Tangan di Belakang":"Hands Behind the Back","Tunjuk Relief":"Pointing at the Relief","Duduk di Anak Tangga":"Sitting on the Steps","Telapak Menyatu":"Palms Together","Siluet Samping":"Side Silhouette","Menyeberang Jalan":"Crossing the Street","Tangan di Saku":"Hands in Pockets","Pegang Kacamata":"Touching the Sunglasses","Pura-pura Memotret":"Taking a Photo","Bersandar di Tiang":"Leaning on a Pole","Cheers Cangkir":"Cheers with the Cup","Pegang Cangkir Dua Tangan":"Cup in Both Hands","Membaca Buku / Menu":"Reading a Book / Menu","Topang Dagu Dua Tangan":"Chin on Both Hands","Berdiri Pegang Kopi":"Standing with Coffee","Cium Aroma Bunga":"Smelling the Flower","Telapak Terbuka":"Open Palms","Lempar Daun ke Udara":"Toss the Leaves","Duduk Kaki Menyamping":"Side-Legged Sit","Buket di Bahu":"Bouquet on the Shoulder","Backhand Dua Tangan":"Two-Handed Backhand","Volley di Net":"Net Volley","Raket & Kepalan Juara":"Racket & Victory Fist","Kuda-kuda Siap":"Ready Stance","Raket di Bahu":"Racket on the Shoulder","Putar Bola di Jari":"Ball Spin","Block di Net":"Net Block","Servis Atas":"Overhand Serve","Juggling Lutut":"Knee Juggling","Kaki di Atas Bola":"Foot on the Ball","Jogging Menghadap Kamera":"Jogging Toward the Camera","Peregangan Paha":"Quad Stretch","Pegang Setang & Jempol":"Handlebar & Thumbs Up","Istirahat di Rumput":"Resting on the Grass","Tenteng Helm":"Holding the Helmet","Duduk Menyamping di Jok":"Side-Saddle","Backswing":"Backswing","Bertumpu pada Stik":"Resting on the Club","Warrior II":"Warrior II","Squat":"Squat"};
+const LATAR = { pantai:['🏖️ Pantai','🏖️ Beach'], gunung:['⛰️ Gunung','⛰️ Mountain'], candi:['🛕 Candi','🛕 Temple'], kota:['🏙️ Kota','🏙️ City'], kafe:['☕ Kafe & Duduk','☕ Café & Seated'], taman:['🌷 Taman','🌷 Park'], olahraga:['🏸 Olahraga','🏸 Sports'], grup:['👥 Grup','👥 Groups'] };
+const latar = k => L(LATAR[k][0], LATAR[k][1]);
+const namaPose = n => BHS === 'en' ? (POSE_EN[n] || n) : n;
 const cari = nama => POSE.find(p => p[1] === nama);
-const GRUP = [
-  { nama:'Lompat Bareng', orang:['Lompat Ceria','Lompat Ceria','Lompat Ceria','Lompat Ceria'] },
-  { nama:'Bertiga Juara', orang:['Kepal Tangan Juara','Tunjuk Cakrawala','Kepal Tangan Juara'] },
-  { nama:'Berdua Santai', orang:['Tangan di Saku','Tangan di Belakang'] },
-  { nama:'Berempat Sambut Angin', orang:['Sambut Angin Laut','Telapak Terbuka','Telapak Terbuka','Sambut Angin Laut'] }
-];
-const WARNA_ORANG = ['#FFD700','#00E5FF','#E100FF','#00E676'];
 function svgPose(arr) { return '<svg viewBox="-2 -4 104 104" aria-hidden="true">' + siluet(titik(arr), { lengan:7, kaki:9 }) + '</svg>'; }
-function svgGrup(g) {
-  const n = g.orang.length, sc = Math.min(.62, 1.9 / n), lebar = 100 / n;
+
+/* ---------- Formasi grup v15 (koordinat dari aplikasi) ---------- */
+/* o: 13 titik [N,LS,RS,LE,RE,LW,RW,LH,RH,LK,RK,LA,RA]; 0 = tidak digambar (tertutup). c: S sejajar, L berlapis, P berpencar */
+const FORMASI = [{"id":"g2_berdampingan","e":"👥","t":"Berdampingan","en":"Side by Side","n":2,"c":"S","w":424,"h":326,"o":[[[73,0],[17,56],[129,56],[5,121],[140,121],[0,181],[145,181],[35,163],[110,163],[40,242],[105,242],[45,326],[101,326]],[[351,0],[295,56],[407,56],[284,121],[419,121],[279,181],[424,181],[314,163],[389,163],[319,242],[384,242],[323,326],[379,326]]],"z":[]},{"id":"g2_tos","e":"🙌","t":"Tos Tinggi","en":"High Five","n":2,"c":"S","w":417,"h":400,"o":[[[75,62],[17,120],[133,120],[5,188],[168,60],[0,250],[184,0],[37,231],[114,231],[42,313],[109,313],[46,400],[104,400]],[[342,62],[284,120],[400,120],[250,60],[412,188],[234,0],[417,250],[303,231],[381,231],[308,313],[376,313],[313,400],[371,400]]],"z":[]},{"id":"g2_rangkul","e":"🤝","t":"Rangkul Bahu","en":"Arm Around Shoulders","n":2,"c":"S","w":393,"h":356,"o":[[[79,0],[18,61],[140,61],[6,132],[213,67],[0,198],[278,67],[39,178],[120,178],[44,265],[115,265],[49,356],[110,356]],[[313,0],[252,61],[374,61],[180,67],[387,132],[115,67],[393,198],[273,178],[354,178],[278,265],[349,265],[283,356],[344,356]]],"z":[]},{"id":"g2_peluk","e":"🫂","t":"Peluk dari Belakang","en":"Hug from Behind","n":2,"c":"L","w":275,"h":489,"o":[[[170,0],[95,75],[245,75],[64,159],[275,159],[140,187],[200,187],[120,219],[220,219],0,0,0,0],[[91,50],[16,126],[166,126],[0,213],[181,213],[79,227],[102,227],[41,270],[141,270],[47,376],[134,376],[53,489],[128,489]]],"z":[]},{"id":"g2_dagu","e":"😊","t":"Dagu di Bahu","en":"Chin on Shoulder","n":2,"c":"L","w":309,"h":438,"o":[[[234,75],[159,150],[309,150],0,0,0,0,[184,294],[284,294],0,0,0,0],[[159,0],[84,75],[234,75],[0,106],[250,163],[34,33],[257,243],[109,219],[209,219],[115,326],[203,326],[121,438],[197,438]]],"z":[]},{"id":"g2_pencar","e":"🏝️","t":"Berpencar Bebas","en":"Free Spread","n":2,"c":"P","w":537,"h":323,"o":[[[467,67],[433,101],[501,101],[426,141],[537,81],[423,178],[537,44],[444,167],[490,167],[447,215],[487,215],[450,267],[484,267]],[[102,45],[54,93],[149,93],[22,46],[182,46],[0,0],[204,0],[70,184],[134,184],[74,252],[130,252],[78,323],[126,323]]],"z":[[467,134,53],[102,138,73]]},{"id":"g2_dekat_jauh","e":"📐","t":"Dekat–Jauh","en":"Near–Far","n":2,"c":"P","w":527,"h":413,"o":[[[458,62],[426,95],[490,95],[404,63],[512,63],[389,32],[527,32],[436,156],[479,156],[439,202],[477,202],[442,250],[474,250]],[[125,0],[54,71],[196,71],[0,135],[250,135],[58,184],[192,184],[78,206],[172,206],[84,307],[166,307],[89,413],[160,413]]],"z":[[458,125,59],[125,139,109]]},{"id":"g2_trik","e":"🤏","t":"Trik Perspektif","en":"Forced Perspective","n":2,"c":"P","w":429,"h":323,"o":[[[377,23],[353,47],[401,47],[337,23],[418,23],[326,0],[429,0],[361,93],[393,93],[363,127],[391,127],[365,163],[389,163]],[[133,104],[57,179],[208,179],[0,248],[297,172],[62,300],[377,172],[82,323],[183,323],0,0,0,0]],"z":[[377,70,69],[133,251,115]]},{"id":"g3_berjajar","e":"👨‍👩‍👧","t":"Berjajar","en":"In a Row","n":3,"c":"S","w":474,"h":234,"o":[[[52,0],[12,40],[92,40],[4,87],[101,87],[0,130],[104,130],[25,117],[79,117],[29,174],[76,174],[32,234],[72,234]],[[237,0],[197,40],[277,40],[188,87],[285,87],[185,130],[289,130],[210,117],[264,117],[213,174],[260,174],[217,234],[257,234]],[[421,0],[381,40],[462,40],[373,87],[470,87],[369,130],[474,130],[395,117],[448,117],[398,174],[445,174],[401,234],[441,234]]],"z":[]},{"id":"g3_v","e":"🔺","t":"Formasi V","en":"V Formation","n":3,"c":"S","w":508,"h":302,"o":[[[73,28],[31,69],[114,69],[0,107],[145,107],[34,135],[111,135],[45,148],[100,148],[49,207],[97,207],[52,268],[93,268]],[[254,42],[210,87],[299,87],[179,43],[329,43],[159,0],[349,0],[225,172],[284,172],[228,235],[280,235],[232,302],[276,302]],[[436,28],[395,69],[477,69],[363,107],[508,107],[397,135],[475,135],[408,148],[463,148],[412,207],[460,207],[415,268],[456,268]]],"z":[]},{"id":"g3_rayakan","e":"🎉","t":"Rayakan Bersama","en":"Celebrate Together","n":3,"c":"S","w":544,"h":259,"o":[[[82,36],[43,74],[120,74],[17,37],[146,37],[0,0],[163,0],[56,147],[107,147],[59,202],[104,202],[62,259],[101,259]],[[272,36],[234,74],[310,74],[208,37],[336,37],[190,0],[353,0],[246,147],[297,147],[249,202],[294,202],[253,259],[291,259]],[[462,36],[424,74],[500,74],[398,37],[526,37],[380,0],[544,0],[437,147],[487,147],[440,202],[484,202],[443,259],[481,259]]],"z":[]},{"id":"g3_menara","e":"🗼","t":"Menara Kepala","en":"Head Tower","n":3,"c":"L","w":192,"h":492,"o":[[[123,0],[53,69],[192,69],0,0,0,0,[76,202],[169,202],0,0,0,0],[[72,137],[0,209],[144,209],0,0,0,0,[24,347],[120,347],0,0,0,0],[[115,273],[40,348],[190,348],0,0,0,0,[65,492],[165,492],0,0,0,0]],"z":[]},{"id":"g3_diagonal","e":"↘️","t":"Barisan Diagonal","en":"Diagonal Line","n":3,"c":"L","w":516,"h":441,"o":[[[402,50],[349,104],[455,104],[312,52],[492,52],[288,0],[516,0],[366,206],[438,206],[371,282],[433,282],[375,362],[429,362]],[[274,38],[213,99],[335,99],[166,155],[382,155],[216,197],[332,197],[233,217],[315,217],[238,303],[310,303],[243,396],[305,396]],[[127,20],[55,92],[199,92],[0,158],[254,158],[59,208],[195,208],[79,230],[175,230],[85,332],[169,332],[91,441],[163,441]]],"z":[]},{"id":"g3_piramida","e":"👨‍👩‍👧","t":"Piramida Keluarga","en":"Family Pyramid","n":3,"c":"L","w":459,"h":448,"o":[[[93,0],[21,71],[164,71],[7,155],[179,155],[0,231],[186,231],[45,208],[140,208],0,0,0,0],[[366,0],[295,71],[438,71],[280,155],[452,155],[274,231],[459,231],[319,208],[414,208],0,0,0,0],[[230,93],[151,165],[308,165],[111,251],[348,251],[151,303],[308,303],[170,317],[289,317],[118,264],[341,264],[164,448],[295,448]]],"z":[]},{"id":"g3_pencar","e":"🏝️","t":"Berpencar Bebas","en":"Free Spread","n":3,"c":"P","w":542,"h":263,"o":[[[305,60],[281,84],[329,84],[276,113],[354,70],[274,138],[354,44],[289,130],[321,130],[291,165],[319,165],[293,201],[317,201]],[[484,46],[451,79],[517,79],[426,109],[542,109],[453,132],[515,132],[462,142],[506,142],[464,189],[503,189],[467,238],[500,238]],[[83,37],[44,75],[121,75],[18,38],[148,38],[0,0],[165,0],[57,150],[109,150],[60,204],[105,204],[63,263],[102,263]]],"z":[[305,107,37],[484,111,50],[83,113,59]]},{"id":"g3_dekat_jauh","e":"📐","t":"Dekat–Jauh","en":"Near–Far","n":3,"c":"P","w":533,"h":361,"o":[[[476,56],[449,83],[503,83],[430,57],[521,57],[418,31],[533,31],[458,135],[494,135],[460,173],[492,173],[462,214],[489,214]],[[314,35],[274,75],[355,75],[243,112],[389,41],[276,140],[418,9],[287,153],[341,153],[290,210],[338,210],[294,271],[334,271]],[[109,0],[47,62],[171,62],[0,118],[218,118],[51,161],[167,161],[68,180],[150,180],[73,268],[145,268],[78,361],[140,361]]],"z":[[476,109,52],[314,114,62],[109,121,95]]},{"id":"g4_berjajar","e":"👨‍👩‍👧‍👦","t":"Berjajar","en":"In a Row","n":4,"c":"S","w":503,"h":179,"o":[[[40,0],[9,31],[71,31],[3,67],[77,67],[0,99],[80,99],[19,90],[60,90],[22,133],[58,133],[25,179],[55,179]],[[181,0],[150,31],[212,31],[144,67],[218,67],[141,99],[221,99],[161,90],[202,90],[163,133],[199,133],[166,179],[196,179]],[[322,0],[292,31],[353,31],[285,67],[359,67],[282,99],[362,99],[302,90],[343,90],[304,133],[340,133],[307,179],[338,179]],[[463,0],[433,31],[494,31],[426,67],[500,67],[424,99],[503,99],[443,90],[484,90],[446,133],[481,133],[448,179],[479,179]]],"z":[]},{"id":"g4_dua_baris","e":"🪑","t":"Dua Baris","en":"Two Rows","n":4,"c":"S","w":482,"h":228,"o":[[[153,0],[115,38],[191,38],[107,83],[199,83],[103,124],[203,124],[128,111],[179,111],[131,165],[175,165],[134,223],[172,223]],[[329,0],[291,38],[367,38],[283,83],[375,83],[279,124],[378,124],[303,111],[354,111],[306,165],[351,165],[310,223],[348,223]],[[51,43],[8,82],[93,82],[0,121],[101,121],[37,99],[79,147],[17,155],[84,155],[0,175],[101,175],[8,228],[93,228]],[[431,43],[389,82],[473,82],[380,121],[482,121],[417,99],[459,147],[397,155],[465,155],[380,175],[482,175],[389,228],[473,228]]],"z":[]},{"id":"g4_rayakan","e":"🎉","t":"Rayakan Bersama","en":"Celebrate Together","n":4,"c":"S","w":555,"h":208,"o":[[[66,29],[35,60],[96,60],[14,30],[117,30],[0,0],[131,0],[45,119],[86,119],[48,162],[83,162],[50,208],[81,208]],[[207,29],[176,60],[237,60],[155,30],[258,30],[141,0],[272,0],[186,119],[227,119],[189,162],[225,162],[191,208],[222,208]],[[348,29],[317,60],[379,60],[296,30],[399,30],[282,0],[413,0],[327,119],[368,119],[330,162],[366,162],[333,208],[363,208]],[[489,29],[458,60],[520,60],[437,30],[541,30],[424,0],[555,0],[469,119],[510,119],[471,162],[507,162],[474,208],[504,208]]],"z":[]},{"id":"g4_diagonal","e":"↘️","t":"Barisan Diagonal","en":"Diagonal Line","n":4,"c":"L","w":528,"h":358,"o":[[[445,37],[406,76],[484,76],[379,38],[510,38],[361,0],[528,0],[419,151],[471,151],[422,206],[467,206],[425,264],[464,264]],[[348,26],[303,72],[394,72],[268,113],[429,113],[305,145],[392,145],[318,159],[379,159],[322,224],[375,224],[326,293],[371,293]],[[236,14],[183,67],[289,67],[143,116],[330,116],[186,152],[286,152],[201,169],[272,169],[205,244],[267,244],[210,323],[263,323]],[[108,1],[47,62],[169,62],[0,118],[216,118],[50,160],[166,160],[67,180],[149,180],[72,267],[144,267],[77,358],[139,358]]],"z":[]},{"id":"g4_piramida","e":"👨‍👩‍👧‍👦","t":"Piramida Keluarga","en":"Family Pyramid","n":4,"c":"L","w":507,"h":410,"o":[[[154,0],[89,65],[220,65],[76,142],[297,72],[70,212],[367,72],[111,191],[198,191],0,0,0,0],[[352,0],[287,65],[418,65],[210,72],[431,142],[139,72],[437,212],[309,191],[396,191],0,0,0,0],[[108,85],[36,151],[181,151],[0,230],[217,230],[36,278],[181,278],[54,290],[163,290],[6,242],[211,242],[48,410],[169,410]],[[398,85],[326,151],[471,151],[290,230],[507,230],[326,278],[471,278],[344,290],[453,290],[296,242],[501,242],[338,410],[459,410]]],"z":[]},{"id":"g4_pencar","e":"🏝️","t":"Berpencar Bebas","en":"Free Spread","n":4,"c":"P","w":544,"h":230,"o":[[[222,54],[201,74],[242,74],[197,98],[263,62],[195,120],[263,40],[208,113],[235,113],[210,142],[233,142],[211,172],[232,172]],[[358,46],[332,71],[383,71],[313,94],[405,50],[334,112],[423,30],[341,120],[375,120],[343,156],[373,156],[345,194],[371,194]],[[488,35],[455,67],[520,67],[431,96],[544,96],[457,118],[518,118],[466,129],[509,129],[469,174],[506,174],[472,222],[504,222]],[[72,32],[38,66],[106,66],[15,33],[129,33],[0,0],[145,0],[50,131],[95,131],[53,179],[92,179],[55,230],[89,230]]],"z":[[222,94,31],[358,95,39],[488,98,49],[72,98,52]]},{"id":"g4_dekat_jauh","e":"📐","t":"Dekat–Jauh","en":"Near–Far","n":4,"c":"P","w":541,"h":297,"o":[[[491,45],[468,68],[514,68],[452,45],[530,45],[442,23],[541,23],[476,112],[507,112],[478,145],[505,145],[480,180],[503,180]],[[234,36],[206,65],[263,65],[200,98],[293,47],[197,129],[293,17],[215,119],[253,119],[218,160],[251,160],[220,203],[249,203]],[[367,19],[328,58],[407,58],[298,94],[437,94],[330,121],[404,121],[341,133],[393,133],[344,189],[390,189],[348,248],[387,248]],[[66,0],[15,51],[117,51],[5,110],[174,71],[0,165],[151,22],[32,148],[100,148],[36,220],[96,220],[41,297],[91,297]]],"z":[[491,90,43],[234,92,44],[367,96,60],[66,100,78]]}];
+const CARA = { S:['Sejajar','Side by side'], L:['Berlapis','Layered'], P:['Berpencar','Spread out'], A:['AI Pose Grup','AI Group Pose'] };
+const WARNA_ORANG = ['#FFD700','#00E5FF','#E100FF','#00E676'];
+function svgFormasi(f, opsi) {
+  opsi = opsi || {};
+  const pad = 70, w = f.w + pad * 2, h = f.h + pad * 2 + 30;
   let s = '';
-  g.orang.forEach((nm, i) => {
-    const p = cari(nm); if (!p) return;
-    const cx = lebar * (i + .5);
-    s += siluet(titik(p[3], sc, sc, cx - 50 * sc, 96 - 95 * sc), { lengan: 7 * sc, kaki: 9 * sc, warna: WARNA_ORANG[i % 4] });
+  (f.z || []).forEach((z, i) => {
+    s += '<circle cx="' + (z[0] + pad) + '" cy="' + (z[1] + pad + 30) + '" r="' + z[2] + '" fill="' + WARNA_ORANG[i % 4] + '" fill-opacity=".12" stroke="' + WARNA_ORANG[i % 4] + '" stroke-width="4" stroke-dasharray="12 9"/>';
   });
-  return '<svg viewBox="0 4 100 92" aria-hidden="true">' + s + '</svg>';
+  f.o.forEach((o, i) => {
+    const p = {}; K.forEach((k, j) => { if (o[j]) p[k] = [o[j][0] + pad, o[j][1] + pad + 30]; });
+    s += siluetParsial(p, WARNA_ORANG[i % 4]);
+  });
+  return '<svg viewBox="0 0 ' + w + ' ' + h + '" preserveAspectRatio="xMidYMid meet" aria-hidden="true">' + s + '</svg>';
+}
+function siluetParsial(p, warna) {
+  if (!p.LS || !p.RS || !p.LH || !p.RH) return '';
+  const jarak = (a, b) => Math.hypot(a[0]-b[0], a[1]-b[1]);
+  const bahu = [(p.LS[0]+p.RS[0])/2, (p.LS[1]+p.RS[1])/2], ping = [(p.LH[0]+p.RH[0])/2, (p.LH[1]+p.RH[1])/2];
+  const torso = jarak(bahu, ping), lengan = torso * .26, kaki = torso * .34, tepi = lengan * .3;
+  let lh = p.LH, rh = p.RH;
+  if (!p.LE && !p.RE && !p.LK && !p.RK) { // kepala-bahu saja: badan sampai dada
+    lh = [p.LS[0] + (p.LH[0]-p.LS[0]) * .55, p.LS[1] + (p.LH[1]-p.LS[1]) * .55];
+    rh = [p.RS[0] + (p.RH[0]-p.RS[0]) * .55, p.RS[1] + (p.RH[1]-p.RS[1]) * .55];
+  }
+  const bentukP = t => {
+    let g = '<polygon points="' + [p.LS, p.RS, rh, lh].map(q => f(q[0]) + ',' + f(q[1])).join(' ') + '" stroke-width="' + f(lengan * .7 + t) + '"/>';
+    SEG.forEach(([a, b], i) => { if (p[a] && p[b]) g += '<line x1="'+f(p[a][0])+'" y1="'+f(p[a][1])+'" x2="'+f(p[b][0])+'" y2="'+f(p[b][1])+'" stroke-width="'+f((i < 4 ? lengan : kaki) + t)+'"/>'; });
+    if (p.N) {
+      const r = Math.max(jarak(p.LS, p.RS) * .36, lengan * .9);
+      g += '<line x1="'+f(p.N[0])+'" y1="'+f(p.N[1]+r*.6)+'" x2="'+f(bahu[0])+'" y2="'+f(bahu[1])+'" stroke-width="'+f(lengan*.85+t)+'"/>';
+      g += '<circle cx="'+f(p.N[0])+'" cy="'+f(p.N[1]-r*.15)+'" r="'+f(r)+'" stroke-width="'+f(t)+'"/>';
+    }
+    return g;
+  };
+  return '<g stroke-linecap="round" stroke-linejoin="round"><g fill="rgba(0,0,0,.55)" stroke="rgba(0,0,0,.55)">' + bentukP(tepi) + '</g>' +
+    '<g fill="' + warna + '" stroke="' + warna + '" opacity=".9">' + bentukP(0) + '</g></g>';
+}
+const judulF = f => (f.e ? f.e + ' ' : '') + L(f.t, f.en) + ' (' + f.n + ')';
+const caraF = c => '<span class="lbl ' + c + '">' + L(CARA[c][0], CARA[c][1]) + '</span>';
+
+function renderGrupFitur() {
+  const pilih = [
+    ['g3_menara', 'L', ['Berlapis', 'Layered'], ['Boleh bertumpuk: peluk dari belakang, dagu di bahu, menara kepala. Cukup wajah & bahu tiap orang terlihat.', 'Overlap is fine: hug from behind, chin on shoulder, head tower. Each face & shoulders just need to be visible.']],
+    ['g4_pencar', 'P', ['Berpencar', 'Spread out'], ['Tiap orang punya lingkaran warna di layar. Aplikasi memberi arahan: maju, mundur, atau geser.', 'Everyone gets a colored circle on screen. The app tells each person to step closer, back, or sideways.']],
+    ['g2_trik', 'P', ['Trik Perspektif', 'Forced Perspective'], ['Teman di kejauhan tampak kecil berdiri di telapak tangan. Seru untuk media sosial.', 'A friend far away looks tiny, standing on your palm. Made for social media.']],
+    ['g3_dekat_jauh', 'A', ['AI Pose Grup', 'AI Group Pose'], ['Tekan tombol ungu: susunan & gaya tangan baru sesuai latar. Pantai lebih ceria, gunung menunjuk jauh, kafe duduk berjajar.', 'Tap the purple button for a new arrangement that fits the scene: cheerful at the beach, pointing far on mountains, seated in cafés.']]
+  ];
+  $('grupFitur').innerHTML = pilih.map(([id, c, j, t]) => {
+    const fm = FORMASI.find(x => x.id === id);
+    return '<div class="kartu">' + (fm ? svgFormasi(fm) : '') + caraF(c) + '<h3>' + L(j[0], j[1]) + '</h3><p>' + L(t[0], t[1]) + '</p></div>';
+  }).join('');
 }
 
 /* ---------- Galeri gaya ---------- */
-const tab = $('tabGaya'), galeri = $('galeriGaya');
+let katGaya = 'semua';
 function tampilkanGaya(kat) {
+  katGaya = kat;
+  const tab = $('tabGaya'), galeri = $('galeriGaya');
+  tab.innerHTML = '';
+  [['semua', L('Semua', 'All')]].concat(Object.keys(LATAR).map(k => [k, latar(k)])).forEach(([k, label]) => {
+    const b = document.createElement('button'); b.type = 'button'; b.dataset.k = k; b.textContent = label;
+    b.setAttribute('aria-pressed', k === kat); b.onclick = () => tampilkanGaya(k); tab.appendChild(b);
+  });
   let html = '';
-  (kat === 'grup' ? GRUP : kat === 'semua' ? GRUP.slice(0, 2) : []).forEach(g => {
-    html += '<div class="gy">' + svgGrup(g) + '<div class="nm">' + g.nama + '</div><div class="lb">' + LATAR.grup + ' · ' + g.orang.length + ' orang</div><div class="bd"><span class="pro">⭐ PRO</span></div></div>';
+  const grup = kat === 'grup' ? FORMASI : kat === 'semua' ? FORMASI.filter(x => ['g2_trik', 'g3_menara'].indexOf(x.id) >= 0) : [];
+  grup.forEach(g => {
+    html += '<div class="gy">' + svgFormasi(g).replace('<svg ', '<svg style="background:radial-gradient(circle at 50% 40%,#221f3a,#15132a)" ') + '<div class="nm">' + esc(judulF(g)) + '</div><div class="lb">' + latar('grup') + '</div><div class="bd">' + caraF(g.c) + ' <span class="pro">⭐ PRO</span></div></div>';
   });
   const hitung = {};
-  // "Semua": contoh 2 gaya dari tiap latar agar halaman tidak terlalu panjang
   POSE.filter(p => kat === 'semua' ? (hitung[p[0]] = (hitung[p[0]] || 0) + 1) <= 2 : p[0] === kat).forEach(p => {
-    html += '<div class="gy">' + svgPose(p[3]) + '<div class="nm">' + p[1] + '</div><div class="lb">' + LATAR[p[0]] + '</div><div class="bd">' + (p[2] ? '<span class="semua">BASIC + PRO</span>' : '<span class="pro">⭐ PRO</span>') + '</div></div>';
+    html += '<div class="gy">' + svgPose(p[3]) + '<div class="nm">' + esc(namaPose(p[1])) + '</div><div class="lb">' + latar(p[0]) + '</div><div class="bd">' + (p[2] ? '<span class="semua">BASIC + PRO</span>' : '<span class="pro">⭐ PRO</span>') + '</div></div>';
   });
   galeri.innerHTML = html;
-  tab.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b.dataset.k === kat));
 }
-[['semua','Semua']].concat(Object.keys(LATAR).map(k => [k, LATAR[k]])).forEach(([k, label]) => {
-  const b = document.createElement('button'); b.type = 'button'; b.dataset.k = k; b.textContent = label;
-  b.onclick = () => tampilkanGaya(k); tab.appendChild(b);
-});
-tampilkanGaya('semua');
 
 /* ---------- Siluet di ponsel tiruan ---------- */
 const SIL = {
-  // koordinat layar 300x400, mengikuti foto ilustrasi
   hero:   { lengan:26, kaki:34, hijau:[0,1,4,5,6,7], opasitas:.8,
             t:[156,150, 110,206, 198,200, 44,238, 232,250, 74,150, 190,292, 116,292, 180,290, 116,392, 176,392, 116,470, 176,470] },
   gunung: { lengan:14, kaki:18, hijau:[0,1,4,5,6,7], opasitas:.8,
@@ -531,62 +716,180 @@ const STRIP = {
   pantai: [['Rambut Tertiup Angin',1,0],['Sambut Angin Laut',0,0],['Lompat Ceria',0,0],['Pegang Topi',0,0]],
   gunung: [['Tunjuk Cakrawala',1,0],['Kepal Tangan Juara',0,1],['Satu Kaki di Batu',0,1],['Menatap Lembah',0,1]]
 };
-document.querySelectorAll('[data-strip]').forEach(el => {
-  el.innerHTML = STRIP[el.dataset.strip].map(([nm, on, kunci]) => {
-    const p = cari(nm); if (!p) return '';
-    return '<div class="pk' + (on ? ' on' : '') + (kunci ? ' kunci' : '') + '">' + svgPose(p[3]) + '<span>' + (kunci ? '⭐ ' : '') + nm + (kunci ? '*' : '') + '</span></div>';
-  }).join('');
-});
+function renderStrip() {
+  document.querySelectorAll('[data-strip]').forEach(el => {
+    el.innerHTML = STRIP[el.dataset.strip].map(([nm, on, kunci]) => {
+      const p = cari(nm); if (!p) return '';
+      return '<div class="pk' + (on ? ' on' : '') + (kunci ? ' kunci' : '') + '">' + svgPose(p[3]) + '<span>' + (kunci ? '⭐ ' : '') + esc(namaPose(nm)) + (kunci ? '*' : '') + '</span></div>';
+    }).join('');
+  });
+}
 
 /* ---------- Harga ---------- */
+const namaPaket = p => L(p.nama, p.en);
 function daftarFitur(p) {
   return p.pro
-    ? [p.kredit + ' kredit foto', 'Semua gaya & pose olahraga', 'Timer & jepret otomatis', 'Foto grup 2–4 orang', 'Hingga 4 arahan, AI Pose 4 variasi', 'Kecerahan & lampu layar']
-    : [p.kredit + ' kredit foto', 'Siluet pose solo & arahan', '2 gaya terbaik per latar', 'AI Pose 2 variasi', 'Kecerahan & lampu layar'];
+    ? [L(p.kredit + ' kredit foto', p.kredit + ' photo credits'), L('Semua gaya & pose olahraga', 'All poses & sports poses'), L('Timer & jepret otomatis', 'Timer & auto shutter'),
+       L('Foto grup 2–4 orang + AI Pose Grup', 'Group photos for 2–4 + AI Group Pose'), L('Hingga 4 arahan, AI Pose 4 variasi', 'Up to 4 tips, AI Pose 4 variations'), L('Kecerahan & lampu layar', 'Brightness & screen flash')]
+    : [L(p.kredit + ' kredit foto', p.kredit + ' photo credits'), L('Siluet pose solo & arahan', 'Solo pose silhouettes & tips'), L('2 gaya terbaik per latar', '2 best poses per scene'),
+       L('AI Pose 2 variasi', 'AI Pose 2 variations'), L('Kecerahan & lampu layar', 'Brightness & screen flash')];
 }
+const hariTeks = n => L(n + ' hari', n + (n === 1 ? ' day' : ' days'));
 function kartuPaket(p) {
   const kelas = 'kartu' + (p.pro && p.utama ? ' unggul' : '');
-  return '<div class="' + kelas + '">' + (p.pita ? '<span class="pita">' + p.pita + '</span>' : '') +
-    '<h3>' + p.ikon + ' ' + p.nama + (p.pro ? ' <span class="pro">PRO</span>' : '') + '</h3>' +
+  const pita = p.pita ? L(p.pita, p.pitaEn || p.pita) : '';
+  return '<div class="' + kelas + '">' + (pita ? '<span class="pita">' + pita + '</span>' : '') +
+    '<h3>' + p.ikon + ' ' + namaPaket(p) + (p.pro ? ' <span class="pro">PRO</span>' : '') + '</h3>' +
     '<div class="angka">' + rp(p.harga) + '</div>' +
-    '<div class="masa">' + p.hari + ' hari · ' + p.kredit + ' kredit foto</div>' +
+    '<div class="masa">' + hariTeks(p.hari) + ' · ' + L(p.kredit + ' kredit foto', p.kredit + ' photo credits') + '</div>' +
     '<ul>' + daftarFitur(p).map(x => '<li>' + x + '</li>').join('') + '</ul>' +
-    '<a class="tombol ' + (p.pro ? 'emas' : 'garis') + (p.utama ? '' : ' kecil') + '" href="beli.html?paket=' + p.kode + '">Beli ' + p.nama + '</a></div>';
+    '<a class="tombol ' + (p.pro ? 'emas' : 'garis') + (p.utama ? '' : ' kecil') + '" href="' + tautanBeli(p.kode) + '">' + L('Beli ', 'Buy ') + namaPaket(p) + '</a></div>';
 }
-$('hargaUtama').innerHTML = KONFIG.PAKET.filter(p => p.utama).map(kartuPaket).join('');
-$('hargaLain').innerHTML = KONFIG.PAKET.filter(p => !p.utama).map(kartuPaket).join('');
-
-/* Layar paket di ponsel tiruan */
-const utama = KONFIG.PAKET.filter(p => p.utama), lain = KONFIG.PAKET.filter(p => !p.utama);
-const dipilih = utama.find(p => p.kode === 'BULANAN') || utama[0];
-$('hpPaket').innerHTML =
-  '<div class="kt" style="border-color:#00E676"><div class="rw"><b>🎁 Coba Gratis</b><span class="ok">' + T.hari + ' hari · ' + T.kredit + ' kredit</span></div><div class="mt">Sekali per HP, tanpa bayar.</div></div>' +
-  '<div class="mt" style="margin:8px 2px 5px">Pilih paket</div>' +
-  utama.map(p => '<div class="pkt' + (p === dipilih ? ' on' : '') + '"><span class="rd"></span><div class="nm">' + p.ikon + ' ' + p.nama + '<small>' + p.hari + ' hari • ' + p.kredit + ' kredit foto' + (p.pro ? ' • Pro' : '') + '</small></div><div class="hg">' + rp(p.harga) + '</div></div>').join('') +
-  '<div class="mt" style="text-align:center;color:var(--emas);margin:4px 0 2px">Paket lain (' + lain.map(p => p.nama).join(', ') + ') ▾</div>' +
-  '<div class="bt1" style="margin-top:8px">Beli ' + dipilih.nama + ' ' + rp(dipilih.harga) + ' via QRIS</div>' +
-  '<div class="mt" style="text-align:center;margin-top:10px">Punya Kode Aktivasi dari website?</div>';
+const ref = new URLSearchParams(location.search).get('ref');
+function tautanBeli(kode) {
+  return 'beli.html?paket=' + kode + (ref ? '&ref=' + encodeURIComponent(ref) : '') + (BHS === 'en' ? '&lang=en' : '');
+}
+function renderHarga() {
+  const T = KONFIG.TRIAL;
+  $('hargaUtama').innerHTML = KONFIG.PAKET.filter(p => p.utama).map(kartuPaket).join('');
+  $('hargaLain').innerHTML = KONFIG.PAKET.filter(p => !p.utama).map(kartuPaket).join('');
+  const utama = KONFIG.PAKET.filter(p => p.utama), lain = KONFIG.PAKET.filter(p => !p.utama);
+  const dipilih = utama.find(p => p.kode === 'BULANAN') || utama[0];
+  $('hpPaket').innerHTML =
+    '<div class="kt" style="border-color:#00E676"><div class="rw"><b>🎁 ' + L('Coba Gratis', 'Free Trial') + '</b><span class="ok">' + hariTeks(T.hari) + ' · ' + L(T.kredit + ' kredit', T.kredit + ' credits') + '</span></div><div class="mt">' + L('Sekali per HP, tanpa bayar.', 'Once per phone, no payment.') + '</div></div>' +
+    '<div class="mt" style="margin:8px 2px 5px">' + L('Pilih paket', 'Choose a plan') + '</div>' +
+    utama.map(p => '<div class="pkt' + (p === dipilih ? ' on' : '') + '"><span class="rd"></span><div class="nm">' + p.ikon + ' ' + namaPaket(p) + '<small>' + hariTeks(p.hari) + ' • ' + L(p.kredit + ' kredit foto', p.kredit + ' photo credits') + (p.pro ? ' • Pro' : '') + '</small></div><div class="hg">' + rp(p.harga) + '</div></div>').join('') +
+    '<div class="mt" style="text-align:center;color:var(--emas);margin:4px 0 2px">' + L('Paket lain', 'Other plans') + ' (' + lain.map(namaPaket).join(', ') + ') ▾</div>' +
+    '<div class="bt1" style="margin-top:8px">' + L('Beli ', 'Buy ') + namaPaket(dipilih) + ' ' + rp(dipilih.harga) + ' via QRIS</div>' +
+    '<div class="mt" style="text-align:center;margin-top:10px">' + L('Punya Kode Aktivasi dari website?', 'Have an Activation Code from the website?') + '</div>';
+  const mulai = rp(Math.min.apply(null, KONFIG.PAKET.map(p => p.harga)));
+  $('heroCatatan').innerHTML = L('Mulai <b>' + mulai + '</b> • Bayar QRIS dari e-wallet apa pun • Coba gratis ' + T.hari + ' hari (' + T.kredit + ' foto)',
+    'From <b>' + mulai + '</b> • Pay with QRIS (Indonesian e-wallets &amp; banks) • Free ' + hariTeks(T.hari) + ' trial (' + T.kredit + ' photos)');
+  $('faqTrial').innerHTML = L('Buka aplikasi, tekan ikon 👤 Profil lalu <b>Beli / Perpanjang Paket</b>, kemudian pilih <b>Coba Gratis</b>. Anda mendapat ' + T.hari + ' hari dengan ' + T.kredit + ' kredit foto, sekali per HP.',
+    'Open the app, tap 👤 Profile, then <b>Buy / Extend Plan</b>, and choose <b>Free Trial</b>. You get ' + hariTeks(T.hari) + ' with ' + T.kredit + ' photo credits, once per phone.');
+}
 
 /* ---------- Contoh hasil foto (ilustrasi) ---------- */
 const FOTO = [
-  { f:'foto/pantai.jpg',   judul:'🏖️ Pantai',        gaya:'Rambut Tertiup Angin', alt:'Perempuan berhijab berpose di pantai saat matahari terbenam' },
-  { f:'foto/gunung.jpg',   judul:'⛰️ Puncak gunung', gaya:'Tunjuk Cakrawala',     alt:'Laki-laki berpose menunjuk lautan awan di puncak gunung' },
-  { f:'foto/candi.jpg',    judul:'🛕 Candi',          gaya:'Berdiri Anggun',       alt:'Perempuan berpose di antara stupa candi' },
-  { f:'foto/kota.jpg',     judul:'🏙️ Kota tua',       gaya:'Menyeberang Jalan',    alt:'Laki-laki berjalan di zebra cross kota tua' },
-  { f:'foto/cafe.jpg',     judul:'☕ Kafe',            gaya:'Pegang Cangkir',       alt:'Perempuan tersenyum memegang minuman di kafe' },
-  { f:'foto/keluarga.jpg', judul:'👨‍👩‍👧 Keluarga',       gaya:'Formasi bertiga',      alt:'Keluarga ayah, ibu, dan anak berfoto di taman' },
-  { f:'foto/grup.jpg',     judul:'👥 Grup 4 teman',   gaya:'Tangan ke atas bersama', alt:'Empat teman mengangkat tangan di pantai saat senja', lebar:true }
+  { f:'foto/pantai.jpg',   j:['🏖️ Pantai','🏖️ Beach'],          gaya:'Rambut Tertiup Angin', alt:'Perempuan berhijab berpose di pantai saat matahari terbenam' },
+  { f:'foto/gunung.jpg',   j:['⛰️ Puncak gunung','⛰️ Mountain peak'], gaya:'Tunjuk Cakrawala', alt:'Laki-laki berpose menunjuk lautan awan di puncak gunung' },
+  { f:'foto/candi.jpg',    j:['🛕 Candi','🛕 Temple'],            gaya:'Tangan di Belakang',  alt:'Perempuan berpose di antara stupa candi' },
+  { f:'foto/kota.jpg',     j:['🏙️ Kota tua','🏙️ Old town'],       gaya:'Menyeberang Jalan',   alt:'Laki-laki berjalan di zebra cross kota tua' },
+  { f:'foto/cafe.jpg',     j:['☕ Kafe','☕ Café'],                gaya:'Pegang Cangkir Dua Tangan', alt:'Perempuan tersenyum memegang minuman di kafe' },
+  { f:'foto/keluarga.jpg', j:['👨‍👩‍👧 Keluarga','👨‍👩‍👧 Family'],       fm:'g3_piramida',            alt:'Keluarga ayah, ibu, dan anak berfoto di taman' },
+  { f:'foto/grup.jpg',     j:['👥 Grup 4 teman','👥 4 friends'],  fm:'g4_rayakan',             alt:'Empat teman mengangkat tangan di pantai saat senja', lebar:true }
 ];
-$('galeriFoto').innerHTML = FOTO.map(x => {
-  const ph = x.lebar ? svgGrup(GRUP[3]) : svgPose((cari(x.gaya) || cari('Tunjuk Cakrawala'))[3]);
-  return '<figure class="ft' + (x.lebar ? ' lebar' : '') + '" style="margin:0">' + ph.replace('<svg ', '<svg class="ph" ') +
-    '<img src="' + x.f + '" alt="Ilustrasi: ' + x.alt + '" loading="lazy" onerror="this.remove()">' +
-    '<span class="il">Ilustrasi</span><figcaption class="ket"><b>' + x.judul + '</b>Gaya: ' + x.gaya + '</figcaption></figure>';
-}).join('');
+function renderFoto() {
+  $('galeriFoto').innerHTML = FOTO.map(x => {
+    const fm = x.fm && FORMASI.find(z => z.id === x.fm);
+    const ph = fm ? svgFormasi(fm) : svgPose((cari(x.gaya) || cari('Tunjuk Cakrawala'))[3]);
+    const gaya = fm ? judulF(fm) : namaPose(x.gaya);
+    return '<figure class="ft' + (x.lebar ? ' lebar' : '') + '" style="margin:0">' + ph.replace('<svg ', '<svg class="ph" ') +
+      '<img src="' + x.f + '" alt="' + L('Ilustrasi: ', 'Illustration: ') + x.alt + '" loading="lazy" onerror="this.remove()">' +
+      '<span class="il">' + L('Ilustrasi', 'Illustration') + '</span><figcaption class="ket"><b>' + L(x.j[0], x.j[1]) + '</b>' + L('Gaya: ', 'Pose: ') + esc(gaya) + '</figcaption></figure>';
+  }).join('');
+}
 
-/* ---------- Kode referral (?ref=) diteruskan ke tombol beli ---------- */
-const ref = new URLSearchParams(location.search).get('ref');
-if (ref) document.querySelectorAll('a[href^="beli.html"]').forEach(a => a.href += '&ref=' + encodeURIComponent(ref));
+/* ---------- Ulasan & angka nyata (dari server) ---------- */
+let INFO = null;
+const bonus = () => (INFO && INFO.bonus) || KONFIG.BONUS_ULASAN;
+const bintangHtml = n => { n = Math.round(n); return '<span class="bintang">' + '★'.repeat(n) + '<span class="kosong">' + '★'.repeat(5 - n) + '</span></span>'; };
+const angka = n => Number(n || 0).toLocaleString(BHS === 'en' ? 'en-US' : 'id-ID');
+const desimal = n => Number(n || 0).toLocaleString(BHS === 'en' ? 'en-US' : 'id-ID', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+function renderUlasan() {
+  const u = INFO && INFO.ulasan, b = bonus();
+  const cta = '<div class="cta-ul"><a class="tombol emas" href="ulasan.html' + (BHS === 'en' ? '?lang=en' : '') + '">⭐ ' + L('Beri ulasan', 'Write a review') + '</a>' +
+    '<p class="catatan">' + L('Sudah mencoba Siluetra? Setiap HP yang memberi ulasan mendapat bonus <b>+' + b.kredit + ' kredit</b> dan <b>+' + b.hari + ' hari</b>, berapa pun bintangnya.',
+      'Tried Siluetra? Every phone that leaves a review gets <b>+' + b.kredit + ' credits</b> and <b>+' + b.hari + ' days</b>, whatever the rating.') + '</p></div>';
+  $('faqUlasan').innerHTML = L('Buka menu 👤 Profil di aplikasi lalu tekan <b>Beri ulasan</b>, atau buka halaman <a href="ulasan.html">Ulasan</a> dan isi ID HP dari menu Profil. Setiap HP yang sudah mencoba gratis atau membeli paket mendapat <b>+' + b.kredit + ' kredit dan +' + b.hari + ' hari</b> untuk satu ulasan, berapa pun bintangnya.',
+    'Open 👤 Profile in the app and tap <b>Write a review</b>, or open the <a href="ulasan.html?lang=en">Review</a> page and enter the phone ID from the Profile menu. Every phone that has tried or bought a plan gets <b>+' + b.kredit + ' credits and +' + b.hari + ' days</b> for one review, whatever the rating.');
+  const hero = $('heroUlasan');
+  if (!u || !u.tampil) {
+    hero.classList.add('tersembunyi');
+    const janji = [
+      ['🔒', L('Foto tidak diunggah', 'Photos never uploaded'), L('Pose diproses di HP. Foto hanya tersimpan di galeri Anda.', 'Poses are processed on your phone. Photos stay in your gallery.')],
+      ['💳', L('Tanpa penagihan otomatis', 'No auto-billing'), L('Bayar per paket lewat QRIS. Tidak ada langganan yang terpotong diam-diam.', 'Pay per plan with QRIS. No hidden recurring charges.')],
+      ['↩️', L('Uang kembali bila dobel bayar', 'Refund for double payment'), L('Pembayaran ganda atau aplikasi tidak bisa berjalan di HP Anda? Hubungi admin.', 'Paid twice or the app won\'t run on your phone? Contact the admin.')],
+      ['🇮🇩', L('Dibuat di Indonesia', 'Made in Indonesia'), L('Pertanyaan dijawab langsung oleh admin lewat WhatsApp.', 'Questions are answered by a real person on WhatsApp.')]
+    ];
+    $('isiUlasan').innerHTML = '<p class="sub">' + L('Siluetra baru diluncurkan. Ulasan pengguna asli akan tampil di sini. Sementara itu, inilah janji kami:', 'Siluetra has just launched. Real user reviews will appear here. Meanwhile, here is our promise:') + '</p>' +
+      '<div class="janji">' + janji.map(j => '<div class="kartu"><div class="ikon">' + j[0] + '</div><h3>' + j[1] + '</h3><p>' + j[2] + '</p></div>').join('') + '</div>' + cta;
+    return;
+  }
+  hero.classList.remove('tersembunyi');
+  hero.innerHTML = '<b>★ ' + desimal(u.rata) + '</b> · ' + L(angka(u.jumlah) + ' ulasan pengguna', angka(u.jumlah) + ' user reviews');
+  const total = u.jumlah || 1;
+  const bulan = t => new Date(t).toLocaleDateString(BHS === 'en' ? 'en-US' : 'id-ID', { month: 'long', year: 'numeric' });
+  $('isiUlasan').innerHTML =
+    '<div class="ringkas-ul"><div><div class="skor-besar">' + desimal(u.rata) + '</div>' + bintangHtml(u.rata) + '<div class="catatan" style="margin-top:4px">' + L(angka(u.jumlah) + ' ulasan', angka(u.jumlah) + ' reviews') + '</div></div>' +
+    '<div class="dist">' + [5, 4, 3, 2, 1].map((s, i) => '<span>' + s + ' ★</span><span class="jalur"><i style="width:' + Math.round((u.distribusi[i] || 0) / total * 100) + '%"></i></span><span>' + (u.distribusi[i] || 0) + '</span>').join('') + '</div></div>' +
+    '<div class="ulasan-grid">' + u.daftar.map(x => '<div class="kartu ul"><div class="atas"><div><div class="nm">' + esc(x.nama) + '</div><div class="kt2">' + esc(x.kota) + (x.kota ? ' · ' : '') + bulan(x.waktu) + '</div></div>' + bintangHtml(x.bintang) + '</div>' +
+      '<p class="isi">' + esc(x.komentar) + '</p><div class="ver">✓ ' + L('Pengguna terverifikasi', 'Verified user') + '</div>' +
+      (x.balasan ? '<div class="bls"><b>' + L('Balasan Siluetra', 'Reply from Siluetra') + ':</b> ' + esc(x.balasan) + '</div>' : '') + '</div>').join('') + '</div>' +
+    '<p class="jujur">' + L('Semua ulasan berasal dari HP yang benar-benar memakai Siluetra (ID HP dicocokkan). Setiap pengulas mendapat bonus kredit, apa pun penilaiannya. Rata-rata dihitung dari semua ulasan, termasuk yang tidak ditampilkan namanya.',
+      'All reviews come from phones that actually use Siluetra (phone ID matched). Every reviewer gets bonus credits, whatever the rating. The average includes every review, including those shown without a name.') + '</p>' + cta;
+}
+function renderStat() {
+  const s = $('hidup');
+  if (!INFO) { s.classList.add('tersembunyi'); return; }
+  const pg = INFO.pengunjung, pn = INFO.pengguna, kartu = [];
+  if (pg.tampil) {
+    kartu.push([angka(pg.hari30), L('kunjungan 30 hari terakhir', 'visits in the last 30 days')]);
+    kartu.push([angka(pg.kota30), L('kota, dari ' + pg.negara30 + ' negara', 'cities in ' + pg.negara30 + (pg.negara30 === 1 ? ' country' : ' countries'))]);
+  }
+  if (pn.tampil) {
+    kartu.push([angka(pn.hp), L('HP sudah mencoba Siluetra', 'phones have tried Siluetra')]);
+    kartu.push([angka(pn.foto), L('foto diambil dengan Siluetra', 'photos taken with Siluetra')]);
+  }
+  if (!kartu.length) { s.classList.add('tersembunyi'); return; }
+  s.classList.remove('tersembunyi');
+  $('statGrid').innerHTML = kartu.map(k => '<div class="kartu"><div class="besar">' + k[0] + '</div><p>' + k[1] + '</p></div>').join('');
+  $('kotaList').innerHTML = pg.tampil ? pg.topKota.map(k => '<div><span>📍 ' + esc(k.kota) + (k.negara && k.negara !== 'ID' ? ' <span class="catatan">' + esc(k.negara) + '</span>' : '') + '</span><b>' + angka(k.n) + '</b></div>').join('') : '';
+}
+
+/* ---------- Umum ---------- */
+function renderUmum() {
+  $('unduh').href = KONFIG.APK_URL;
+  $('infoVersi').textContent = L('Versi ' + KONFIG.APK_VERSI + ' · Android 7.0 ke atas', 'Version ' + KONFIG.APK_VERSI + ' · Android 7.0 or later');
+  $('wa').href = 'https://wa.me/' + KONFIG.WA_ADMIN + '?text=' + encodeURIComponent(L('Halo admin Siluetra AI, saya mau tanya.', 'Hello Siluetra AI admin, I have a question.'));
+  $('ig').href = KONFIG.INSTAGRAM; $('tt').href = KONFIG.TIKTOK;
+  $('tahun').textContent = new Date().getFullYear();
+}
+function renderSemua() {
+  renderUmum(); renderHarga(); renderStrip(); renderGrupFitur(); tampilkanGaya(katGaya); renderFoto(); renderUlasan(); renderStat();
+}
+
+/* ---------- Server: angka nyata & hitungan kunjungan ---------- */
+const adaServer = /^https:\/\/script\.google\.com\/.+\/exec$/.test(KONFIG.API_URL);
+function api(action, data) {
+  return fetch(KONFIG.API_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(Object.assign({ action }, data || {})) }).then(r => r.json());
+}
+if (adaServer) {
+  api('infoWeb').then(j => {
+    if (!j || !j.ok) return;
+    INFO = j; if (j.bonus) KONFIG.BONUS_ULASAN = j.bonus;
+    renderUlasan(); renderStat();
+  }).catch(() => {});
+  // Satu hitungan per browser per hari. Yang dikirim hanya kota, wilayah, kode negara (tanpa IP).
+  setTimeout(() => {
+    if (navigator.webdriver) return;
+    const hari = new Date().toISOString().slice(0, 10);
+    try { if (localStorage.getItem('kunjungan') === hari) return; } catch (e) {}
+    const kirim = g => { api('kunjungan', g).catch(() => {}); try { localStorage.setItem('kunjungan', hari); } catch (e) {} };
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+    const cadangan = () => kirim({ negara: /^Asia\/(Jakarta|Pontianak|Makassar|Jayapura)$/.test(tz) ? 'ID' : '', kota: '', wilayah: '' });
+    if (navigator.doNotTrack === '1') { cadangan(); return; }
+    const ctrl = window.AbortController ? new AbortController() : null;
+    if (ctrl) setTimeout(() => ctrl.abort(), 3500);
+    fetch('https://get.geojs.io/v1/ip/geo.json', ctrl ? { signal: ctrl.signal } : {}).then(r => r.json())
+      .then(g => kirim({ negara: g.country_code || '', kota: g.city || '', wilayah: g.region || '' }))
+      .catch(cadangan);
+  }, 1500);
+}
+
+BHS = bahasaAwal();
+terapkanBahasa(false);
 })();
 </script>
 </body>

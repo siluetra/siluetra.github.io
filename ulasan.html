@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beri Ulasan – Siluetra AI</title>
+<meta name="description" content="Beri ulasan Siluetra AI dan dapatkan bonus kredit foto serta masa aktif untuk HP Anda.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0F0C20">
+<style>
+  :root{--bg:#0F0C20;--bg2:#000;--kartu:#1C1A2E;--garis:#2E2B45;--teks:#F4F2FF;--redup:#A9A5C4;--emas:#FFD700;--hijau:#00E676;--merah:#FF6B6B}
+  *{box-sizing:border-box}
+  html{background:var(--bg2)}
+  body{margin:0;min-height:100vh;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--teks);background:linear-gradient(180deg,var(--bg),var(--bg2)) fixed}
+  .wadah{max-width:480px;margin:0 auto;padding:18px 16px 48px}
+  .atas{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .atas a{color:var(--redup);text-decoration:none;font-size:14px}
+  .bhs{display:flex;border:1px solid var(--garis);border-radius:99px;overflow:hidden}
+  .bhs button{background:transparent;border:0;color:var(--redup);font-weight:800;font-size:12px;padding:6px 10px;cursor:pointer}
+  .bhs button[aria-pressed=true]{background:var(--emas);color:#1a1400}
+  header{text-align:center;margin-bottom:18px}
+  .logo{width:64px;height:64px;border-radius:16px;display:block;margin:0 auto 10px}
+  h1{font-size:24px;margin:0}
+  .slogan{color:var(--redup);font-size:14px;margin:6px 0 0;line-height:1.5}
+  .bonus{display:inline-block;margin-top:10px;background:rgba(0,230,118,.12);border:1px solid rgba(0,230,118,.4);color:var(--hijau);border-radius:99px;padding:5px 12px;font-weight:700;font-size:13px}
+  .kartu{background:var(--kartu);border:1px solid var(--garis);border-radius:16px;padding:18px;margin-bottom:14px}
+  label{display:block;font-size:13px;color:var(--redup);margin:14px 0 6px}
+  label:first-child{margin-top:0}
+  input[type=text],textarea{width:100%;background:#12101f;border:1px solid var(--garis);border-radius:12px;padding:12px;color:var(--teks);font:inherit;font-size:15px}
+  input:focus,textarea:focus{outline:none;border-color:var(--emas)}
+  textarea{min-height:120px;resize:vertical}
+  .bintang{display:flex;gap:6px}
+  .bintang button{flex:1;background:#12101f;border:1px solid var(--garis);border-radius:12px;font-size:28px;line-height:1;padding:10px 0;color:#4a4566;cursor:pointer}
+  .bintang button.on{color:var(--emas);border-color:rgba(255,215,0,.5)}
+  .ket-bintang{font-size:13px;color:var(--emas);min-height:18px;margin-top:6px}
+  .hitung{text-align:right;font-size:12px;color:var(--redup);margin-top:4px}
+  .centang{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--teks);margin-top:14px;cursor:pointer}
+  .centang input{width:20px;height:20px;accent-color:var(--emas);margin:0;flex:0 0 auto}
+  .tombol{width:100%;border:0;border-radius:14px;padding:15px;font-weight:800;font-size:16px;cursor:pointer;background:var(--emas);color:#000;margin-top:16px}
+  .tombol[disabled]{opacity:.55;cursor:default}
+  .galat{color:var(--merah);font-size:14px;margin-top:10px;min-height:1px}
+  .info{font-size:12.5px;color:var(--redup);line-height:1.55}
+  .sukses{text-align:center}
+  .sukses .ikon{font-size:48px}
+  .sukses h2{margin:6px 0 8px}
+  .sukses p{color:var(--redup);line-height:1.55}
+  .tautan{display:inline-block;margin-top:12px;color:var(--emas)}
+  .tersembunyi{display:none}
+  footer{text-align:center;font-size:12.5px;color:var(--redup);margin-top:18px}
+  footer a{color:var(--redup)}
+</style>
+</head>
+<body>
+<div class="wadah">
+  <div class="atas">
+    <a href="index.html" id="kembali" data-en="← Siluetra AI">← Siluetra AI</a>
+    <div class="bhs" role="group" aria-label="Bahasa / Language"><button type="button" data-l="id">ID</button><button type="button" data-l="en">EN</button></div>
+  </div>
+  <header>
+    <img class="logo" src="favicon-192.png" alt="">
+    <h1 data-en="Review Siluetra AI">Ulas Siluetra AI</h1>
+    <p class="slogan" data-en="How has Siluetra worked for you? Your honest review helps others decide and helps us improve the app.">Bagaimana pengalaman Anda memakai Siluetra? Ulasan jujur Anda membantu calon pengguna lain dan membantu kami memperbaiki aplikasi.</p>
+    <span class="bonus" id="teksBonus"></span>
+  </header>
+
+  <form class="kartu" id="form" autocomplete="off" novalidate>
+    <label for="inId" data-en="Phone ID (in the app: 👤 Profile — the last 8 characters are enough)">ID HP (di aplikasi: 👤 Profil — cukup 8 karakter terakhir)</label>
+    <input type="text" id="inId" maxlength="40" placeholder="mis. A1B2C3D4" data-en-ph="e.g. A1B2C3D4" autocapitalize="characters">
+    <div class="info" id="infoId"></div>
+
+    <label data-en="Your rating">Penilaian Anda</label>
+    <div class="bintang" id="bintang">
+      <button type="button" data-b="1" aria-label="1">★</button><button type="button" data-b="2" aria-label="2">★</button><button type="button" data-b="3" aria-label="3">★</button><button type="button" data-b="4" aria-label="4">★</button><button type="button" data-b="5" aria-label="5">★</button>
+    </div>
+    <div class="ket-bintang" id="ketBintang"></div>
+
+    <label for="inKomentar" data-en="Your review">Ulasan Anda</label>
+    <textarea id="inKomentar" maxlength="600" placeholder="Ceritakan di mana Anda memakai Siluetra, fitur apa yang membantu, dan apa yang perlu diperbaiki." data-en-ph="Tell us where you used Siluetra, which features helped, and what needs fixing."></textarea>
+    <div class="hitung" id="hitung">0/600</div>
+
+    <label for="inNama" data-en="Your first name / nickname">Nama panggilan</label>
+    <input type="text" id="inNama" maxlength="30" placeholder="mis. Rina" data-en-ph="e.g. Rina">
+    <label for="inKota" data-en="City (optional)">Kota (opsional)</label>
+    <input type="text" id="inKota" maxlength="40" placeholder="mis. Semarang" data-en-ph="e.g. Semarang">
+
+    <label class="centang"><input type="checkbox" id="inIzin" checked><span data-en="Show my name, city and review on the Siluetra website.">Tampilkan nama panggilan, kota, dan ulasan saya di website Siluetra.</span></label>
+
+    <button class="tombol" id="btnKirim" type="submit" data-en="Send review">Kirim ulasan</button>
+    <div class="galat" id="galat"></div>
+    <p class="info" id="infoJujur"></p>
+  </form>
+
+  <div class="kartu sukses tersembunyi" id="sukses">
+    <div class="ikon">🎉</div>
+    <h2 data-en="Thank you!">Terima kasih!</h2>
+    <p id="teksSukses"></p>
+    <a class="tautan" href="index.html#ulasan" id="lihatUlasan" data-en="See reviews on the website →">Lihat ulasan di website →</a>
+  </div>
+
+  <footer>
+    <a href="kebijakan-privasi.html" data-lang-link data-en="Privacy Policy">Kebijakan Privasi</a> ·
+    <a href="syarat.html" data-lang-link data-en="Terms of Service">Syarat Layanan</a>
+  </footer>
+</div>
+
+<script>
+/* URL Web App Apps Script (sama dengan index.html & beli.html) */
+const API_URL = 'https://script.google.com/macros/s/AKfycbza5qiuxecRf7sswg575EcmvYQpvO0qF_lIsWbehOfw4wNTLGamPXs-GXCJWruV4EJd/exec';
+
+(function () {
+const $ = id => document.getElementById(id);
+const q = new URLSearchParams(location.search);
+let BHS = 'id', BONUS = { kredit: 5, hari: 3 }, bintang = 0;
+const L = (id, en) => BHS === 'en' ? en : id;
+
+function bahasaAwal() {
+  const x = q.get('lang'); if (x === 'en' || x === 'id') return x;
+  try { const s = localStorage.getItem('bahasa'); if (s === 'en' || s === 'id') return s; } catch (e) {}
+  const tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || '');
+  if (/^Asia\/(Jakarta|Pontianak|Makassar|Jayapura)$/.test(tz)) return 'id';
+  return /^(id|in|ms)/i.test(navigator.language || '') ? 'id' : 'en';
+}
+const KET = [['', ''], ['Sangat kurang', 'Very poor'], ['Kurang', 'Poor'], ['Cukup', 'Okay'], ['Bagus', 'Good'], ['Sangat bagus', 'Excellent']];
+function render() {
+  document.documentElement.lang = BHS;
+  document.querySelectorAll('[data-en]').forEach(el => { if (el.dataset.id === undefined) el.dataset.id = el.innerHTML; el.innerHTML = BHS === 'en' ? el.dataset.en : el.dataset.id; });
+  document.querySelectorAll('[data-en-ph]').forEach(el => { if (el.dataset.idPh === undefined) el.dataset.idPh = el.placeholder; el.placeholder = BHS === 'en' ? el.dataset.enPh : el.dataset.idPh; });
+  document.querySelectorAll('.bhs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.l === BHS));
+  document.querySelectorAll('a[data-lang-link], #kembali, #lihatUlasan').forEach(a => {
+    const [u, hash] = a.getAttribute('href').split('#'); a.href = u.split('?')[0] + (BHS === 'en' ? '?lang=en' : '') + (hash ? '#' + hash : '');
+  });
+  document.title = L('Beri Ulasan – Siluetra AI', 'Write a Review – Siluetra AI');
+  $('teksBonus').textContent = L('🎁 Bonus +' + BONUS.kredit + ' kredit & +' + BONUS.hari + ' hari untuk HP Anda', '🎁 +' + BONUS.kredit + ' credits & +' + BONUS.hari + ' days for your phone');
+  $('infoJujur').textContent = L('Bonus diberikan untuk setiap ulasan, berapa pun bintangnya. Satu ulasan per HP. Mohon tulis sejujurnya; ulasan berisi spam atau kata kasar dapat disembunyikan.',
+    'The bonus is given for every review, whatever the rating. One review per phone. Please be honest; spam or abusive reviews may be hidden.');
+  $('ketBintang').textContent = L(KET[bintang][0], KET[bintang][1]);
+}
+document.querySelectorAll('.bhs button').forEach(b => b.onclick = () => { BHS = b.dataset.l; try { localStorage.setItem('bahasa', BHS); } catch (e) {} render(); });
+
+document.querySelectorAll('#bintang button').forEach(b => b.onclick = () => {
+  bintang = Number(b.dataset.b);
+  document.querySelectorAll('#bintang button').forEach(x => x.classList.toggle('on', Number(x.dataset.b) <= bintang));
+  $('ketBintang').textContent = L(KET[bintang][0], KET[bintang][1]);
+});
+$('inKomentar').addEventListener('input', () => { $('hitung').textContent = $('inKomentar').value.length + '/600'; });
+
+function api(action, data) {
+  return fetch(API_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(Object.assign({ action }, data || {})) }).then(r => r.json());
+}
+
+// ID HP dari aplikasi (tombol "Beri ulasan" di Profil membuka halaman ini dengan ?device=)
+const dev = (q.get('device') || '').toUpperCase().replace(/[^A-Z0-9-]/g, '');
+if (dev) $('inId').value = dev;
+function cekId() {
+  const id = $('inId').value.trim();
+  if (id.replace(/^SLT-/i, '').length < 6) { $('infoId').textContent = ''; return; }
+  api('cekUlasan', { deviceId: id }).then(h => {
+    if (!h || !h.ok) return;
+    if (h.bonus) { BONUS = h.bonus; render(); }
+    if (!h.terdaftar) $('infoId').textContent = L('ID ini belum ditemukan. Pastikan sudah mencoba gratis atau membeli paket di aplikasi.', 'This ID was not found. Make sure you have tried the free trial or bought a plan in the app.');
+    else if (h.sudah) $('infoId').textContent = L('HP ini sudah pernah memberi ulasan (' + h.bintang + ' ★). Terima kasih!', 'This phone has already left a review (' + h.bintang + ' ★). Thank you!');
+    else if (!h.bolehUlas) $('infoId').textContent = L('Coba dulu aplikasinya (coba gratis atau beli paket), baru beri ulasan.', 'Try the app first (free trial or a plan), then leave a review.');
+    else $('infoId').textContent = '✓ ' + L('ID HP ditemukan.', 'Phone ID found.');
+  }).catch(() => {});
+}
+$('inId').addEventListener('change', cekId);
+if (dev) cekId();
+
+$('form').addEventListener('submit', e => {
+  e.preventDefault();
+  const galat = t => { $('galat').textContent = t; };
+  const data = {
+    deviceId: $('inId').value.trim(), bintang, komentar: $('inKomentar').value.trim(),
+    nama: $('inNama').value.trim(), kota: $('inKota').value.trim(), izin: $('inIzin').checked, bahasa: BHS
+  };
+  if (data.deviceId.replace(/^SLT-/i, '').length < 6) return galat(L('Isi ID HP dari menu 👤 Profil di aplikasi (minimal 6 karakter terakhir).', 'Enter the phone ID from 👤 Profile in the app (at least the last 6 characters).'));
+  if (!bintang) return galat(L('Pilih jumlah bintang.', 'Choose a star rating.'));
+  if (data.komentar.length < 20) return galat(L('Tulis ulasan minimal 20 huruf.', 'Write at least 20 characters.'));
+  if (!data.nama) return galat(L('Isi nama panggilan Anda.', 'Enter your first name or nickname.'));
+  galat('');
+  const b = $('btnKirim'); b.disabled = true; b.textContent = L('Mengirim…', 'Sending…');
+  api('kirimUlasan', data).then(h => {
+    if (!h || !h.ok) { galat((h && h.error) || L('Gagal mengirim. Coba lagi.', 'Could not send. Please try again.')); return; }
+    $('form').classList.add('tersembunyi'); $('sukses').classList.remove('tersembunyi');
+    $('teksSukses').innerHTML = h.status === 'MENUNGGU'
+      ? L('Ulasan Anda sudah kami terima dan akan dicek admin. Bonus <b>+' + BONUS.kredit + ' kredit & +' + BONUS.hari + ' hari</b> masuk setelah disetujui.',
+          'We received your review and the admin will check it. The <b>+' + BONUS.kredit + ' credits & +' + BONUS.hari + ' days</b> bonus arrives once it is approved.')
+      : L('Bonus <b>+' + h.bonus.kredit + ' kredit</b> dan <b>+' + h.bonus.hari + ' hari</b> sudah masuk ke HP Anda. Buka aplikasi lalu menu 👤 Profil untuk melihat saldo terbaru.',
+          'Your <b>+' + h.bonus.kredit + ' credits</b> and <b>+' + h.bonus.hari + ' days</b> have been added. Open the app and go to 👤 Profile to see your updated balance.');
+    window.scrollTo(0, 0);
+  }).catch(() => galat(L('Tidak dapat terhubung ke server. Periksa internet Anda.', 'Could not reach the server. Check your connection.')))
+    .then(() => { b.disabled = false; b.textContent = L('Kirim ulasan', 'Send review'); });
+});
+
+BHS = bahasaAwal();
+render();
+})();
+</script>
+</body>
+</html>

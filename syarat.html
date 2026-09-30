@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Syarat Layanan – Siluetra AI</title>
-<meta name="description" content="Syarat Layanan Siluetra AI: paket, kredit foto, pembayaran QRIS, uji coba gratis, pengembalian dana, dan aturan pemakaian.">
+<meta name="description" content="Syarat Layanan Siluetra AI: paket, kredit, pembayaran QRIS, pengembalian dana, ulasan, dan aturan pemakaian.">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#0F0C20">
@@ -37,18 +37,24 @@
   .tabel{overflow-x:auto}
   footer{border-top:1px solid var(--garis);margin-top:44px;padding:22px 0 40px;color:var(--redup);font-size:13px}
   footer a{margin-right:14px}
+  .bhs{display:flex;border:1px solid var(--garis);border-radius:99px;overflow:hidden;margin-left:12px}
+  .bhs button{background:transparent;border:0;color:var(--redup);font-weight:800;font-size:12px;padding:5px 9px;cursor:pointer}
+  .bhs button[aria-pressed=true]{background:var(--emas);color:#1a1400}
+  .versi{display:none}.versi.aktif{display:block}
 </style>
 </head>
 <body>
 <nav><div class="wadah">
-  <a class="merek" href="index.html"><img src="favicon-192.png" alt="">Siluetra AI</a>
-  <a class="kanan" href="kebijakan-privasi.html">Kebijakan Privasi</a>
+  <a class="merek" href="index.html" data-tautan><img src="favicon-192.png" alt="">Siluetra AI</a>
+  <a class="kanan" href="kebijakan-privasi.html" data-tautan data-id="Kebijakan Privasi" data-en="Privacy Policy">Kebijakan Privasi</a>
+  <div class="bhs" role="group" aria-label="Bahasa / Language"><button type="button" data-l="id">ID</button><button type="button" data-l="en">EN</button></div>
 </div></nav>
 
 <main class="wadah">
+<div class="versi" lang="id" data-v="id">
 <header>
   <h1>Syarat Layanan</h1>
-  <div class="tgl">Berlaku sejak 29 September 2026</div>
+  <div class="tgl">Berlaku sejak 30 September 2026</div>
 </header>
 
 <div class="ringkas">
@@ -56,6 +62,7 @@
   <ul>
     <li>1 kredit = 1 foto yang berhasil tersimpan. Foto yang gagal tidak memotong kredit.</li>
     <li>Paket berlaku untuk satu HP, sesuai jumlah hari dan kredit yang tertera saat membeli.</li>
+    <li>Setiap HP yang memberi ulasan mendapat bonus kredit dan hari, apa pun penilaiannya.</li>
     <li>Beli lagi sebelum masa aktif habis: sisa hari dan sisa kredit ditambahkan. Setelah masa aktif habis, sisa kredit tidak berlaku lagi.</li>
     <li>Bayar dengan QRIS tepat sesuai nominal yang tertera. Bila ada kendala, hubungi admin.</li>
   </ul>
@@ -104,7 +111,16 @@
 <h2>7. Program referral</h2>
 <p>Anda dapat membagikan kode referral dari menu 👤 Profil. Bila teman memakai kode itu pada pembelian pertamanya, Anda dan teman sama-sama mendapat bonus kredit sesuai ketentuan yang berlaku saat itu. Bonus tidak diberikan untuk pembelian dengan HP atau akun milik sendiri. Kami dapat membatalkan bonus yang diperoleh dengan cara curang.</p>
 
-<h2>8. Aturan pemakaian</h2>
+<h2>8. Ulasan dan bonus ulasan</h2>
+<ul>
+  <li>Ulasan dapat dikirim dari menu 👤 Profil di aplikasi atau halaman Ulasan di website. Satu HP dapat mengirim satu ulasan, dan hanya HP yang sudah pernah mencoba gratis atau membeli paket.</li>
+  <li>Setiap ulasan yang diterima mendapat bonus kredit dan masa aktif sesuai ketentuan yang tertera saat mengirim, <b>berapa pun jumlah bintangnya</b>. Bonus tidak dapat diuangkan dan tidak dapat dipindahkan.</li>
+  <li>Tulis ulasan berdasarkan pengalaman Anda sendiri. Ulasan yang berisi spam, promosi, kata kasar, data pribadi orang lain, atau tidak berhubungan dengan Siluetra dapat disembunyikan. Kami tidak menyembunyikan ulasan hanya karena penilaiannya rendah.</li>
+  <li>Dengan mencentang pilihan tampil, Anda mengizinkan nama panggilan, kota, bintang, dan isi ulasan ditampilkan di website Siluetra. Anda dapat meminta ulasan disembunyikan atau dihapus kapan saja melalui admin.</li>
+  <li>Bonus yang diperoleh dengan cara curang, misalnya memakai banyak perangkat atau identitas palsu, dapat dibatalkan.</li>
+</ul>
+
+<h2>9. Aturan pemakaian</h2>
 <p>Anda setuju untuk tidak:</p>
 <ul>
   <li>memotret orang lain tanpa izin, di tempat yang melarang pemotretan, atau untuk tujuan melecehkan, merendahkan, atau melanggar hukum;</li>
@@ -114,10 +130,10 @@
 </ul>
 <p>Kami dapat menghentikan paket yang dipakai melanggar aturan ini tanpa pengembalian dana.</p>
 
-<h2>9. Hak atas foto dan aplikasi</h2>
+<h2>10. Hak atas foto dan aplikasi</h2>
 <p>Foto yang Anda ambil sepenuhnya milik Anda dan tersimpan di galeri Anda sendiri. Anda bertanggung jawab atas izin dari orang yang ada di foto. Aplikasi, desain, siluet gaya, logo, dan nama Siluetra AI adalah milik kami. Anda mendapat izin memakai aplikasi untuk keperluan pribadi, bukan hak kepemilikan atasnya.</p>
 
-<h2>10. Ketersediaan dan pembaruan</h2>
+<h2>11. Ketersediaan dan pembaruan</h2>
 <ul>
   <li>Aplikasi diunduh dari website resmi siluetra.github.io atau toko aplikasi yang kami tunjuk. Kami tidak bertanggung jawab atas file dari sumber lain.</li>
   <li>Sebagian fitur bergantung pada kemampuan HP, misalnya lensa 0.5x, kecerahan, dan lampu layar, sehingga tidak semua HP mendapat fitur yang sama.</li>
@@ -125,22 +141,130 @@
   <li>Kami dapat memperbarui aplikasi, mengubah fitur, atau mengubah harga untuk pembelian berikutnya. Paket yang sudah dibayar tetap berlaku sesuai ketentuannya.</li>
 </ul>
 
-<h2>11. Batas tanggung jawab</h2>
+<h2>12. Batas tanggung jawab</h2>
 <p>Layanan diberikan sebagaimana adanya. Sejauh diizinkan hukum, kami tidak bertanggung jawab atas kerugian tidak langsung, seperti kehilangan foto karena HP rusak, galeri terhapus, atau memori penuh. Tanggung jawab kami paling besar sama dengan harga paket terakhir yang Anda bayar.</p>
 
-<h2>12. Hukum yang berlaku</h2>
+<h2>13. Hukum yang berlaku</h2>
 <p>Syarat ini tunduk pada hukum Republik Indonesia. Setiap keluhan akan kami upayakan selesai secara musyawarah terlebih dahulu melalui kontak di bawah.</p>
 
-<h2>13. Kontak</h2>
-<ul id="daftarKontak">
+<h2>14. Kontak</h2>
+<ul class="daftarKontak">
   <li>tombol <b>Hubungi Admin (WhatsApp)</b> di menu 👤 Profil aplikasi, atau tombol <b>Tanya Admin</b> di website.</li>
 </ul>
 
-<h2>14. Perubahan syarat</h2>
+<h2>15. Perubahan syarat</h2>
 <p>Syarat ini dapat diperbarui. Tanggal berlaku di bagian atas halaman akan diubah, dan perubahan penting diberitahukan melalui aplikasi atau website. Pemakaian Layanan setelah perubahan berarti Anda menyetujui syarat yang baru.</p>
+</div>
+
+<div class="versi" lang="en" data-v="en">
+<header>
+  <h1>Terms of Service</h1>
+  <div class="tgl">Effective from 30 September 2026</div>
+</header>
+
+<div class="ringkas">
+  <b>In short:</b>
+  <ul>
+    <li>1 credit = 1 successfully saved photo. Failed shots do not use credits.</li>
+    <li>A plan works on one phone, for the days and credits shown when you buy.</li>
+    <li>Buy again before your plan ends and the remaining days and credits carry over. After the plan ends, leftover credits expire.</li>
+    <li>Every phone that leaves a review gets bonus credits and days, whatever the rating.</li>
+    <li>Pay with QRIS for the exact amount shown. If anything goes wrong, contact the admin.</li>
+  </ul>
+</div>
+
+<p>These terms govern the use of the Siluetra AI Android app and the siluetra.github.io website (the "Service") operated by <b class="pengelola">Siluetra AI</b> ("we"). By installing the app, buying a plan or using the Service, you agree to these Terms and the <a href="kebijakan-privasi.html?lang=en">Privacy Policy</a>. If you do not agree, please do not use the Service. If the Indonesian and English versions differ, the Indonesian version prevails.</p>
+
+<h2>1. About the Service</h2>
+<p>Siluetra AI is a pose guide camera. The app shows pose silhouettes on the camera screen, recognizes the scene, gives body position tips and helps you take the shot. Results still depend on your phone's camera, the light and conditions on location. Example images on the website marked "Illustration" are indicative, not a guarantee of identical results.</p>
+
+<h2>2. Plans, active period and credits</h2>
+<ul>
+  <li>Each plan has a price, an active period (days), a number of photo credits and a type (Basic or Pro), as shown in the app or on the website at purchase. A paid plan keeps its terms even if prices change later.</li>
+  <li>One credit is used for each photo successfully saved to your gallery. You can take photos while the plan is active and credits remain.</li>
+  <li>If you buy again while a plan is active, the new days are added after the current end date and the new credits are added to your remaining credits.</li>
+  <li>Once the active period has ended, leftover credits expire. The next purchase starts from the purchase date with the credits of the plan you buy.</li>
+  <li>Pro features last until the date shown in the 👤 Profile menu. After that the app returns to Basic features while the active period lasts.</li>
+  <li>Plans are not automatic subscriptions. There is no recurring billing; you buy again only if you want to.</li>
+  <li>Credits and active days cannot be exchanged for cash or transferred to another person.</li>
+</ul>
+
+<h2>3. Free trial</h2>
+<p>Each phone can use the free trial once, with the active days and credits shown in the app. We may refuse or revoke trials obtained by cheating, for example by changing the device identity.</p>
+
+<h2>4. Payment</h2>
+<ul>
+  <li>Payment uses QRIS from any Indonesian e-wallet or mobile banking app. Each order has a unique amount slightly different from the plan price so your payment can be matched. Please pay <b>the exact amount</b>.</li>
+  <li>Orders must be paid within the time limit shown. Orders past the limit expire automatically.</li>
+  <li>Once payment is verified, the plan activates automatically on the phone whose device ID is on the order. Website purchases without a device ID produce a single-use <b>Activation Code</b>.</li>
+  <li>Verification usually takes a few minutes. In some cases, such as network problems or outside operating hours, it may take longer.</li>
+  <li>Keep your payment proof until the plan is active.</li>
+</ul>
+
+<h2>5. Payment problems and refunds</h2>
+<ul>
+  <li><b>Paid but the plan is not active</b> after 1 x 24 hours: contact the admin with your order number and payment proof. We will activate the plan once the payment is confirmed.</li>
+  <li><b>Paid a different amount</b>: contact the admin. Small differences are matched manually; underpayments may need to be completed.</li>
+  <li><b>Double payment</b> for the same order: the extra amount is refunded, or turned into an additional plan if you prefer.</li>
+  <li><b>Active plans</b> cannot be cancelled or refunded, because the digital service is usable immediately. The exception is when the app demonstrably cannot run on your phone at all and we cannot fix it. In that case the refund is proportional to unused credits, if requested within 3 days of purchase.</li>
+  <li>Refunds are sent to an e-wallet or bank account in the payer's name, after the payment is verified.</li>
+</ul>
+
+<h2>6. One plan per phone</h2>
+<p>A plan is tied to the device ID of the phone used at purchase. If you change phones, factory-reset your phone, or the device ID changes, contact the admin to move the remaining plan. We move it once ownership is confirmed, for example by matching your WhatsApp number and purchase history.</p>
+
+<h2>7. Referral program</h2>
+<p>You can share your referral code from the 👤 Profile menu. When a friend uses it on their first purchase, you both get bonus credits under the rules in force at the time. No bonus is given for purchases from your own phone or account. We may cancel bonuses obtained by cheating.</p>
+
+<h2>8. Reviews and review bonus</h2>
+<ul>
+  <li>Reviews can be sent from the app's 👤 Profile menu or the Review page on the website. Each phone can send one review, and only phones that have used the free trial or bought a plan.</li>
+  <li>Every accepted review earns bonus credits and active days as stated when you send it, <b>whatever the star rating</b>. The bonus cannot be exchanged for cash or transferred.</li>
+  <li>Write about your own experience. Reviews with spam, promotions, abusive language, other people's personal data, or content unrelated to Siluetra may be hidden. We do not hide reviews just because the rating is low.</li>
+  <li>By ticking the display option, you allow your nickname, city, stars and review text to be shown on the Siluetra website. You can ask the admin to hide or delete your review at any time.</li>
+  <li>Bonuses obtained by cheating, for example with multiple devices or false identities, may be cancelled.</li>
+</ul>
+
+<h2>9. Acceptable use</h2>
+<p>You agree not to:</p>
+<ul>
+  <li>photograph other people without permission, in places where photography is prohibited, or to harass, demean or break the law;</li>
+  <li>reverse-engineer, modify or pirate the app, bypass the credit system, or make and distribute unofficial versions;</li>
+  <li>trade Activation Codes or plans without our permission;</li>
+  <li>disrupt the server or send fake requests to the payment system.</li>
+</ul>
+<p>We may terminate plans used in breach of these rules without a refund.</p>
+
+<h2>10. Rights to photos and the app</h2>
+<p>Photos you take belong entirely to you and stay in your own gallery. You are responsible for getting permission from the people in them. The app, design, pose silhouettes, logo and the Siluetra AI name belong to us. You receive permission to use the app for personal purposes, not ownership of it.</p>
+
+<h2>11. Availability and updates</h2>
+<ul>
+  <li>Download the app only from the official website siluetra.github.io or the app store we designate. We are not responsible for files from other sources.</li>
+  <li>Some features depend on your phone's capabilities, such as the 0.5x lens, brightness and screen flash, so not every phone gets the same features.</li>
+  <li>Buying and checking plan status require internet. We try to keep the Service running but cannot guarantee it is always free of interruptions. If a long server outage makes your plan unusable, lost active days can be restored after you contact the admin.</li>
+  <li>We may update the app, change features, or change prices for future purchases. Paid plans remain valid under their terms.</li>
+</ul>
+
+<h2>12. Limitation of liability</h2>
+<p>The Service is provided as is. To the extent permitted by law, we are not liable for indirect losses, such as losing photos because a phone breaks, the gallery is deleted or storage is full. Our liability is limited to the price of the last plan you paid for.</p>
+
+<h2>13. Governing law</h2>
+<p>These Terms are governed by the laws of the Republic of Indonesia. We will try to settle any complaint amicably first, through the contacts below.</p>
+
+<h2>14. Contact</h2>
+<ul class="daftarKontak">
+  <li>the <b>Contact Admin (WhatsApp)</b> button in the app's 👤 Profile menu, or the <b>Ask Admin</b> button on the website.</li>
+</ul>
+
+<h2>15. Changes to these Terms</h2>
+<p>These Terms may be updated. The effective date at the top of the page will be updated, and important changes will be announced in the app or on the website. Using the Service after a change means you accept the new Terms.</p>
+</div>
+
 </main>
+
 <footer><div class="wadah">
-  <a href="index.html">Beranda</a><a href="kebijakan-privasi.html">Kebijakan Privasi</a><a href="beli.html">Beli Paket</a>
+  <a href="index.html" data-tautan data-id="Beranda" data-en="Home">Beranda</a><a href="kebijakan-privasi.html" data-tautan data-id="Kebijakan Privasi" data-en="Privacy Policy">Kebijakan Privasi</a><a href="beli.html" data-tautan data-id="Beli Paket" data-en="Buy a Plan">Beli Paket</a><a href="ulasan.html" data-tautan data-id="Beri Ulasan" data-en="Write a Review">Beri Ulasan</a>
   <div style="margin-top:8px">© <span id="tahun"></span> Siluetra AI</div>
 </div></footer>
 
@@ -154,9 +278,30 @@ const KONTAK = {
 /* ============================================================= */
 document.getElementById('tahun').textContent = new Date().getFullYear();
 document.querySelectorAll('.pengelola').forEach(e => e.textContent = KONTAK.PENGELOLA);
-const ul = document.getElementById('daftarKontak');
-if (KONTAK.WA_ADMIN) ul.insertAdjacentHTML('beforeend', '<li>WhatsApp: <a href="https://wa.me/' + KONTAK.WA_ADMIN + '">+' + KONTAK.WA_ADMIN + '</a></li>');
-if (KONTAK.EMAIL) ul.insertAdjacentHTML('beforeend', '<li>Email: <a href="mailto:' + KONTAK.EMAIL + '">' + KONTAK.EMAIL + '</a></li>');
+document.querySelectorAll('.daftarKontak').forEach(ul => {
+  if (KONTAK.WA_ADMIN) ul.insertAdjacentHTML('beforeend', '<li>WhatsApp: <a href="https://wa.me/' + KONTAK.WA_ADMIN + '">+' + KONTAK.WA_ADMIN + '</a></li>');
+  if (KONTAK.EMAIL) ul.insertAdjacentHTML('beforeend', '<li>Email: <a href="mailto:' + KONTAK.EMAIL + '">' + KONTAK.EMAIL + '</a></li>');
+});
+/* Bahasa: ?lang=en, pilihan tersimpan, atau bahasa browser */
+function bahasaAwal() {
+  const x = new URLSearchParams(location.search).get('lang'); if (x === 'en' || x === 'id') return x;
+  try { const s = localStorage.getItem('bahasa'); if (s === 'en' || s === 'id') return s; } catch (e) {}
+  const tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || '');
+  if (/^Asia\/(Jakarta|Pontianak|Makassar|Jayapura)$/.test(tz)) return 'id';
+  return /^(id|in|ms)/i.test(navigator.language || '') ? 'id' : 'en';
+}
+function pakai(b) {
+  document.documentElement.lang = b;
+  document.querySelectorAll('.versi').forEach(v => v.classList.toggle('aktif', v.dataset.v === b));
+  document.querySelectorAll('.bhs button').forEach(x => x.setAttribute('aria-pressed', x.dataset.l === b));
+  document.querySelectorAll('[data-tautan]').forEach(a => {
+    const u = a.getAttribute('href').split('?')[0]; a.href = u + (b === 'en' ? '?lang=en' : '');
+    if (a.dataset.en) a.textContent = b === 'en' ? a.dataset.en : a.dataset.id;
+  });
+  document.title = (b === 'en' ? 'Terms of Service' : 'Syarat Layanan') + ' – Siluetra AI';
+}
+document.querySelectorAll('.bhs button').forEach(x => x.onclick = () => { try { localStorage.setItem('bahasa', x.dataset.l); } catch (e) {} pakai(x.dataset.l); });
+pakai(bahasaAwal());
 </script>
 </body>
 </html>
