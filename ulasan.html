@@ -146,20 +146,34 @@ document.querySelectorAll('#bintang button').forEach(b => b.onclick = () => {
 });
 $('inKomentar').addEventListener('input', () => { $('hitung').textContent = $('inKomentar').value.length + '/600'; });
 
-function api(action, data) {
-  return fetch(API_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-    body: JSON.stringify(Object.assign({ action }, data || {})) }).then(r => r.json());
+function api(action, data, batasMs) {
+  // Jawaban dibaca sebagai teks dulu, supaya jawaban yang bukan JSON bisa dibedakan dari putus koneksi.
+  const ctrl = window.AbortController ? new AbortController() : null;
+  const timer = ctrl ? setTimeout(() => ctrl.abort(), batasMs || 60000) : 0;
+  return fetch(API_URL, { method: 'POST', redirect: 'follow', cache: 'no-store',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(Object.assign({ action }, data || {})), signal: ctrl ? ctrl.signal : undefined })
+    .then(r => r.text())
+    .then(t => {
+      try { return JSON.parse(t); }
+      catch (e) { const g = new Error('Jawaban server bukan JSON'); g.kode = 'R1'; g.cuplikan = String(t).slice(0, 300); throw g; }
+    })
+    .catch(e => { if (!e.kode) e.kode = (e.name === 'AbortError') ? 'W1' : 'J1'; throw e; })
+    .finally(() => clearTimeout(timer));
 }
+const tunggu = ms => new Promise(r => setTimeout(r, ms));
 
 // ID HP dari aplikasi (tombol "Beri ulasan" di Profil membuka halaman ini dengan ?device=)
 const dev = (q.get('device') || '').toUpperCase().replace(/[^A-Z0-9-]/g, '');
 if (dev) $('inId').value = dev;
+let sudahAwal = false;
 function cekId() {
   const id = $('inId').value.trim();
   if (id.replace(/^SLT-/i, '').length < 6) { $('infoId').textContent = ''; return; }
   api('cekUlasan', { deviceId: id }).then(h => {
     if (!h || !h.ok) return;
     if (h.bonus) { BONUS = h.bonus; render(); }
+    sudahAwal = !!h.sudah;
     if (!h.terdaftar) $('infoId').textContent = L('ID ini belum ditemukan. Pastikan sudah mencoba gratis atau membeli paket di aplikasi.', 'This ID was not found. Make sure you have tried the free trial or bought a plan in the app.');
     else if (h.sudah) $('infoId').textContent = L('HP ini sudah pernah memberi ulasan (' + h.bintang + ' ★). Terima kasih!', 'This phone has already left a review (' + h.bintang + ' ★). Thank you!');
     else if (!h.bolehUlas) $('infoId').textContent = L('Coba dulu aplikasinya (coba gratis atau beli paket), baru beri ulasan.', 'Try the app first (free trial or a plan), then leave a review.');
@@ -182,17 +196,44 @@ $('form').addEventListener('submit', e => {
   if (!data.nama) return galat(L('Isi nama panggilan Anda.', 'Enter your first name or nickname.'));
   galat('');
   const b = $('btnKirim'); b.disabled = true; b.textContent = L('Mengirim…', 'Sending…');
-  api('kirimUlasan', data).then(h => {
-    if (!h || !h.ok) { galat((h && h.error) || L('Gagal mengirim. Coba lagi.', 'Could not send. Please try again.')); return; }
+  const selesai = () => { b.disabled = false; b.textContent = L('Kirim ulasan', 'Send review'); };
+
+  function tampilSukses(status, bonus) {
+    const bn = (bonus && bonus.kredit != null) ? bonus : BONUS;
     $('form').classList.add('tersembunyi'); $('sukses').classList.remove('tersembunyi');
-    $('teksSukses').innerHTML = h.status === 'MENUNGGU'
+    $('teksSukses').innerHTML = status === 'MENUNGGU'
       ? L('Ulasan Anda sudah kami terima dan akan dicek admin. Bonus <b>+' + BONUS.kredit + ' kredit & +' + BONUS.hari + ' hari</b> masuk setelah disetujui.',
           'We received your review and the admin will check it. The <b>+' + BONUS.kredit + ' credits & +' + BONUS.hari + ' days</b> bonus arrives once it is approved.')
-      : L('Bonus <b>+' + h.bonus.kredit + ' kredit</b> dan <b>+' + h.bonus.hari + ' hari</b> sudah masuk ke HP Anda. Buka aplikasi lalu menu 👤 Profil untuk melihat saldo terbaru.',
-          'Your <b>+' + h.bonus.kredit + ' credits</b> and <b>+' + h.bonus.hari + ' days</b> have been added. Open the app and go to 👤 Profile to see your updated balance.');
-    window.scrollTo(0, 0);
-  }).catch(() => galat(L('Tidak dapat terhubung ke server. Periksa internet Anda.', 'Could not reach the server. Check your connection.')))
-    .then(() => { b.disabled = false; b.textContent = L('Kirim ulasan', 'Send review'); });
+      : L('Bonus <b>+' + bn.kredit + ' kredit</b> dan <b>+' + bn.hari + ' hari</b> sudah masuk ke HP Anda. Buka aplikasi lalu menu 👤 Profil untuk melihat saldo terbaru.',
+          'Your <b>+' + bn.kredit + ' credits</b> and <b>+' + bn.hari + ' days</b> have been added. Open the app and go to 👤 Profile to see your updated balance.');
+    try { window.scrollTo(0, 0); } catch (e) {}
+  }
+
+  // Bila jawaban server tidak terbaca, cek apakah ulasan sebenarnya sudah tersimpan.
+  async function pastikanTerkirim(err) {
+    console.warn('kirimUlasan gagal dibaca:', err && err.kode, err && err.message, err && err.cuplikan || '');
+    galat(L('Memeriksa apakah ulasan sudah tersimpan…', 'Checking whether your review was saved…'));
+    for (let i = 0; i < 3; i++) {
+      await tunggu(i === 0 ? 1500 : 3000);
+      try {
+        const h = await api('cekUlasan', { deviceId: data.deviceId }, 20000);
+        if (h && h.ok && h.sudah && !sudahAwal) { galat(''); tampilSukses(h.status, null); return; }
+        if (h && h.ok) break; // server terjangkau, tetapi ulasan belum ada: memang gagal
+      } catch (e) { /* coba lagi */ }
+    }
+    galat(L('Jawaban server tidak terbaca (kode ' + ((err && err.kode) || 'J1') + '). Ulasan Anda mungkin sudah tersimpan. Buka aplikasi > menu 👤 Profil: bila kredit sudah bertambah, ulasan sudah masuk dan tidak perlu dikirim ulang. Bila belum, tunggu sebentar lalu tekan Kirim lagi.',
+            'The server reply could not be read (code ' + ((err && err.kode) || 'J1') + '). Your review may already be saved. Open the app > 👤 Profile: if your credits went up, the review is in and you do not need to send it again. If not, wait a moment and press Send again.'));
+  }
+
+  api('kirimUlasan', data).then(h => {
+    if (!h || !h.ok) {
+      if (h && h.sudah) { galat(''); $('infoId').textContent = '✓ ' + L('HP ini sudah memberi ulasan. Terima kasih!', 'This phone has already left a review. Thank you!'); }
+      else galat((h && h.error) || L('Gagal mengirim. Coba lagi.', 'Could not send. Please try again.'));
+      return;
+    }
+    try { tampilSukses(h.status, h.bonus); }
+    catch (e) { console.error(e); galat(''); $('form').classList.add('tersembunyi'); $('sukses').classList.remove('tersembunyi'); }
+  }, pastikanTerkirim).catch(e => console.error(e)).then(selesai);
 });
 
 BHS = bahasaAwal();
