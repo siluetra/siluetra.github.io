@@ -162,6 +162,22 @@
   footer .wadah{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
   footer .kanan{margin-left:auto;display:flex;gap:14px}
   .wa{position:fixed;right:16px;bottom:16px;background:#25D366;color:#fff;border-radius:999px;padding:11px 15px;font-weight:800;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.4);z-index:20;font-size:14px}
+  /* v19: lencana unduh APKPure & video YouTube */
+  .badge-apk{display:inline-flex;align-items:center;gap:12px;padding:8px 22px 8px 10px;border-radius:14px;background:#fff;border:2px solid #fff;color:#1d1d1f;text-decoration:none;box-shadow:0 8px 24px rgba(36,205,119,.22);transition:transform .15s,box-shadow .15s;min-height:58px}
+  .badge-apk:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(36,205,119,.38)}
+  .badge-apk .ik{width:40px;height:40px;flex:0 0 auto}
+  .badge-apk .tx{display:flex;flex-direction:column;line-height:1.05}
+  .badge-apk small{font-size:12px;color:#55565b;font-weight:600;letter-spacing:.3px}
+  .badge-apk .logo-apkpure{height:27px;width:auto;display:block;margin-top:4px}
+  .grid-pasang{grid-template-columns:1.3fr 1fr}
+  @media (max-width:900px){ .grid-pasang{grid-template-columns:1fr} }
+  .video-wrap{display:grid;grid-template-columns:minmax(260px,360px) 1fr;gap:34px;align-items:center}
+  .video-hp{position:relative;width:100%;aspect-ratio:9/16;border-radius:26px;overflow:hidden;border:8px solid #15131f;box-shadow:0 24px 60px rgba(0,0,0,.45),0 0 0 1px var(--garis);background:#000}
+  .video-hp iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .video-teks ul{padding-left:0;list-style:none;display:grid;gap:10px;margin:16px 0 22px}
+  .video-teks li{display:flex;gap:10px;align-items:flex-start}
+  .video-teks .tautan-yt{display:inline-block;margin-left:14px;color:var(--redup);font-size:14px}
+  @media (max-width:900px){ .video-wrap{grid-template-columns:1fr;justify-items:center} .video-hp{max-width:320px} .video-teks{text-align:left} }
   @media (max-width:900px){
     .hero{grid-template-columns:1fr}.grid3,.harga{grid-template-columns:1fr}.grid4{grid-template-columns:1fr 1fr}
     .galeri-foto{grid-template-columns:1fr 1fr}
@@ -231,7 +247,7 @@
     <a class="merek" href="#"><img class="logo" src="favicon-192.png" alt="">Siluetra AI</a>
     <div class="kanan-nav">
       <div class="tautan">
-        <a href="#tampilan" data-en="Screens">Tampilan</a><a href="#gaya" data-en="Poses">Gaya pose</a><a href="#grup" data-en="Groups">Foto grup</a><a href="#harga" data-en="Pricing">Harga</a><a href="#ulasan" data-en="Reviews">Ulasan</a><a href="#faq">FAQ</a>
+        <a href="#tampilan" data-en="Screens">Tampilan</a><a href="#video" data-en="Video">Video</a><a href="#gaya" data-en="Poses">Gaya pose</a><a href="#grup" data-en="Groups">Foto grup</a><a href="#harga" data-en="Pricing">Harga</a><a href="#ulasan" data-en="Reviews">Ulasan</a><a href="#faq">FAQ</a>
       </div>
       <div class="bhs" role="group" aria-label="Bahasa / Language"><button type="button" data-l="id">ID</button><button type="button" data-l="en">EN</button></div>
       <a class="tombol emas kecil" href="#pasang" data-en="Download">Unduh</a>
@@ -244,8 +260,8 @@
     <h1 data-en="No more awkward poses.<br><span>Step into the silhouette, snap!</span>">Tak perlu bingung gaya.<br><span>Masuk ke siluetnya, jepret!</span></h1>
     <p class="sub" data-en="Siluetra AI recognizes where you are (beach, mountain, temple, city, café), shows a matching pose silhouette right on your camera, and tells you which hand or leg to move. Solo or in groups of 2–4.">Siluetra AI mengenali latar foto Anda (pantai, gunung, candi, kota, kafe), menampilkan siluet gaya yang cocok langsung di kamera, lalu memberi tahu tangan atau kaki mana yang perlu digeser. Sendiri maupun rame-rame 2–4 orang.</p>
     <div class="aksi">
-      <a class="tombol emas" href="#pasang" data-en="⬇ Get the app">⬇ Unduh aplikasi</a>
-      <a class="tombol garis" href="#harga" data-en="See pricing">Lihat harga</a>
+      <a class="badge-apk" id="unduhHero" href="https://apkpure.com/siluetra-ai/id.siluetra.app" target="_blank" rel="noopener" aria-label="Unduh Siluetra AI di APKPure"><svg class="ik" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#24CD77"/><path d="M24 12v16m0 0-7-7m7 7 7-7M15 35h18" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tx"><small data-en="Get it on">Unduh di</small><img class="logo-apkpure" src="https://static.apkpure.com/www/static/imgs/logo_new@2x.png" alt="APKPure" onerror="this.onerror=null;this.src='logo-apkpure.png'"></span></a>
+      <a class="tombol garis" href="#video" data-en="▶ Watch the video">▶ Lihat videonya</a>
     </div>
     <p class="catatan" id="heroCatatan"></p>
     <a class="chip-ulasan tersembunyi" id="heroUlasan" href="#ulasan"></a>
@@ -399,6 +415,26 @@
   </div>
 </section>
 
+<section id="video">
+  <div class="wadah video-wrap">
+    <div class="video-hp">
+      <iframe src="https://www.youtube-nocookie.com/embed/8IKaQEFhmBg?rel=0&amp;modestbranding=1&amp;playsinline=1" title="Siluetra AI: ikuti siluet emas sampai hijau" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="video-teks">
+      <h2 data-en="See it in action">Lihat cara kerjanya</h2>
+      <p class="sub" data-en="Follow the gold silhouette, and when your pose matches it turns green. Just snap.">Ikuti siluet emas, dan saat pose sudah pas siluetnya berubah hijau. Tinggal jepret.</p>
+      <ul>
+        <li data-en="🟡 <span><b>Gold</b>: follow the tips on screen (move, get closer, raise your arm)</span>">🟡 <span><b>Emas</b>: ikuti arahan di layar (geser, dekatkan kamera, angkat tangan)</span></li>
+        <li data-en="✨ <span>The score rises as your pose gets closer</span>">✨ <span>Skor naik saat pose makin mirip</span></li>
+        <li data-en="🟢 <span><b>Green</b>: the pose matches, snap the photo</span>">🟢 <span><b>Hijau</b>: pose sudah pas, tinggal jepret</span></li>
+      </ul>
+      <a class="badge-apk" id="unduhVideo" href="https://apkpure.com/siluetra-ai/id.siluetra.app" target="_blank" rel="noopener" aria-label="Unduh Siluetra AI di APKPure"><svg class="ik" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#24CD77"/><path d="M24 12v16m0 0-7-7m7 7 7-7M15 35h18" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tx"><small data-en="Get it on">Unduh di</small><img class="logo-apkpure" src="https://static.apkpure.com/www/static/imgs/logo_new@2x.png" alt="APKPure" onerror="this.onerror=null;this.src='logo-apkpure.png'"></span></a>
+      <a class="tautan-yt" href="https://www.youtube.com/shorts/8IKaQEFhmBg" target="_blank" rel="noopener" data-en="Watch on YouTube ↗">Tonton di YouTube ↗</a>
+      <p class="catatan" style="margin-top:14px" data-en="The video uses AI-made illustration photos and a simulated app screen.">Video memakai foto ilustrasi buatan AI dan tampilan aplikasi yang disimulasikan.</p>
+    </div>
+  </div>
+</section>
+
 <section id="grup">
   <div class="wadah">
     <h2><span data-en="Group photos that aren't stiff">Foto grup yang tidak kaku</span> <span class="pro">PRO</span></h2>
@@ -472,14 +508,14 @@
 <section id="pasang">
   <div class="wadah">
     <h2 data-en="Install the app">Pasang aplikasi</h2>
-    <div class="grid3" style="grid-template-columns:1.3fr 1fr">
+    <div class="grid3 grid-pasang">
       <div class="kartu">
         <ol class="langkah">
           <li data-en="Tap <b>Download</b> below. You will go to the official Siluetra AI page on APKPure.">Tekan tombol <b>Unduh</b> di bawah. Anda akan dibawa ke halaman resmi Siluetra AI di APKPure.</li>
           <li data-en="Tap <b>Download APK</b>, then open the downloaded file. If asked, allow installs from this browser.">Tekan <b>Download APK</b>, lalu buka file yang terunduh. Bila diminta, izinkan pemasangan dari browser ini.</li>
           <li data-en="Open the app, allow the camera, then tap <b>👤 Profile</b> to try it free or buy a plan.">Buka aplikasi, izinkan kamera, lalu tekan ikon <b>👤 Profil</b> untuk mencoba gratis atau membeli paket.</li>
         </ol>
-        <a class="tombol emas" id="unduh" href="#" target="_blank" rel="noopener" data-en="⬇ Download the app">⬇ Unduh aplikasi</a>
+        <a class="badge-apk" id="unduh" href="https://apkpure.com/siluetra-ai/id.siluetra.app" target="_blank" rel="noopener" aria-label="Unduh Siluetra AI di APKPure"><svg class="ik" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#24CD77"/><path d="M24 12v16m0 0-7-7m7 7 7-7M15 35h18" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tx"><small data-en="Get it on">Unduh di</small><img class="logo-apkpure" src="https://static.apkpure.com/www/static/imgs/logo_new@2x.png" alt="APKPure" onerror="this.onerror=null;this.src='logo-apkpure.png'"></span></a>
         <p class="catatan" id="infoVersi"></p>
       </div>
       <div class="kartu">
@@ -523,7 +559,7 @@
 const KONFIG = {
   // URL Web App Apps Script (sama dengan API_URL di beli.html). Dipakai untuk ulasan & statistik.
   API_URL: 'https://script.google.com/macros/s/AKfycbza5qiuxecRf7sswg575EcmvYQpvO0qF_lIsWbehOfw4wNTLGamPXs-GXCJWruV4EJd/exec',
-  APK_URL: 'https://apkpure.com/',   // GANTI dengan alamat halaman Siluetra AI di APKPure setelah tayang
+  APK_URL: 'https://apkpure.com/siluetra-ai/id.siluetra.app',   // halaman resmi Siluetra AI di APKPure
   APK_VERSI: '1.0',
   WA_ADMIN: '628817014279',          // format internasional tanpa +
   INSTAGRAM: 'https://instagram.com/siluetra.ai',
@@ -849,7 +885,7 @@ function renderStat() {
 
 /* ---------- Umum ---------- */
 function renderUmum() {
-  $('unduh').href = KONFIG.APK_URL;
+  ['unduh', 'unduhHero', 'unduhVideo'].forEach(i => { const a = $(i); if (a) a.href = KONFIG.APK_URL; });
   $('infoVersi').textContent = L('Versi ' + KONFIG.APK_VERSI + ' · Android 7.0 ke atas', 'Version ' + KONFIG.APK_VERSI + ' · Android 7.0 or later');
   $('wa').href = 'https://wa.me/' + KONFIG.WA_ADMIN + '?text=' + encodeURIComponent(L('Halo admin Siluetra AI, saya mau tanya.', 'Hello Siluetra AI admin, I have a question.'));
   $('ig').href = KONFIG.INSTAGRAM; $('tt').href = KONFIG.TIKTOK;
